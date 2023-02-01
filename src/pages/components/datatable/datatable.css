@@ -1,0 +1,12 @@
+.datatable {
+  margin: 30px;
+}
+
+.datatable .product-image {
+  width: 100px;
+}
+
+.datatable .p-paginator {
+  direction: ltr;
+}
+/*# sourceMappingURL=datatable.css.map */

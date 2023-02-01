@@ -1,0 +1,68 @@
+.app.dark {
+  background-color: #212529;
+  color: #9c9c9c;
+}
+
+.app.dark .chartGrid {
+  stroke: rgba(228, 228, 228, 0.219);
+}
+
+.app.dark .navbar {
+  color: #999;
+  border-color: #333;
+}
+
+.app.dark .navbar .search {
+  border-color: gray;
+}
+
+.app.dark .sidebar {
+  background-color: #212529;
+  border-color: #333;
+}
+
+.app.dark .sidebar .top .logo {
+  color: #999;
+}
+
+.app.dark .sidebar hr {
+  border-color: #333;
+}
+
+.app.dark .sidebar ul li:hover {
+  background-color: #333;
+}
+
+.app.dark .sidebar ul li i {
+  color: #999;
+}
+
+.app.dark .table .p-datatable-thead > tr > th,
+.app.dark .table .p-datatable-tbody > tr {
+  background-color: #212529;
+}
+
+.app.dark .table .p-datatable-tbody > tr > td,
+.app.dark .table .p-datatable-thead > tr > th {
+  color: gray;
+}
+
+.app.dark .datatable .p-datatable-thead > tr > th,
+.app.dark .datatable .p-datatable-tbody > tr {
+  background-color: #212529;
+}
+
+.app.dark .datatable .p-datatable-tbody > tr > td,
+.app.dark .datatable .p-datatable-thead > tr > th {
+  color: gray;
+}
+
+.app.dark .datatable .p-paginator {
+  background-color: #212529;
+}
+
+.app.dark input {
+  background-color: transparent;
+  color: gray;
+}
+/*# sourceMappingURL=dark.css.map */
