@@ -1,5 +1,8 @@
-import { createStore } from 'redux'
-import chgThemeReducer from "./reducers/chgThemeReducer";
-const store = createStore(chgThemeReducer);
-
+import { configureStore } from '@reduxjs/toolkit';
+import themeSlice from './themeSlice';
+const store = configureStore({
+    reducer: {
+        DarkMode: themeSlice,
+    }
+});
 export default store

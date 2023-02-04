@@ -1,6 +1,7 @@
 import React from "react";
 import "./navbar.scss";
 import { useDispatch } from "react-redux";
+import { toggle } from "../../../redux/themeSlice";
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -30,7 +31,7 @@ const Navbar = () => {
             <i
               className="pi pi-moon"
               style={{ cursor: "pointer" }}
-              onClick={() => dispatch({ type: "TOGGLE" })}
+              onClick={() => dispatch(toggle())}
             ></i>
           </div>
           <div className="item">

@@ -2,6 +2,7 @@ import React from "react";
 import "./sidebar.scss";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { dark, light } from "../../../redux/themeSlice";
 const Sidebar = () => {
   const dispatch = useDispatch();
   return (
@@ -74,14 +75,8 @@ const Sidebar = () => {
         </ul>
       </div>
       <div className="bottom">
-        <div
-          className="colorOption"
-          onClick={() => dispatch({ type: "LIGHT" })}
-        ></div>
-        <div
-          className="colorOption"
-          onClick={() => dispatch({ type: "DARK" })}
-        ></div>
+        <div className="colorOption" onClick={() => dispatch(light())}></div>
+        <div className="colorOption" onClick={() => dispatch(dark())}></div>
       </div>
     </div>
   );

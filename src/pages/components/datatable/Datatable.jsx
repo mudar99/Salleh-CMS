@@ -92,7 +92,7 @@ const Datatable = () => {
       email: "Name@Example.com",
     },
   ];
-  const [currentPage, setCurrentPage] = useState(1);
+  const [, setCurrentPage] = useState(1);
 
   const imageBodyTemplate = (rowData) => {
     return (
