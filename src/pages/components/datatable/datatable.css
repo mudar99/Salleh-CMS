@@ -9,4 +9,8 @@
 .datatable .p-paginator {
   direction: ltr;
 }
+
+.datatable .p-column-title {
+  color: red;
+}
 /*# sourceMappingURL=datatable.css.map */

@@ -6,7 +6,7 @@
   padding: 0;
   width: auto;
   font-family: "Droid Arabic Naskh", Tahoma, Geneva, Verdana, sans-serif;
-  -webkit-transition: .2s all;
-  transition: .2s all;
+  -webkit-transition: background 0.2s;
+  transition: background 0.2s;
 }
 /*# sourceMappingURL=style.css.map */

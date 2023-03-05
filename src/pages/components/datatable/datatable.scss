@@ -1,9 +1,13 @@
+@import "/src/style/vars";
 .datatable {
-    margin: 30px;
-    .product-image{
-        width: 100px;
-    }
-    .p-paginator{
-        direction: ltr;
-    }
+  margin: 30px;
+  .product-image {
+    width: 100px;
+  }
+  .p-paginator {
+    direction: ltr;
+  }
+  .p-column-title {
+    color: $primary-color;
+  }
 }

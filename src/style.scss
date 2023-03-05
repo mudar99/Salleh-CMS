@@ -1,9 +1,12 @@
 @import url(https://fonts.googleapis.com/earlyaccess/droidarabicnaskh.css);
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    width: auto;
-    font-family: "Droid Arabic Naskh", Tahoma, Geneva, Verdana, sans-serif;
-    transition: .2s all;
-  }
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  font-family: "Droid Arabic Naskh", Tahoma, Geneva, Verdana, sans-serif;
+
+  transition: background 0.2s;
+}
+
+// #7484A9 #2A2480 #EA6576 #0xFFea6576

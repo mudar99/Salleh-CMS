@@ -1,3 +1,4 @@
+@import "/src/style/vars";
 .single {
   display: flex;
   width: 100%;
@@ -21,8 +22,8 @@
           top: 0;
           left: 0;
           padding: 5px;
-          font-size: 12px; 
-          cursor: pointer; 
+          font-size: 12px;
+          cursor: pointer;
         }
 
         .item {
@@ -39,7 +40,7 @@
           .details {
             .itemTitle {
               margin-bottom: 10px;
-              color: #555;
+              color: $primary-color;
             }
 
             .detailItem {
@@ -48,7 +49,7 @@
 
               .itemKey {
                 font-weight: bold;
-                color: gray;
+                color: $secondary-color;
                 margin-right: 5px;
               }
 
@@ -75,9 +76,8 @@
     .title {
       font-weight: bold;
       font-size: 14px;
-      color: rgb(160, 160, 160);
+      color: $header-color;
       margin-bottom: 20px;
     }
- 
   }
 }

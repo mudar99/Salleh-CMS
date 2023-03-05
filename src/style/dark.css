@@ -33,6 +33,10 @@
   background-color: #333;
 }
 
+.app.dark .sidebar ul li span {
+  color: #999;
+}
+
 .app.dark .sidebar ul li i {
   color: #999;
 }

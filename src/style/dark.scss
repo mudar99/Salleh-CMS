@@ -1,41 +1,46 @@
+@import "/src/style/vars";
 .app.dark {
   background-color: #212529;
   color: rgb(156, 156, 156);
 
-  .chartGrid {
-    stroke: rgba(228, 228, 228, 0.219);
+  .chart {
+    .chartGrid {
+      stroke: rgba(228, 228, 228, 0.219);
+    }
   }
 
   .navbar {
-    color: #999;
-    border-color: #333;
+    color: $dark-primary;
+    border-color: $hover-color;
 
     .search {
-      border-color: gray;
+      border-color: $dark-secondary;
     }
   }
 
   .sidebar {
     background-color: #212529;
-    border-color: #333;
+    border-color: $hover-color;
 
     .top {
       .logo {
-        color: #999;
+        color: $dark-primary;
       }
     }
     hr {
-      border-color: #333;
+      border-color: $hover-color;
     }
 
     ul {
       li {
         &:hover {
-          background-color: #333;
+          background-color: $hover-color;
         }
-
+        span {
+          color: $dark-primary;
+        }
         i {
-          color: #999;
+          color: $dark-primary;
         }
       }
     }
@@ -48,7 +53,10 @@
     }
     .p-datatable-tbody > tr > td,
     .p-datatable-thead > tr > th {
-      color: gray;
+      color: $dark-secondary;
+    }
+    .p-column-title {
+      color: $dark-primary;
     }
   }
 
@@ -59,15 +67,50 @@
     }
     .p-datatable-tbody > tr > td,
     .p-datatable-thead > tr > th {
-      color: gray;
+      color: $dark-secondary;
     }
     .p-paginator {
       background-color: #212529;
     }
   }
 
+  .featured {
+    .bottom {
+      .title {
+        color: $dark-primary;
+      }
+      .desc {
+        color: $dark-primary;
+      }
+
+      .summary {
+        .item {
+          .itemTitle {
+            color: $secondary-color;
+          }
+        }
+      }
+    }
+  }
+
+  .single {
+    .singleContainer {
+      .top {
+        .left {
+          .item {
+            .details {
+              .itemTitle {
+                color: $dark-primary;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
   input {
     background-color: transparent;
-    color: gray;
+    color: $dark-secondary;
   }
 }
