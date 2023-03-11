@@ -2,7 +2,8 @@
     "version": 3,
     "mappings": "",
     "sources": [
-        "new.scss"
+        "new.scss",
+        "../../style/_vars.scss"
     ],
     "names": [],
     "file": "new.css"

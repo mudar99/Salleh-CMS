@@ -1,10 +1,11 @@
-@import "/src/style/vars";
+@import "../../../style/vars";
 .navbar {
   border-bottom: 0.5px solid rgb(231, 228, 228);
   display: flex;
   align-items: center;
   font-size: 14px;
   color: $primary-color;
+  background-color: $nav-color;
 
   .wrapper {
     width: 100%;
@@ -38,8 +39,9 @@
         align-items: center;
         margin-right: 20px;
         position: relative;
-        i{
+        i {
           font-size: 18px;
+          font-weight: normal;
         }
         .icon {
           font-size: 20px;

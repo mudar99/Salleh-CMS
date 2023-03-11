@@ -1,4 +1,4 @@
-@import "/src/style/vars";
+@import "../../style/vars";
 .single {
   display: flex;
   width: 100%;
@@ -11,9 +11,9 @@
       gap: 20px;
 
       .left {
+        border-radius: 10px;
         flex: 1;
-        -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
-        box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+        box-shadow: 2px 4px 10px 1px $dark-font-color;
         padding: 20px;
         position: relative;
 
@@ -49,7 +49,7 @@
 
               .itemKey {
                 font-weight: bold;
-                color: $secondary-color;
+                color: $primary-color;
                 margin-right: 5px;
               }
 
@@ -67,8 +67,7 @@
     }
 
     .bottom {
-      -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
-      box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+      box-shadow: 2px 4px 10px 1px $dark-font-color;
       padding: 20px;
       margin: 10px 20px;
     }

@@ -39,7 +39,6 @@ const Navbar = () => {
           </div>
           <div className="item">
             <i className="pi pi-globe m-1"></i>
-            العربية
           </div>
         </div>
 

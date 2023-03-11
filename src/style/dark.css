@@ -3,70 +3,124 @@
   color: #9c9c9c;
 }
 
-.app.dark .chartGrid {
+.app.dark .home .homeContainer {
+  background-color: #212529;
+}
+
+.app.dark .home .listContainer {
+  background-color: #212121;
+  -webkit-box-shadow: 2px 4px 10px 1px #2e2e2e;
+          box-shadow: 2px 4px 10px 1px #2e2e2e;
+}
+
+.app.dark .chart {
+  -webkit-box-shadow: 2px 4px 10px 1px #2e2e2e;
+          box-shadow: 2px 4px 10px 1px #2e2e2e;
+  background-color: #212121;
+}
+
+.app.dark .chart .chartGrid {
   stroke: rgba(228, 228, 228, 0.219);
 }
 
 .app.dark .navbar {
-  color: #999;
-  border-color: #333;
+  color: #c9c9c9;
+  border-color: #2e2e2e;
+  background-color: #212121;
 }
 
 .app.dark .navbar .search {
-  border-color: gray;
+  border-color: #c9c9c9;
 }
 
 .app.dark .sidebar {
-  background-color: #212529;
-  border-color: #333;
+  background-color: #212121;
+  border-color: #c9c9c9;
+  border-left: 0.5px solid #2e2e2e;
+}
+
+.app.dark .sidebar .title {
+  color: #daa520;
 }
 
 .app.dark .sidebar .top .logo {
-  color: #999;
+  color: #daa520;
 }
 
 .app.dark .sidebar hr {
-  border-color: #333;
+  border-color: #2e2e2e;
 }
 
 .app.dark .sidebar ul li:hover {
-  background-color: #333;
+  background-color: #2e2e2e;
 }
 
 .app.dark .sidebar ul li span {
-  color: #999;
+  color: #c9c9c9;
 }
 
 .app.dark .sidebar ul li i {
-  color: #999;
+  color: #c9c9c9;
+}
+
+.app.dark .widget {
+  background-color: #212121;
+  -webkit-box-shadow: 2px 4px 10px 1px #2e2e2e;
+          box-shadow: 2px 4px 10px 1px #2e2e2e;
 }
 
 .app.dark .table .p-datatable-thead > tr > th,
 .app.dark .table .p-datatable-tbody > tr {
-  background-color: #212529;
+  background-color: #212121;
 }
 
 .app.dark .table .p-datatable-tbody > tr > td,
 .app.dark .table .p-datatable-thead > tr > th {
-  color: gray;
+  color: #c9c9c9;
+}
+
+.app.dark .table .p-column-title {
+  color: #c9c9c9;
 }
 
 .app.dark .datatable .p-datatable-thead > tr > th,
 .app.dark .datatable .p-datatable-tbody > tr {
-  background-color: #212529;
+  background-color: #212121;
 }
 
 .app.dark .datatable .p-datatable-tbody > tr > td,
 .app.dark .datatable .p-datatable-thead > tr > th {
-  color: gray;
+  color: #c9c9c9;
 }
 
 .app.dark .datatable .p-paginator {
-  background-color: #212529;
+  background-color: #212121;
+}
+
+.app.dark .featured {
+  background-color: #212121;
+  -webkit-box-shadow: 2px 4px 10px 1px #2e2e2e;
+          box-shadow: 2px 4px 10px 1px #2e2e2e;
+}
+
+.app.dark .featured .bottom .title {
+  color: #c9c9c9;
+}
+
+.app.dark .featured .bottom .desc {
+  color: #c9c9c9;
+}
+
+.app.dark .featured .bottom .summary .item .itemTitle {
+  color: #4a8bdf;
+}
+
+.app.dark .single .singleContainer .top .left .item .details .itemTitle {
+  color: #c9c9c9;
 }
 
 .app.dark input {
   background-color: transparent;
-  color: gray;
+  color: #212121;
 }
 /*# sourceMappingURL=dark.css.map */

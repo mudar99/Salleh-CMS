@@ -1,7 +1,9 @@
-@import "/src/style/vars";
+@import "../../style/vars";
 .home {
   display: flex;
   .homeContainer {
+    background-color: $home-color;
+
     flex: 6;
     .widgets,
     .charts {
@@ -15,8 +17,10 @@
     }
 
     .listContainer {
-      -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
-      box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+      background-color: $body-color;
+      border-radius: 10px;
+
+      box-shadow: 2px 4px 10px 1px $dark-font-color;
       padding: 20px;
       margin: 20px;
 

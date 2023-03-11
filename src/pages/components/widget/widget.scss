@@ -1,13 +1,13 @@
-@import "/src/style/vars";
+@import "../../../style/vars";
 .widget {
   display: flex;
   justify-content: space-between;
   flex: 1;
   padding: 15px;
-  -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
-  box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+  box-shadow: 2px 4px 10px 1px $dark-font-color;
   border-radius: 10px;
   height: auto;
+  background-color: $body-color;
 
   .left,
   .right {
@@ -41,7 +41,7 @@
       font-size: 15px;
       font-weight: bolder;
       &.positive {
-        color: $secondary-color;
+        color: $primary-color;
       }
       &.negative {
         color: red;

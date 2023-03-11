@@ -2,10 +2,12 @@
   -webkit-box-flex: 4;
       -ms-flex: 4;
           flex: 4;
-  -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
-  box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+  -webkit-box-shadow: 2px 4px 10px 1px #c9c9c9;
+          box-shadow: 2px 4px 10px 1px #c9c9c9;
   padding: 5px;
-  color: gray;
+  color: #daa520;
+  background-color: #ffffff;
+  border-radius: 10px;
 }
 
 .chart .title {
@@ -13,7 +15,7 @@
   font-weight: bold;
   padding: 15px;
   font-size: 14px;
-  color: #a0a0a0;
+  color: #daa520;
 }
 
 .chart .chartGrid {

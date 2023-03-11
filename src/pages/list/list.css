@@ -6,6 +6,7 @@
 }
 
 .list .listContainer {
+  border-radius: 10px;
   -webkit-box-flex: 6;
       -ms-flex: 6;
           flex: 6;

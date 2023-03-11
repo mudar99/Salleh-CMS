@@ -1,9 +1,9 @@
-@import "/src/style/vars";
+@import "../../../style/vars";
 .sidebar {
   flex: 1;
   border-left: 0.5px solid rgb(230, 227, 227);
   min-height: 100vh;
-  background-color: $body-color;
+  background-color: $nav-color;
 
   .top {
     height: 50px;
@@ -14,7 +14,7 @@
     .logo {
       font-size: 20px;
       font-weight: bold;
-      color: $header-color;
+      color: $list-color;
     }
   }
 
@@ -34,7 +34,7 @@
       .title {
         font-size: 12px;
         font-weight: bold;
-        color: $header-color;
+        color: $list-color;
         margin-top: 15px;
         margin-bottom: 5px;
       }

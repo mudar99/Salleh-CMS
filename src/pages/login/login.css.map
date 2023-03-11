@@ -2,7 +2,8 @@
     "version": 3,
     "mappings": "",
     "sources": [
-        "login.scss"
+        "login.scss",
+        "../../style/_vars.scss"
     ],
     "names": [],
     "file": "login.css"
