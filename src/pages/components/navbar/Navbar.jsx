@@ -3,6 +3,9 @@ import "./navbar.scss";
 import { useDispatch } from "react-redux";
 import { toggle } from "../../../redux/themeSlice";
 
+import { InputText } from "primereact/inputtext";
+import { Button } from "primereact/button";
+
 const Navbar = () => {
   const dispatch = useDispatch();
   return (
@@ -20,7 +23,7 @@ const Navbar = () => {
             <i className="pi pi-list"></i>
           </div>
           <div className="item">
-            <i className="pi pi-comments"></i>
+            <i className="far fa-bell"></i>
             <div className="counter">2</div>
           </div>
           <div className="item">
@@ -42,10 +45,15 @@ const Navbar = () => {
           </div>
         </div>
 
-        <div className="search">
+        {/* <div className="search">
           <input type="text" placeholder="البحث" />
           <i className="pi pi-search"></i>
-        </div>
+        </div> */}
+
+        <span className="search p-input-icon-left">
+          <i className="pi pi-search" />
+          <InputText placeholder="بحث" />
+        </span>
       </div>
     </div>
   );

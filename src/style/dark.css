@@ -29,8 +29,13 @@
   background-color: #212121;
 }
 
-.app.dark .navbar .search {
+.app.dark .navbar .search .p-inputtext {
   border-color: #c9c9c9;
+}
+
+.app.dark .navbar .search .p-inputtext:focus {
+  -webkit-box-shadow: 2px 4px 10px 1px #2e2e2e;
+          box-shadow: 2px 4px 10px 1px #2e2e2e;
 }
 
 .app.dark .sidebar {
@@ -81,6 +86,11 @@
 
 .app.dark .table .p-column-title {
   color: #c9c9c9;
+}
+
+.app.dark .datatable .header,
+.app.dark .datatable .p-datatable-header {
+  background: #212121;
 }
 
 .app.dark .datatable .p-datatable-thead > tr > th,

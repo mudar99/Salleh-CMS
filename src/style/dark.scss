@@ -26,7 +26,12 @@
     border-color: $hover-color;
     background-color: $dark-secondary;
     .search {
-      border-color: $dark-font-color;
+      .p-inputtext {
+        border-color: $dark-font-color;
+        &:focus {
+          box-shadow: 2px 4px 10px 1px $dark-box-shadow;
+        }
+      }
     }
   }
 
@@ -48,6 +53,9 @@
     }
 
     ul {
+      .visited {
+        background-color: $hover-color;
+      }
       li {
         &:hover {
           background-color: $hover-color;
@@ -81,6 +89,10 @@
   }
 
   .datatable {
+    .header,
+    .p-datatable-header {
+      background: $dark-secondary;
+    }
     .p-datatable-thead > tr > th,
     .p-datatable-tbody > tr {
       background-color: $dark-secondary;

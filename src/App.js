@@ -7,10 +7,17 @@ import { Routes, BrowserRouter, Route } from 'react-router-dom';
 import "./style.scss";
 import "./style/dark.scss";
 import { useSelector } from "react-redux";
+import VerficationList from './pages/verfications/VerficationList';
+import Verfication from './pages/verfications/Verfication';
+import Customers from './pages/customers/Customers';
+import Employees from './pages/employees/Employees';
+import Workshops from './pages/workshops/Workshops';
+import TowingCars from './pages/towing cars/TowingCars';
+import Warehouses from './pages/warehouses/Warehouses';
 
 
 function App() {
-  const {darkMode} = useSelector((state) => state.DarkMode);
+  const { darkMode } = useSelector((state) => state.DarkMode);
 
   return (
     <div className={darkMode ? "app dark" : "app"}>
@@ -19,8 +26,31 @@ function App() {
           <Route path='/'>
             <Route index element={<Home />} />
             <Route path='login' element={<Login />} />
-            <Route path='users' >
-              <Route index element={<List />} />
+
+            <Route path='customers' >
+              <Route index element={<Customers />} />
+              <Route path=':userId' element={<Single />} />
+              <Route path='new' element={<New />} />
+            </Route>
+
+            <Route path='workshops' >
+              <Route index element={<Workshops />} />
+              <Route path=':userId' element={<Single />} />
+            </Route>
+
+            <Route path='towingcars' >
+              <Route index element={<TowingCars />} />
+              <Route path=':userId' element={<Single />} />
+            </Route>
+
+            <Route path='warehouses' >
+              <Route index element={<Warehouses />} />
+              <Route path=':userId' element={<Single />} />
+            </Route>
+
+            
+            <Route path='employees' >
+              <Route index element={<Employees />} />
               <Route path=':userId' element={<Single />} />
               <Route path='new' element={<New />} />
             </Route>
@@ -29,6 +59,11 @@ function App() {
               <Route index element={<List />} />
               <Route path=':productId' element={<Single />} />
               <Route path='new' element={<New />} />
+            </Route>
+
+            <Route path='verifications' >
+              <Route index element={<List />} />
+              <Route path=':verificationId' element={<Verfication />} />
             </Route>
 
             <Route />

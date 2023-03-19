@@ -10,11 +10,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
+    margin-top: 20px;
     .logo {
       font-size: 20px;
       font-weight: bold;
       color: $list-color;
+      width: 100px;
+      height: auto;
     }
   }
 
@@ -32,15 +34,19 @@
       padding: 0;
 
       .title {
-        font-size: 12px;
+        // border: solid 2px red;
+        font-size: 14px;
         font-weight: bold;
         color: $list-color;
         margin-top: 15px;
         margin-bottom: 5px;
       }
 
+      .visited {
+        background-color: #eee;
+      }
+
       li {
-        // justify-content: space-between;
         display: flex;
         align-items: center;
         padding: 5px;
@@ -52,13 +58,13 @@
 
         i {
           padding-right: 10px;
-          font-size: 18px;
+          font-size: 17px;
           color: $primary-color;
         }
 
         span {
           font-size: 13px;
-          font-weight: 600;
+          font-weight: 900;
           color: $primary-color;
           margin-right: 10px;
         }
