@@ -3,6 +3,43 @@
   color: #9c9c9c;
 }
 
+.app.dark .login .navBar {
+  background: #212121;
+}
+
+.app.dark .login .navBar .list .item {
+  color: #daa520;
+}
+
+.app.dark .login .navBar .list .item:hover {
+  background-color: #2e2e2e;
+}
+
+.app.dark .login .loginContainer {
+  background-color: #212121;
+  -webkit-box-shadow: 2px 4px 10px 1px #2e2e2e;
+          box-shadow: 2px 4px 10px 1px #2e2e2e;
+}
+
+.app.dark .login .loginContainer .title {
+  color: #daa520;
+}
+
+.app.dark .login .loginContainer form .email label,
+.app.dark .login .loginContainer form .password label {
+  color: #4a8bdf;
+}
+
+.app.dark .login .loginContainer form .submit .p-button {
+  background-color: #4a8bdf;
+  color: #f1f5f9;
+}
+
+.app.dark .login .loginContainer form .submit .p-button-raised:focus {
+  -webkit-box-shadow: 0 7px 30px -10px #2e2e2e;
+          box-shadow: 0 7px 30px -10px #2e2e2e;
+}
+
 .app.dark .home .homeContainer {
   background-color: #212529;
 }
@@ -44,16 +81,24 @@
   border-left: 0.5px solid #2e2e2e;
 }
 
-.app.dark .sidebar .title {
-  color: #daa520;
-}
-
 .app.dark .sidebar .top .logo {
   color: #daa520;
 }
 
 .app.dark .sidebar hr {
   border-color: #2e2e2e;
+}
+
+.app.dark .sidebar ul .header:hover {
+  background-color: #2e2e2e;
+}
+
+.app.dark .sidebar ul .header .title {
+  color: #daa520;
+}
+
+.app.dark .sidebar ul .visited {
+  background-color: #2e2e2e;
 }
 
 .app.dark .sidebar ul li:hover {

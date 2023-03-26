@@ -5,8 +5,12 @@
   margin: 0;
   padding: 0;
   width: auto;
-  font-family: "Droid Arabic Naskh", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Droid Arabic Naskh", sans-serif;
   -webkit-transition: background 0.2s;
   transition: background 0.2s;
+}
+
+body {
+  background-color: #f1f5f9;
 }
 /*# sourceMappingURL=style.css.map */

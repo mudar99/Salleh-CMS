@@ -2,7 +2,55 @@
 .app.dark {
   background-color: #212529;
   color: rgb(156, 156, 156);
-
+  .login {
+    .navBar {
+      background: $dark-secondary;
+      .list {
+        .item {
+          color: $header-color;
+          &:hover {
+            background-color: $hover-color;
+          }
+        }
+      }
+    }
+    .loginContainer {
+      background-color: $dark-secondary;
+      box-shadow: 2px 4px 10px 1px $dark-box-shadow;
+      .title {
+        color: $header-color;
+      }
+      form {
+        input {
+          background-color: $dark-secondary;
+          color: $dark-font-color;
+          border-color: $header-color;
+          &:hover {
+            border-color: $nav-color;
+          }
+          &:focus {
+            box-shadow: 0 7px 30px -10px $dark-box-shadow;
+            border-color: $nav-color;
+          }
+        }
+        .card {
+          background: $dark-secondary;
+          label {
+            color: $primary-color;
+          }
+        }
+        .submit {
+          .p-button {
+            background-color: $primary-color;
+            color: $home-color;
+            &-raised:focus {
+              box-shadow: 0 7px 30px -10px $dark-box-shadow;
+            }
+          }
+        }
+      }
+    }
+  }
   .home {
     .homeContainer {
       background-color: #212529;
@@ -40,9 +88,6 @@
     border-color: $dark-font-color;
     border-left: 0.5px solid $dark-box-shadow;
 
-    .title {
-      color: $header-color;
-    }
     .top {
       .logo {
         color: $header-color;
@@ -53,9 +98,19 @@
     }
 
     ul {
+      .header {
+        &:hover {
+          background-color: $hover-color;
+        }
+        .title {
+          color: $header-color;
+        }
+      }
+
       .visited {
         background-color: $hover-color;
       }
+
       li {
         &:hover {
           background-color: $hover-color;

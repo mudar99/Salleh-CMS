@@ -44,15 +44,33 @@
   padding: 0;
 }
 
-.sidebar .center ul .title {
+.sidebar .center ul .header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.sidebar .center ul .header:hover {
+  background-color: #eee;
+  cursor: pointer;
+}
+
+.sidebar .center ul .header .title {
   font-size: 14px;
   font-weight: bold;
   color: #01257d;
-  margin-top: 15px;
-  margin-bottom: 5px;
+  margin: 10px;
+}
+
+.sidebar .center ul .visited {
+  background-color: #eee;
 }
 
 .sidebar .center ul li {
+  margin-right: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -69,7 +87,6 @@
 }
 
 .sidebar .center ul li i {
-  padding-right: 10px;
   font-size: 17px;
   color: #4a8bdf;
 }

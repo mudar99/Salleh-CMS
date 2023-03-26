@@ -27,7 +27,7 @@ const Navbar = () => {
             <div className="counter">2</div>
           </div>
           <div className="item">
-            <i className="pi pi-send"></i>
+            <i className="far fa-paper-plane"></i>
             <div className="counter">1</div>
           </div>
           <div className="item">
