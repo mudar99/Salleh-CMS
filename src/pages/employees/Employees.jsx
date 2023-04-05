@@ -1,5 +1,11 @@
 import React, { useEffect } from "react";
+import "./employee.scss";
 import List from "../list/List";
+import { Dialog } from "primereact/dialog";
+import { closed } from "../../redux/visibleDialog";
+import { useDispatch, useSelector } from "react-redux";
+import AddEmployee from "./AddEmployee";
+import { classNames } from "primereact/utils";
 
 const Employees = () => {
   const headers = [
@@ -96,9 +102,22 @@ const Employees = () => {
       email: "Name@Example.com",
     },
   ];
+  const dispatch = useDispatch();
+  const { visible } = useSelector((state) => state.VisibleDialog);
+
   return (
     <div className="users">
       <List data={data} headers={headers} header={"موظّفون"} />
+      <Dialog
+        header="إضافة مدير جديد"
+        visible={visible}
+        style={{ width: "50vw" }}
+        onHide={() => dispatch(closed())}
+        resizable
+        appendTo={"self"}
+      >
+        <AddEmployee />
+      </Dialog>
     </div>
   );
 };

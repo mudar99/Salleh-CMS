@@ -14,11 +14,15 @@ import Employees from './pages/employees/Employees';
 import Workshops from './pages/workshops/Workshops';
 import TowingCars from './pages/towing cars/TowingCars';
 import Warehouses from './pages/warehouses/Warehouses';
+import Cookies from 'universal-cookie';
 
 
 function App() {
   const { darkMode } = useSelector((state) => state.DarkMode);
-
+  const cookie = new Cookies();
+  // if (cookie.get("jwt_authoriazation") === undefined) {
+  //   window.location.href = "/login";
+  // }
   return (
     <div className={darkMode ? "app dark" : "app"}>
       <BrowserRouter>
@@ -48,7 +52,7 @@ function App() {
               <Route path=':userId' element={<Single />} />
             </Route>
 
-            
+
             <Route path='employees' >
               <Route index element={<Employees />} />
               <Route path=':userId' element={<Single />} />

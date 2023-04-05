@@ -4,6 +4,8 @@ import { Column } from "primereact/column";
 import "./datatable.scss";
 import { Button } from "primereact/button";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { opened } from "../../../redux/visibleDialog";
 
 const Datatable = (props) => {
   // const data = [
@@ -92,8 +94,10 @@ const Datatable = (props) => {
   //     email: "Name@Example.com",
   //   },
   // ];
+  // const [visible, setVisible] = useState(false);
+  const dispatch = useDispatch();
   const [, setCurrentPage] = useState(1);
-
+  const { visible } = useSelector((state) => state.VisibleDialog);
   const imageBodyTemplate = (rowData) => {
     return rowData.img.includes("/") ? (
       <img src={rowData.img} alt={rowData.img} className="product-image" />
@@ -123,11 +127,19 @@ const Datatable = (props) => {
     setCurrentPage(event.page + 1);
     console.log(event.page + 1);
   };
+  console.log("visible: " + visible);
   const header = props.header && (
     <>
       <div className="header">
         <span className="title">{props.header}</span>
-        <Button icon="pi pi-plus" rounded text raised aria-label="Favorite" />
+        <Button
+          icon="pi pi-plus"
+          onClick={() => dispatch(opened())}
+          rounded
+          text
+          raised
+          aria-label="Favorite"
+        />
       </div>
     </>
   );

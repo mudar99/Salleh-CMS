@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./sidebar.scss";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,8 +12,34 @@ import {
   warehouses,
   workshops,
 } from "../../../redux/visitSlice";
+import { ConfirmPopup, confirmPopup } from "primereact/confirmpopup";
+import { Button } from "primereact/button";
+import { adminLogout } from "../../../redux/API/authSlice";
+import Cookies from "universal-cookie";
+
 const Sidebar = () => {
+  // const { darkMode } = useSelector((state) => state.DarkMode);
+  // let color = darkMode === true ? "#212121" : "#fffff";
   const dispatch = useDispatch();
+  const cookie = new Cookies();
+
+  const logoutConfirmation = () => {
+    confirmPopup({
+      target: document.querySelector("#log-out"),
+      message: "هل تود تسجيل الخروج؟",
+      icon: "pi pi-info-circle",
+      acceptLabel: "نعم",
+      rejectLabel: "لا",
+      acceptClassName: "p-button-danger",
+      rejectClassName: "p-button-text",
+      accept: () => {
+        dispatch(adminLogout(cookie.get("jwt_authoriazation")));
+      },
+      appendTo: "self",
+      // style: { backgroundColor: color, color: "#daa520" },
+    });
+  };
+
   const { place } = useSelector((state) => state.VisitStatus);
   console.log(place);
   localStorage.setItem("place", place);
@@ -187,12 +213,13 @@ const Sidebar = () => {
 
           <div className="collapse show" id="user">
             <li>
-              <i className="pi pi-check"></i>
-              <span>ملف شخصي</span>
+              <i className="pi pi-user"></i>
+              <span>{localStorage.getItem("email")}</span>
             </li>
-            <li>
+            <li onClick={logoutConfirmation}>
+              <ConfirmPopup appendTo="self" />
               <i className="fa fa-sign-out-alt"></i>
-              <span>تسجيل خروج</span>
+              <span id="log-out">تسجيل خروج</span>
             </li>
           </div>
         </ul>

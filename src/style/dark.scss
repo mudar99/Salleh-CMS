@@ -51,6 +51,7 @@
       }
     }
   }
+
   .home {
     .homeContainer {
       background-color: #212529;
@@ -61,6 +62,7 @@
       box-shadow: 2px 4px 10px 1px $dark-box-shadow;
     }
   }
+
   .chart {
     box-shadow: 2px 4px 10px 1px $dark-box-shadow;
     background-color: $dark-secondary;
@@ -123,12 +125,33 @@
         }
       }
     }
+    .p-confirm-popup {
+      background-color: $dark-secondary;
+      .p-confirm-popup-message {
+        color: $dark-font-color;
+      }
+      .p-confirm-popup-footer {
+        .p-button-danger {
+          .p-button-label {
+            color: $home-color;
+          }
+          background: crimson;
+        }
+        .p-button-text {
+          background: $dark-box-shadow;
+          .p-button-label {
+            color: $dark-font-color;
+          }
+        }
+      }
+    }
   }
 
   .widget {
     background-color: $dark-secondary;
     box-shadow: 2px 4px 10px 1px $dark-box-shadow;
   }
+
   .table {
     .p-datatable-thead > tr > th,
     .p-datatable-tbody > tr {
@@ -193,6 +216,28 @@
               }
             }
           }
+        }
+      }
+    }
+  }
+
+  .users {
+    .p-dialog-header {
+      background-color: $dark-secondary;
+      color: $dark-font-color;
+    }
+    .p-dialog-content {
+      background-color: $dark-secondary;
+      color: $dark-font-color;
+    }
+    .addEmployee {
+      input {
+        color: $dark-font-color;
+        &:hover {
+          border-color: $primary-color;
+        }
+        &:focus {
+          box-shadow: 0 7px 30px -10px rgba(150, 170, 180, 0.5);
         }
       }
     }

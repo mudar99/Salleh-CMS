@@ -10,6 +10,30 @@
   transition: background 0.2s;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+html::-webkit-scrollbar {
+  width: 10px;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+html::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #c9c9c9;
+}
+
+::-moz-selection {
+  color: #eee;
+  background: #86898d;
+}
+
+::selection {
+  color: #eee;
+  background: #86898d;
+}
+
 body {
   background-color: #f1f5f9;
 }

@@ -4,7 +4,6 @@ import { useDispatch } from "react-redux";
 import { toggle } from "../../../redux/themeSlice";
 
 import { InputText } from "primereact/inputtext";
-import { Button } from "primereact/button";
 
 const Navbar = () => {
   const dispatch = useDispatch();
