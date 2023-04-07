@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import "./sidebar.scss";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,7 +13,6 @@ import {
   workshops,
 } from "../../../redux/visitSlice";
 import { ConfirmPopup, confirmPopup } from "primereact/confirmpopup";
-import { Button } from "primereact/button";
 import { adminLogout } from "../../../redux/API/authSlice";
 import Cookies from "universal-cookie";
 
@@ -71,7 +70,7 @@ const Sidebar = () => {
               style={{ textDecoration: "none" }}
               onClick={() => dispatch(dashboard())}
             >
-              <li className={currentPlace === "dashboard" && "visited"}>
+              <li className={currentPlace === "dashboard" ? "visited" : ""}>
                 <i className="fas fa-chart-pie"></i>
                 <span>لوحة التحكم</span>
               </li>
@@ -81,7 +80,7 @@ const Sidebar = () => {
               style={{ textDecoration: "none" }}
               onClick={() => dispatch(customers())}
             >
-              <li className={currentPlace === "customers" && "visited"}>
+              <li className={currentPlace === "customers" ? "visited" : ""}>
                 <i className="fas fa-users"></i>
                 <span>زبائن</span>
               </li>
@@ -91,7 +90,7 @@ const Sidebar = () => {
               style={{ textDecoration: "none" }}
               onClick={() => dispatch(workshops())}
             >
-              <li className={currentPlace === "workshops" && "visited"}>
+              <li className={currentPlace === "workshops" ? "visited" : ""}>
                 <i className="fas fa-home"></i>
                 <span>ورشات</span>
               </li>
@@ -101,7 +100,7 @@ const Sidebar = () => {
               style={{ textDecoration: "none" }}
               onClick={() => dispatch(towing())}
             >
-              <li className={currentPlace === "towing" && "visited"}>
+              <li className={currentPlace === "towing" ? "visited" : ""}>
                 <i className="fas fa-truck-monster"></i>
                 <span>سيارات سحب</span>
               </li>
@@ -112,7 +111,7 @@ const Sidebar = () => {
               style={{ textDecoration: "none" }}
               onClick={() => dispatch(warehouses())}
             >
-              <li className={currentPlace === "warehouses" && "visited"}>
+              <li className={currentPlace === "warehouses" ? "visited" : ""}>
                 <i className="fas fa-warehouse"></i>
                 <span>مستودعات</span>
               </li>
@@ -130,33 +129,33 @@ const Sidebar = () => {
 
           <div className="collapse show" id="verifications">
             <Link
-              to="/"
+              to="/workshops-verification"
               style={{ textDecoration: "none" }}
               onClick={() => dispatch(verfications())}
             >
-              <li className={currentPlace === "verifications" && "visited"}>
+              <li className={currentPlace === "verifications" ? "visited" : ""}>
                 <i className="fas fa-home"></i>
                 <span>توثيق ورشات</span>
               </li>
             </Link>
 
             <Link
-              to="/"
+              to="/towings-verification"
               style={{ textDecoration: "none" }}
               onClick={() => dispatch(verfications())}
             >
-              <li className={currentPlace === "verifications" && "visited"}>
+              <li className={currentPlace === "verifications" ? "visited" : ""}>
                 <i className="fas fa-truck-pickup	"></i>
                 <span>توثيق سيارات سحب</span>
               </li>
             </Link>
 
             <Link
-              to="/"
+              to="/warehouses-verification"
               style={{ textDecoration: "none" }}
               onClick={() => dispatch(verfications())}
             >
-              <li className={currentPlace === "verifications" && "visited"}>
+              <li className={currentPlace === "verifications" ? "visited" : ""}>
                 <i className="fas fa-check-double	"></i>
                 <span>توثيق مستودعات</span>
               </li>
@@ -174,7 +173,7 @@ const Sidebar = () => {
               style={{ textDecoration: "none" }}
               onClick={() => dispatch(employees())}
             >
-              <li className={currentPlace === "employees" && "visited"}>
+              <li className={currentPlace === "employees" ? "visited" : ""}>
                 <i className="fas fa-user-friends"></i>
                 <span>موظفون</span>
               </li>

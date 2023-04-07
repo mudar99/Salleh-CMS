@@ -1,19 +1,13 @@
-import React, { useEffect } from "react";
-import "./employee.scss";
-import List from "../list/List";
-import { Dialog } from "primereact/dialog";
-import { closed, closedDialog } from "../../redux/visibleDialog";
-import { useDispatch, useSelector } from "react-redux";
-import AddEmployee from "./AddEmployee";
-import { classNames } from "primereact/utils";
+import React from "react";
+import List from "../../list/List";
 
-const Employees = () => {
+const WorkshopVer = () => {
   const headers = [
     "المعرف",
-    "الموظّف",
-    "الوظيفة",
+    "اسم الزبون",
+    "اسم الورشة",
     "تاريخ التسجيل",
-    "البريد",
+    "رقم الهاتف",
     "حدث",
   ];
   const data = [
@@ -54,14 +48,14 @@ const Employees = () => {
     },
     {
       id: 5,
-      img: "/Img/Nissan.png",
+      img: "ورشة الأنوار",
       customer: "حازم سلامي",
       date: "1 March",
       email: "Name@Example.com",
     },
     {
       id: 5,
-      img: "/Img/Nissan.png",
+      img: "ورشة الأنوار",
       customer: "حازم سلامي",
       date: "1 March",
       email: "Name@Example.com",
@@ -102,24 +96,11 @@ const Employees = () => {
       email: "Name@Example.com",
     },
   ];
-  const dispatch = useDispatch();
-  const { visible } = useSelector((state) => state.VisibleDialog);
-
   return (
-    <div className="users">
-      <List data={data} headers={headers} header={"موظّفون"} />
-      <Dialog
-        header="إضافة مدير جديد"
-        visible={visible}
-        style={{ width: "50vw" }}
-        onHide={() => dispatch(closedDialog())}
-        resizable
-        appendTo={"self"}
-      >
-        <AddEmployee />
-      </Dialog>
+    <div>
+      <List data={data} headers={headers} explore="workshopVer" />
     </div>
   );
 };
 
-export default Employees;
+export default WorkshopVer;

@@ -7,22 +7,19 @@ import { Routes, BrowserRouter, Route } from 'react-router-dom';
 import "./style.scss";
 import "./style/dark.scss";
 import { useSelector } from "react-redux";
-import VerficationList from './pages/verfications/VerficationList';
-import Verfication from './pages/verfications/Verfication';
+import WorkshopVer from './pages/verfications/Workshop/WorkshopVer';
 import Customers from './pages/customers/Customers';
 import Employees from './pages/employees/Employees';
 import Workshops from './pages/workshops/Workshops';
 import TowingCars from './pages/towing cars/TowingCars';
 import Warehouses from './pages/warehouses/Warehouses';
-import Cookies from 'universal-cookie';
+import WarehouseVer from './pages/verfications/Warehouse/WarehouseVer';
+import TowingVer from './pages/verfications/Towing/TowingVer';
 
 
 function App() {
   const { darkMode } = useSelector((state) => state.DarkMode);
-  const cookie = new Cookies();
-  // if (cookie.get("jwt_authoriazation") === undefined) {
-  //   window.location.href = "/login";
-  // }
+
   return (
     <div className={darkMode ? "app dark" : "app"}>
       <BrowserRouter>
@@ -65,9 +62,16 @@ function App() {
               <Route path='new' element={<New />} />
             </Route>
 
-            <Route path='verifications' >
-              <Route index element={<List />} />
-              <Route path=':verificationId' element={<Verfication />} />
+            <Route path='workshops-verification' >
+              <Route index element={<WorkshopVer />} />
+            </Route>
+
+            <Route path='warehouses-verification' >
+              <Route index element={<WarehouseVer />} />
+            </Route>
+
+            <Route path='towings-verification' >
+              <Route index element={<TowingVer />} />
             </Route>
 
             <Route />

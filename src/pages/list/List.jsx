@@ -14,6 +14,7 @@ const List = (props) => {
           header={props.header}
           headers={props.headers}
           data={props.data}
+          explore={props.explore}
         />
       </div>
     </div>

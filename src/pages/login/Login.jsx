@@ -55,10 +55,12 @@ const Login = () => {
           <div className="card flex justify-content-center">
             <span className="p-float-label">
               <InputText
+                required
                 id="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 style={{ width: "100%" }}
+                type="email"
               />
               <label htmlFor="email">
                 <i className="fa fa-envelope"></i>
@@ -70,10 +72,12 @@ const Login = () => {
           <div className="card flex justify-content-center">
             <span className="p-float-label">
               <InputText
+                required
                 id="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 style={{ width: "100%" }}
+                type="password"
               />
               <label htmlFor="password">
                 <i className="fas fa-user-lock	"></i>

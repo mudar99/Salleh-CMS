@@ -15,6 +15,6 @@ export const visibleDialog = createSlice({
     },
 })
 
-export const { opened, closed, } = visibleDialog.actions
+export const { openedDialog, closedDialog, } = visibleDialog.actions
 
 export default visibleDialog.reducer
