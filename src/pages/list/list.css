@@ -10,5 +10,8 @@
   -webkit-box-flex: 6;
       -ms-flex: 6;
           flex: 6;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
 }
 /*# sourceMappingURL=list.css.map */

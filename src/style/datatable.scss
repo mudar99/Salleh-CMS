@@ -1,4 +1,4 @@
-@import "../../../style/vars";
+@import "./vars";
 .datatable {
   .header {
     display: flex;
@@ -23,7 +23,14 @@
   .p-paginator {
     direction: ltr;
   }
-  .p-column-title {
+
+  .p-column-header-content {
+    .p-column-title {
+      color: $primary-color;
+    }
+  }
+  .p-datatable .p-sortable-column .p-sortable-column-icon {
+    margin-right: 10px;
     color: $primary-color;
   }
 }

@@ -48,7 +48,7 @@ export const authSlice = createSlice({
     builder.addCase(adminLogout.fulfilled, (state, { payload }) => {
       console.log(payload)
       // cookie.remove('jwt_authoriazation');
-      if (payload.status == true) {
+      if (payload.status === true) {
         state.adminToken = null;
         cookie.remove('jwt_authoriazation');
         window.location.href = "/login";

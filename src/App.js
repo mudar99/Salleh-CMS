@@ -15,6 +15,8 @@ import TowingCars from './pages/towing cars/TowingCars';
 import Warehouses from './pages/warehouses/Warehouses';
 import WarehouseVer from './pages/verfications/Warehouse/WarehouseVer';
 import TowingVer from './pages/verfications/Towing/TowingVer';
+import Requests from './pages/request-management/Requests';
+import Categories from './pages/categories/Categories';
 
 
 function App() {
@@ -54,6 +56,14 @@ function App() {
               <Route index element={<Employees />} />
               <Route path=':userId' element={<Single />} />
               <Route path='new' element={<New />} />
+            </Route>
+
+            <Route path='requests' >
+              <Route index element={<Requests />} />
+            </Route>
+
+            <Route path='categories' >
+              <Route index element={<Categories />} />
             </Route>
 
             <Route path='products' >

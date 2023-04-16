@@ -17,14 +17,22 @@ export const visitSlice = createSlice({
             state.place = 'towing'
         }, warehouses: (state) => {
             state.place = 'warehouses'
-        }, verfications: (state) => {
-            state.place = 'verfications'
+        }, towingV: (state) => {
+            state.place = 'towingV'
+        }, warehouseV: (state) => {
+            state.place = 'warehouseV'
+        }, workshopV: (state) => {
+            state.place = 'workshopV'
         }, employees: (state) => {
             state.place = 'employees'
+        }, requestsManage: (state) => {
+            state.place = 'requestsManage'
+        }, categoriesManage: (state) => {
+            state.place = 'categoriesManage'
         },
     },
 })
 
-export const { dashboard, customers, employees, towing, verfications, warehouses, workshops } = visitSlice.actions
+export const { dashboard, customers, employees, towing, warehouses, workshops, requestsManage, categoriesManage, towingV, warehouseV, workshopV } = visitSlice.actions
 
 export default visitSlice.reducer

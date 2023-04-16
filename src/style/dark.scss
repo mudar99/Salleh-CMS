@@ -171,6 +171,17 @@
     .p-datatable-header {
       background: $dark-secondary;
     }
+    .p-datatable-thead {
+      .p-sortable-column {
+        background-color: $dark-secondary;
+        &:hover {
+          background-color: $hover-color;
+          .p-sortable-column-icon {
+            color: $primary-color;
+          }
+        }
+      }
+    }
     .p-datatable-thead > tr > th,
     .p-datatable-tbody > tr {
       background-color: $dark-secondary;

@@ -1,7 +1,10 @@
 import React from "react";
 import List from "../list/List";
+import { Column } from "primereact/column";
+import { DataTable } from "primereact/datatable";
+import { Button } from "primereact/button";
 
-const Workshops = () => {
+const WorkshopsDataTable = () => {
   const headers = [
     "المعرف",
     "صاحب الورشة",
@@ -82,11 +85,45 @@ const Workshops = () => {
       email: "Name@Example.com",
     },
   ];
+  const imageBodyTemplate = (rowData) => {
+    return (
+      <img src={rowData.img} alt={rowData.img} className="product-image" />
+    );
+  };
+  const acitonBodyTemplate = (rowData) => {
+    return (
+      <>
+        <Button
+          icon="pi pi-eye"
+          className="p-button-rounded p-button-text p-button-success"
+          aria-label="Submit"
+        />
+      </>
+    );
+  };
   return (
-    <div className="users">
-      <List component="WorkshopsDataTable" />
+    <div className="datatable">
+      <div className="card">
+        <DataTable value={data} tableStyle={{ minWidth: "50rem" }}>
+          <Column align="center" header={headers[0]} field="id"></Column>
+          <Column align="center" header={headers[1]} field="customer"></Column>
+          <Column
+            align="center"
+            header={headers[2]}
+            field={imageBodyTemplate}
+          ></Column>
+          <Column align="center" header={headers[3]} field="date"></Column>
+          <Column align="center" header={headers[4]} field="email"></Column>
+          <Column
+            align="center"
+            header={headers[5]}
+            field="action"
+            body={acitonBodyTemplate}
+          ></Column>
+        </DataTable>
+      </div>
     </div>
   );
 };
 
-export default Workshops;
+export default WorkshopsDataTable;

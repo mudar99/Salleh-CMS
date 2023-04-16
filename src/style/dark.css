@@ -181,6 +181,18 @@
   background: #212121;
 }
 
+.app.dark .datatable .p-datatable-thead .p-sortable-column {
+  background-color: #212121;
+}
+
+.app.dark .datatable .p-datatable-thead .p-sortable-column:hover {
+  background-color: #2e2e2e;
+}
+
+.app.dark .datatable .p-datatable-thead .p-sortable-column:hover .p-sortable-column-icon {
+  color: #4a8bdf;
+}
+
 .app.dark .datatable .p-datatable-thead > tr > th,
 .app.dark .datatable .p-datatable-tbody > tr {
   background-color: #212121;

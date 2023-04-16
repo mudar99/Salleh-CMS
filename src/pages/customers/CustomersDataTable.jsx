@@ -1,7 +1,9 @@
-import React, { useEffect } from "react";
-import List from "../list/List";
-
-const Customers = () => {
+import React, { useState, useEffect, useRef } from "react";
+import { DataTable } from "primereact/datatable";
+import { Column } from "primereact/column";
+import "../../style/datatable.scss";
+import { Button } from "primereact/button";
+const CustomersDataTable = () => {
   const headers = [
     "المعرف",
     "الزبون",
@@ -96,16 +98,46 @@ const Customers = () => {
       email: "Name@Example.com",
     },
   ];
+  const acitonBodyTemplate = (rowData) => {
+    return (
+      <>
+        <Button
+          icon="pi pi-eye"
+          className="p-button-rounded p-button-text p-button-success"
+          aria-label="Submit"
+        />
+      </>
+    );
+  };
+
+  const imageBodyTemplate = (rowData) => {
+    return (
+      <img src={rowData.img} alt={rowData.img} className="product-image" />
+    );
+  };
   return (
-    <div className="users">
-      <List
-        data={data}
-        headers={headers}
-        actions={true}
-        component="CustomersDataTable"
-      />
+    <div className="datatable">
+      <div className="card">
+        <DataTable value={data} tableStyle={{ minWidth: "50rem" }}>
+          <Column align="center" header={headers[0]} field="id"></Column>
+          <Column align="center" header={headers[1]} field="customer"></Column>
+          <Column
+            align="center"
+            header={headers[2]}
+            field={imageBodyTemplate}
+          ></Column>
+          <Column align="center" header={headers[3]} field="date"></Column>
+          <Column align="center" header={headers[4]} field="email"></Column>
+          <Column
+            align="center"
+            header={headers[5]}
+            field="action"
+            body={acitonBodyTemplate}
+          ></Column>
+        </DataTable>
+      </div>
     </div>
   );
 };
 
-export default Customers;
+export default CustomersDataTable;

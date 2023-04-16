@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import List from "../../list/List";
 
 const WarehouseVer = () => {
   return (
-    <div>WarehouseVer</div>
-  )
-}
+    <div>
+      <List component="WarehouseVD" />
+    </div>
+  );
+};
 
-export default WarehouseVer
+export default WarehouseVer;

@@ -4,12 +4,17 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { dark, light } from "../../../redux/themeSlice";
 import {
+  categoriesManage,
   customers,
   dashboard,
   employees,
+  requestsManage,
   towing,
+  towingV,
   verfications,
+  warehouseV,
   warehouses,
+  workshopV,
   workshops,
 } from "../../../redux/visitSlice";
 import { ConfirmPopup, confirmPopup } from "primereact/confirmpopup";
@@ -118,6 +123,39 @@ const Sidebar = () => {
             </Link>
           </div>
 
+          <div className="header" data-bs-toggle="collapse" href="#management">
+            <p className="title">إدارة</p>
+            <li className="fas fa-caret-down"></li>
+          </div>
+
+          <div className="collapse show" id="management">
+            <Link
+              to="/requests"
+              style={{ textDecoration: "none" }}
+              onClick={() => dispatch(requestsManage())}
+            >
+              <li
+                className={currentPlace === "requestsManage" ? "visited" : ""}
+              >
+                <i className="fas fa-home"></i>
+                <span>إدارة الطلبات</span>
+              </li>
+            </Link>
+
+            <Link
+              to="/categories"
+              style={{ textDecoration: "none" }}
+              onClick={() => dispatch(categoriesManage())}
+            >
+              <li
+                className={currentPlace === "categoriesManage" ? "visited" : ""}
+              >
+                <i className="fas fa-truck-pickup	"></i>
+                <span>إدارة الأصناف</span>
+              </li>
+            </Link>
+          </div>
+
           <div
             className="header"
             data-bs-toggle="collapse"
@@ -131,9 +169,9 @@ const Sidebar = () => {
             <Link
               to="/workshops-verification"
               style={{ textDecoration: "none" }}
-              onClick={() => dispatch(verfications())}
+              onClick={() => dispatch(workshopV())}
             >
-              <li className={currentPlace === "verifications" ? "visited" : ""}>
+              <li className={currentPlace === "workshopV" ? "visited" : ""}>
                 <i className="fas fa-home"></i>
                 <span>توثيق ورشات</span>
               </li>
@@ -142,9 +180,9 @@ const Sidebar = () => {
             <Link
               to="/towings-verification"
               style={{ textDecoration: "none" }}
-              onClick={() => dispatch(verfications())}
+              onClick={() => dispatch(towingV())}
             >
-              <li className={currentPlace === "verifications" ? "visited" : ""}>
+              <li className={currentPlace === "towingV" ? "visited" : ""}>
                 <i className="fas fa-truck-pickup	"></i>
                 <span>توثيق سيارات سحب</span>
               </li>
@@ -153,9 +191,9 @@ const Sidebar = () => {
             <Link
               to="/warehouses-verification"
               style={{ textDecoration: "none" }}
-              onClick={() => dispatch(verfications())}
+              onClick={() => dispatch(warehouseV())}
             >
-              <li className={currentPlace === "verifications" ? "visited" : ""}>
+              <li className={currentPlace === "warehouseV" ? "visited" : ""}>
                 <i className="fas fa-check-double	"></i>
                 <span>توثيق مستودعات</span>
               </li>
