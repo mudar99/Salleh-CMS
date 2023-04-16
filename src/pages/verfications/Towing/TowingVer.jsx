@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import List from "../../list/List";
 
 const TowingVer = () => {
   return (
-    <div>TowingVer</div>
-  )
-}
+    <div>
+      <List component="TowingVD" />
+    </div>
+  );
+};
 
-export default TowingVer
+export default TowingVer;
