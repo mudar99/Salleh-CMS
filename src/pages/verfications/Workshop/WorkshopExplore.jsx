@@ -1,35 +1,24 @@
 import React, { useRef, useState } from "react";
 import { Galleria } from "primereact/galleria";
 import { Button } from "primereact/button";
+import { useSelector } from "react-redux";
+import { local } from "../../../API";
 
 const WorkshopExplore = (props) => {
-  const images = [
-    {
-      id: 1,
-      img: "/Img/graphic-design.jpg",
-    },
-    {
-      id: 2,
-      img: "/Img/Nissan.png",
-    },
-    {
-      id: 3,
-      img: "/Img/Peugeot.png",
-    },
-    {
-      id: 4,
-      img: "/Img/Salleh.png",
-    },
-  ];
-//   const galleria = useRef(null);
-  
+  const { images } = useSelector((state) => state.WorkshopVerifications);
+  // console.log(images);
+  //   const galleria = useRef(null);
+
   const itemTemplate = (item) => {
     return (
-      <img
-        src={item.img}
-        alt={item.alt}
-        style={{ width: "100%", display: "block" }}
-      />
+      <>
+        {/* {console.log("http://127.0.0.1:8060" + item.path)} */}
+        <img
+          src={"http://127.0.0.1:8060" + item.path}
+          alt={item.alt}
+          style={{ width: "100%", display: "block" }}
+        />
+      </>
     );
   };
 

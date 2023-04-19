@@ -27,21 +27,20 @@ const Sidebar = () => {
   const dispatch = useDispatch();
   const cookie = new Cookies();
 
-  const logoutConfirmation = () => {
-    confirmPopup({
-      target: document.querySelector("#log-out"),
-      message: "هل تود تسجيل الخروج؟",
-      icon: "pi pi-info-circle",
-      acceptLabel: "نعم",
-      rejectLabel: "لا",
-      acceptClassName: "p-button-danger",
-      rejectClassName: "p-button-text",
-      accept: () => {
-        dispatch(adminLogout(cookie.get("jwt_authoriazation")));
-      },
-      appendTo: "self",
-      // style: { backgroundColor: color, color: "#daa520" },
-    });
+  const logoutConfirmation = (event) => {
+    // confirmPopup({
+    //   appendTo: document.querySelector("#log-out"),
+    //   target: event.currentTarget,
+    //   message: "هل تود تسجيل الخروج؟",
+    //   icon: "pi pi-info-circle",
+    //   acceptLabel: "نعم",
+    //   rejectLabel: "لا",
+    //   acceptClassName: "p-button-danger",
+    //   rejectClassName: "p-button-text",
+    //   accept: () => {
+    //     dispatch(adminLogout(cookie.get("jwt_authorization")));
+    //   },
+    // });
   };
 
   const { place } = useSelector((state) => state.VisitStatus);
@@ -254,7 +253,7 @@ const Sidebar = () => {
               <span>{localStorage.getItem("email")}</span>
             </li>
             <li onClick={logoutConfirmation}>
-              <ConfirmPopup appendTo="self" />
+              <ConfirmPopup />
               <i className="fa fa-sign-out-alt"></i>
               <span id="log-out">تسجيل خروج</span>
             </li>

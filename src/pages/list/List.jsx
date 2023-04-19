@@ -13,6 +13,20 @@ import CategoriesDataTable from "../categories/CategoriesDataTable";
 import TowingVD from "../verfications/Towing/TowingVD";
 import WarehouseVD from "../verfications/Warehouse/WarehouseVD";
 const List = (props) => {
+  const visibleCallBack = (e, rowData) => {
+    // switch (e) {
+    //   case "U":
+    //     props.updateState(e);
+    //     break;
+    //   case "C":
+    //     props.createState(e);
+    //   case "D":
+    //     break;
+    //   default:
+    //     break;
+    // }
+    props.visibleState(e, rowData);
+  };
   const x = () => {
     // console.log(props.component);
     switch (props.component) {
@@ -35,7 +49,12 @@ const List = (props) => {
       case "RequestsDataTable":
         return <RequestsDataTable />;
       case "CategoriesDataTable":
-        return <CategoriesDataTable />;
+        return (
+          <CategoriesDataTable
+            createState={visibleCallBack}
+            updateState={visibleCallBack}
+          />
+        );
       default:
         return;
     }

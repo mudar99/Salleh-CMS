@@ -133,7 +133,12 @@
 }
 
 .app.dark .sidebar .p-confirm-popup {
+  border: solid 1px #2e2e2e;
   background-color: #212121;
+}
+
+.app.dark .sidebar .p-confirm-popup .p-confirm-popup-icon {
+  color: crimson;
 }
 
 .app.dark .sidebar .p-confirm-popup .p-confirm-popup-message {
@@ -207,6 +212,35 @@
   background-color: #212121;
 }
 
+.app.dark .datatable .p-confirm-popup {
+  border: solid 1px #2e2e2e;
+  background-color: #212121;
+}
+
+.app.dark .datatable .p-confirm-popup .p-confirm-popup-icon {
+  color: crimson;
+}
+
+.app.dark .datatable .p-confirm-popup .p-confirm-popup-message {
+  color: #c9c9c9;
+}
+
+.app.dark .datatable .p-confirm-popup .p-confirm-popup-footer .p-button-danger {
+  background: crimson;
+}
+
+.app.dark .datatable .p-confirm-popup .p-confirm-popup-footer .p-button-danger .p-button-label {
+  color: #f1f5f9;
+}
+
+.app.dark .datatable .p-confirm-popup .p-confirm-popup-footer .p-button-text {
+  background: #2e2e2e;
+}
+
+.app.dark .datatable .p-confirm-popup .p-confirm-popup-footer .p-button-text .p-button-label {
+  color: #c9c9c9;
+}
+
 .app.dark .featured {
   background-color: #212121;
   -webkit-box-shadow: 2px 4px 10px 1px #2e2e2e;
@@ -229,25 +263,25 @@
   color: #c9c9c9;
 }
 
-.app.dark .users .p-dialog-header {
+.app.dark .p-dialog .p-dialog-header {
   background-color: #212121;
   color: #c9c9c9;
 }
 
-.app.dark .users .p-dialog-content {
+.app.dark .p-dialog .p-dialog-content {
   background-color: #212121;
   color: #c9c9c9;
 }
 
-.app.dark .users .addEmployee input {
+.app.dark .p-dialog input {
   color: #c9c9c9;
 }
 
-.app.dark .users .addEmployee input:hover {
+.app.dark .p-dialog input:hover {
   border-color: #4a8bdf;
 }
 
-.app.dark .users .addEmployee input:focus {
+.app.dark .p-dialog input:focus {
   -webkit-box-shadow: 0 7px 30px -10px rgba(150, 170, 180, 0.5);
           box-shadow: 0 7px 30px -10px rgba(150, 170, 180, 0.5);
 }

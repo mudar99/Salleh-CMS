@@ -9,7 +9,7 @@ export const showSuccess = (msg, toast) => {
 export const showError = (msg, toast) => {
   toast.current.show({
     severity: "error",
-    summary: "Error !!",
+    summary: "هناك خطأ !!",
     detail: msg,
     life: 3000,
   });
@@ -18,16 +18,16 @@ export const showError = (msg, toast) => {
 export const showInfo = (msg, toast) => {
   toast.current.show({
     severity: 'info',
-    summary: 'Info',
+    summary: 'تنبيه',
     detail: msg,
-    life: 3000
+    life: 3000,
   });
 }
 
 export const showWarn = (msg, toast) => {
   toast.current.show({
     severity: "warn",
-    summary: "Warn",
+    summary: "تحذير",
     detail: msg,
     life: 3000,
   });

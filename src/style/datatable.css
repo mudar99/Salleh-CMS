@@ -43,4 +43,42 @@
   margin-right: 10px;
   color: #4a8bdf;
 }
+
+.datatable .p-confirm-popup {
+  background-color: #ffffff;
+}
+
+.datatable .p-confirm-popup .p-confirm-popup-icon {
+  margin: 10px;
+}
+
+.datatable .p-confirm-popup .p-confirm-popup-message {
+  color: #4a8bdf;
+}
+
+.datatable .p-confirm-popup .p-confirm-popup-footer {
+  text-align: center;
+}
+
+.datatable .p-confirm-popup .p-confirm-popup-footer .p-button {
+  margin: 5px;
+}
+
+.datatable .p-confirm-popup .p-confirm-popup-footer .p-button-danger {
+  background: crimson;
+}
+
+.datatable .p-confirm-popup .p-confirm-popup-footer .p-button-danger .p-button-label {
+  margin: 0;
+  color: #f1f5f9;
+}
+
+.datatable .p-confirm-popup .p-confirm-popup-footer .p-button-text {
+  background-color: #f1f5f9;
+}
+
+.datatable .p-confirm-popup .p-confirm-popup-footer .p-button-text .p-button-label {
+  margin: 0;
+  color: #4a8bdf;
+}
 /*# sourceMappingURL=datatable.css.map */

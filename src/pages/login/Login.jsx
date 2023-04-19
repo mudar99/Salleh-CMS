@@ -17,7 +17,7 @@ const Login = () => {
   const cookie = new Cookies();
 
   useEffect(() => {
-    if (cookie.get("jwt_authoriazation") !== undefined) {
+    if (cookie.get("jwt_authorization") !== undefined) {
       window.location.href = "/";
     }
   }, []);

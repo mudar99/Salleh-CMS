@@ -1,5 +1,8 @@
 @import "./vars";
 .datatable {
+  // .p-datatable-loading-icon {
+  //   margin-top: 150px; 
+  // }
   .header {
     display: flex;
     justify-content: space-between;
@@ -32,5 +35,36 @@
   .p-datatable .p-sortable-column .p-sortable-column-icon {
     margin-right: 10px;
     color: $primary-color;
+  }
+
+  .p-confirm-popup {
+    .p-confirm-popup-icon {
+      margin: 10px;
+    }
+    background-color: $nav-color;
+    .p-confirm-popup-message {
+      color: $primary-color;
+    }
+    .p-confirm-popup-footer {
+      text-align: center;
+
+      .p-button {
+        margin: 5px;
+      }
+      .p-button-danger {
+        .p-button-label {
+          margin: 0;
+          color: $home-color;
+        }
+        background: crimson;
+      }
+      .p-button-text {
+        background-color: $home-color;
+        .p-button-label {
+          margin: 0;
+          color: $primary-color;
+        }
+      }
+    }
   }
 }

@@ -35,7 +35,7 @@ export const authSlice = createSlice({
       if (payload.status === true) {
         localStorage.setItem("email", payload.data.user.email);
         state.adminToken = payload.data.accessToken;
-        cookie.set('jwt_authoriazation', payload.data.accessToken,
+        cookie.set('jwt_authorization', payload.data.accessToken,
           { expires: new Date(payload.data.accessToken.exp * 1000) }
         )
         window.location.href = "/";
@@ -47,10 +47,10 @@ export const authSlice = createSlice({
 
     builder.addCase(adminLogout.fulfilled, (state, { payload }) => {
       console.log(payload)
-      // cookie.remove('jwt_authoriazation');
+      // cookie.remove('jwt_authorization');
       if (payload.status === true) {
         state.adminToken = null;
-        cookie.remove('jwt_authoriazation');
+        cookie.remove('jwt_authorization');
         window.location.href = "/login";
       }
       state.loading = false;

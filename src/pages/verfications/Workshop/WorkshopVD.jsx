@@ -1,100 +1,48 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import "../../../style/datatable.scss";
 import { Button } from "primereact/button";
-import { useDispatch } from "react-redux";
-import WorkshopVer from "./WorkshopVer";
+import { useDispatch, useSelector } from "react-redux";
 import WorkshopExplore from "./WorkshopExplore";
+import {
+  acceptRequest,
+  getFileRequest,
+  getVerifyRequests,
+  rejectRequest,
+} from "../../../redux/API/verify/workshop/workshopVerifications";
+import Cookies from "universal-cookie";
+import { ConfirmPopup, confirmPopup } from "primereact/confirmpopup";
+import { Toast } from "primereact/toast";
+import { showInfo, showSuccess } from "../../../ToastService";
+import LoadingFS from "../../components/loading/LoadingFS";
 const WorkshopVD = () => {
   const galleria = useRef(null);
+  const toast = useRef(null);
   const headers = [
     "معرف الورشة",
     "اسم الورشة",
-    "صاحب الورشة",
-    "خط العرض",
     "خط الطول",
+    "خط العرض",
     "تاريخ الطلب",
-    "رقم الهاتف",
+    "صاحب الورشة",
     "البريد",
+    "رقم الهاتف",
     "حدث",
   ];
-  const data = [
-    {
-      id: 1,
-      name: "ورشة الأنوار",
-      customer: "مضر أبو فخر",
-      latitude: 40.2,
-      longitude: 20.2,
-      date: "1 March",
-      phone: "0935150221",
-      email: "Name@Example.com",
-    },
-    {
-      id: 1,
-      name: "ورشة الأنوار",
-      customer: "مضر أبو فخر",
-      latitude: 40.2,
-      longitude: 20.2,
-      date: "1 March",
-      phone: "0935150221",
-      email: "Name@Example.com",
-    },
-    {
-      id: 1,
-      name: "ورشة الأنوار",
-      customer: "مضر أبو فخر",
-      latitude: 40.2,
-      longitude: 20.2,
-      date: "1 March",
-      phone: "0935150221",
-      email: "Name@Example.com",
-    },
-    {
-      id: 1,
-      name: "ورشة الأنوار",
-      customer: "مضر أبو فخر",
-      latitude: 40.2,
-      longitude: 20.2,
-      date: "1 March",
-      phone: "0935150221",
-      email: "Name@Example.com",
-    },
-    {
-      id: 1,
-      name: "ورشة الأنوار",
-      customer: "مضر أبو فخر",
-      latitude: 40.2,
-      longitude: 20.2,
-      date: "1 March",
-      phone: "0935150221",
-      email: "Name@Example.com",
-    },
-    {
-      id: 1,
-      name: "ورشة الأنوار",
-      customer: "مضر أبو فخر",
-      latitude: 40.2,
-      longitude: 20.2,
-      date: "1 March",
-      phone: "0935150221",
-      email: "Name@Example.com",
-    },
-    {
-      id: 1,
-      name: "ورشة الأنوار",
-      customer: "مضر أبو فخر",
-      latitude: 40.2,
-      longitude: 20.2,
-      date: "1 March",
-      phone: "0935150221",
-      email: "Name@Example.com",
-    },
-  ];
+
+  const dispatch = useDispatch();
+  const { data, loading } = useSelector((state) => state.WorkshopVerifications);
+  useEffect(() => {
+    dispatch(getVerifyRequests());
+  }, []);
+  // console.log(data);
   const explore = (e) => {
     e.preventDefault();
+    console.log(e);
     galleria.current.show();
   };
+
   const acitonBodyTemplate = (rowData) => {
     return (
       <>
@@ -102,41 +50,116 @@ const WorkshopVD = () => {
           icon="pi pi-times"
           className="p-button-rounded p-button-text p-button-danger"
           aria-label="Submit"
-          onClick={() => {
-            console.log(rowData.id);
+          onClick={(event) => {
+            confirmPopup({
+              target: event.currentTarget,
+              message: "هل تود رفض الطلب؟",
+              header: "تاكيد",
+              icon: "pi pi-info-circle",
+              acceptLabel: "تأكيد",
+              rejectLabel: "إلغاء",
+              acceptClassName: "p-button-danger",
+              rejectClassName: "p-button-text",
+              accept: () => {
+                dispatch(rejectRequest(rowData.user_id)).then((res) => {
+                  if (res.payload.status === true) {
+                    showSuccess(res.payload.message, toast);
+                    return;
+                  }
+                });
+              },
+              reject: () => {
+                showInfo("تم الإلغاء", toast);
+              },
+              appendTo: document.querySelector(".datatable"),
+            });
           }}
         />
         <Button
           icon="pi pi-check"
           className="p-button-rounded p-button-text p-button-primary"
           aria-label="Submit"
+          onClick={(event) => {
+            confirmPopup({
+              target: event.currentTarget,
+              message: "هل تود الموافقة على الطلب؟",
+              header: "تاكيد",
+              icon: "pi pi-info-circle",
+              acceptLabel: "تأكيد",
+              rejectLabel: "إلغاء",
+              acceptClassName: "p-button-danger",
+              rejectClassName: "p-button-text",
+              accept: () => {
+                dispatch(acceptRequest(rowData.user_id)).then((res) => {
+                  console.log(res);
+                  if (res.payload.status === true) {
+                    showSuccess(res.payload.message, toast);
+                    return;
+                  }
+                });
+              },
+              reject: () => {
+                showInfo("تم الإلغاء", toast);
+              },
+              appendTo: document.querySelector(".datatable"),
+            });
+          }}
         />
         <Button
           icon="pi pi-eye"
           className="p-button-rounded p-button-text p-button-success"
           aria-label="Submit"
-          onClick={explore}
+          onClick={() => {
+            dispatch(getFileRequest(rowData.user_id));
+            galleria.current.show();
+          }}
         />
       </>
     );
   };
   return (
     <div className="datatable">
+      {loading && <LoadingFS />}
       <div className="card">
         <DataTable
-          // resizableColumns
           showGridlines
           value={data}
           tableStyle={{ minWidth: "50rem" }}
         >
-          <Column align="center" header={headers[0]} field="id"></Column>
-          <Column align="center" header={headers[1]} field="name"></Column>
-          <Column align="center" header={headers[2]} field="customer"></Column>
+          <Column
+            align="center"
+            header={headers[0]}
+            field="workshop_id"
+          ></Column>
+          <Column
+            align="center"
+            header={headers[1]}
+            field="workshop_name"
+          ></Column>
+          <Column align="center" header={headers[2]} field="longitude"></Column>
           <Column align="center" header={headers[3]} field="latitude"></Column>
-          <Column align="center" header={headers[4]} field="longitude"></Column>
-          <Column align="center" header={headers[5]} field="date"></Column>
-          <Column align="center" header={headers[6]} field="phone"></Column>
-          <Column align="center" header={headers[7]} field="email"></Column>
+          <Column
+            align="center"
+            header={headers[4]}
+            field="created_at"
+          ></Column>
+          <Column
+            align="center"
+            header={headers[5]}
+            body={(rowData) => {
+              return (
+                <div>
+                  {rowData.firstname} {rowData.lastname}
+                </div>
+              );
+            }}
+          ></Column>
+          <Column align="center" header={headers[6]} field="email"></Column>
+          <Column
+            align="center"
+            header={headers[7]}
+            field="phone_number"
+          ></Column>
           <Column
             align="center"
             header={headers[8]}
@@ -146,6 +169,8 @@ const WorkshopVD = () => {
         </DataTable>
       </div>
       <WorkshopExplore galleria={galleria} />
+      <ConfirmPopup />
+      <Toast ref={toast} />
     </div>
   );
 };

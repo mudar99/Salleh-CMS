@@ -12,11 +12,11 @@ const cookie = new Cookies();
 
 const Home = () => {
   useEffect(() => {
-    if (cookie.get("jwt_authoriazation") === undefined) {
+    if (cookie.get("jwt_authorization") === undefined) {
       window.location.href = "/login";
     }
   }, []);
-  if (cookie.get("jwt_authoriazation") === undefined) {
+  if (cookie.get("jwt_authorization") === undefined) {
     window.location.href = "/login";
   } else
     return (
