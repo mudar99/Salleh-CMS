@@ -7,6 +7,7 @@ import { adminLogin } from "../../redux/API/authSlice";
 import { showError, showInfo, showSuccess } from "../../ToastService";
 import "./login.scss";
 import NavBar from "./NavBar";
+import { Checkbox } from "primereact/checkbox";
 import Cookies from "universal-cookie";
 const Login = () => {
   const dispatch = useDispatch();
@@ -15,6 +16,7 @@ const Login = () => {
   const { loading } = useSelector((state) => state.admin);
   const toast = useRef(null);
   const cookie = new Cookies();
+  const [checked, setChecked] = useState(false);
 
   useEffect(() => {
     if (cookie.get("jwt_authorization") !== undefined) {
@@ -27,17 +29,18 @@ const Login = () => {
     let user = new FormData();
     user.append("email", email);
     user.append("password", password);
-    dispatch(adminLogin(user)).then((res) => {
-      if (res.payload.status === true) {
-        showSuccess(res.payload.message, toast);
-        return;
-      }
-      if (typeof res.payload === "object") {
-        showError(res.payload.message, toast);
-      } else if (typeof res.payload === "string") {
-        showError(res.payload, toast);
-      }
-    });
+    dispatch(adminLogin(user))
+      .then((res) => {
+        if (res.payload.status === true) {
+          showSuccess(res.payload.message, toast);
+          return;
+        }
+        if (typeof res.payload === "object") {
+          showError(res.payload.message, toast);
+        } else if (typeof res.payload === "string") {
+          showError(res.payload, toast);
+        }
+      })
   };
   return (
     <div className="login">
@@ -85,6 +88,13 @@ const Login = () => {
               </label>
             </span>
           </div>
+          <span className="remember">
+            <Checkbox
+              onChange={(e) => setChecked(e.checked)}
+              checked={checked}
+            ></Checkbox>
+            <label>حفظ كلمة المرور</label>
+          </span>
           <div className="submit">
             <Button
               label="تسجيل الدخول"

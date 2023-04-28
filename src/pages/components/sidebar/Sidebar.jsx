@@ -28,19 +28,20 @@ const Sidebar = () => {
   const cookie = new Cookies();
 
   const logoutConfirmation = (event) => {
-    // confirmPopup({
-    //   appendTo: document.querySelector("#log-out"),
-    //   target: event.currentTarget,
-    //   message: "هل تود تسجيل الخروج؟",
-    //   icon: "pi pi-info-circle",
-    //   acceptLabel: "نعم",
-    //   rejectLabel: "لا",
-    //   acceptClassName: "p-button-danger",
-    //   rejectClassName: "p-button-text",
-    //   accept: () => {
-    //     dispatch(adminLogout(cookie.get("jwt_authorization")));
-    //   },
-    // });
+    confirmPopup({
+      appendTo: document.querySelector("#log-out"),
+      appendTo: "self",
+      target: event.currentTarget,
+      message: "هل تود تسجيل الخروج؟",
+      icon: "pi pi-info-circle",
+      acceptLabel: "نعم",
+      rejectLabel: "لا",
+      acceptClassName: "p-button-danger",
+      rejectClassName: "p-button-text",
+      accept: () => {
+        dispatch(adminLogout(cookie.get("jwt_authorization")));
+      },
+    });
   };
 
   const { place } = useSelector((state) => state.VisitStatus);
@@ -129,7 +130,7 @@ const Sidebar = () => {
 
           <div className="collapse show" id="management">
             <Link
-              to="/requests"
+              to="/orders"
               style={{ textDecoration: "none" }}
               onClick={() => dispatch(requestsManage())}
             >
@@ -253,7 +254,6 @@ const Sidebar = () => {
               <span>{localStorage.getItem("email")}</span>
             </li>
             <li onClick={logoutConfirmation}>
-              <ConfirmPopup />
               <i className="fa fa-sign-out-alt"></i>
               <span id="log-out">تسجيل خروج</span>
             </li>
@@ -265,6 +265,7 @@ const Sidebar = () => {
         <div className="colorOption" onClick={() => dispatch(light())}></div>
         <div className="colorOption" onClick={() => dispatch(dark())}></div>
       </div>
+      <ConfirmPopup />
     </div>
   );
 };

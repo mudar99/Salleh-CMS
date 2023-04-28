@@ -27,3 +27,6 @@ export const towingGetVerifyRequests = `${local}/towing/request/get`;
 export const towingGetFileRequest = `${local}/towing/request/`;
 export const towingRejectRequest = `${local}/towing/request/`;
 export const towingAcceptRequest = `${local}/towing/request/`;
+
+export const GetWorkshopOrdersAPI = `${local}/workshop/orders?size=`;
+export const GetSingleWorkshopOrdersAPI = `${local}/workshop/orders/`;

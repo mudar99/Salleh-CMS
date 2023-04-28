@@ -6,8 +6,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { GetStorehouses, GetWorkShops } from "../../redux/API/users/usersSlice";
 import { Paginator } from "primereact/paginator";
 import LoadingFS from "../components/loading/LoadingFS";
+import { Link } from "react-router-dom";
 
-const WorkshopsDataTable = () => {
+const WorkshopsDataTable = (props) => {
   const [currentPage, setCurrentPage] = useState(1);
   const dispatch = useDispatch();
   const { loading, data, totalItems } = useSelector((state) => state.users);
@@ -30,7 +31,7 @@ const WorkshopsDataTable = () => {
   const headers = [
     "المعرف",
     "صاحب الورشة",
-    "اسم الورشة",
+    "رقم الهاتف",
     "تاريخ التسجيل",
     "البريد",
     "حدث",
@@ -39,11 +40,14 @@ const WorkshopsDataTable = () => {
   const acitonBodyTemplate = (rowData) => {
     return (
       <>
-        <Button
-          icon="pi pi-eye"
-          className="p-button-rounded p-button-text p-button-success"
-          aria-label="Submit"
-        />
+        <Link to={`${rowData.id}`}>
+          <Button
+            icon="pi pi-eye"
+            className="p-button-rounded p-button-text p-button-success"
+            aria-label="Submit"
+            onClick={() => props.showState("S", rowData)}
+          />
+        </Link>
       </>
     );
   };

@@ -3,7 +3,7 @@ import List from "../list/List";
 
 const Warehouses = () => {
   return (
-    <div className="users">
+    <div className="">
       <List component="WarehousesDataTable" />
     </div>
   );

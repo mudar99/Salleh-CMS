@@ -16,6 +16,7 @@ const Categories = () => {
         break;
       case "C":
         setCreateVisible(true);
+        break;
       case "D":
         break;
       default:

@@ -1,12 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./single.scss";
 import Navbar from "../components/navbar/Navbar";
 import Sidebar from "../components/sidebar/Sidebar";
 import Chart from "../components/chart/Chart";
-import List from "../components/table/Table";
 import { Button } from "primereact/button";
+import { useDispatch } from "react-redux";
+import { Table } from "../components/table/Table";
+import { GetSingleWorkshopOrders } from "../../redux/API/ordersSlice";
 
 const Single = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    let currentPlace = window.location.pathname.split("/")[1];
+    let id = window.location.pathname.split("/")[2];
+    switch (currentPlace) {
+      case "workshops":
+        let info = { size: 5, page: 1 };
+        // dispatch(GetSingleWorkshopOrders(info));
+        break;
+      default:
+        break;
+    }
+  }, []);
   return (
     <div className="single">
       <Sidebar />
@@ -51,7 +66,7 @@ const Single = () => {
         </div>
         <div className="bottom">
           <h1 className="title">Last Transactions</h1>
-          <List />
+          <Table />
         </div>
       </div>
     </div>

@@ -1,46 +1,65 @@
 import React, { useRef, useState } from "react";
 import { Galleria } from "primereact/galleria";
+import LoadingFS from "../../components/loading/LoadingFS";
+import { useDispatch, useSelector } from "react-redux";
+import { Dialog } from "primereact/dialog";
 import { Button } from "primereact/button";
-import { useSelector } from "react-redux";
-import { local } from "../../../API";
-
+import { getFileRequest } from "../../../redux/API/verify/workshop/workshopVerifications";
 const WorkshopExplore = (props) => {
-  const { images } = useSelector((state) => state.WorkshopVerifications);
-  // console.log(images);
-  //   const galleria = useRef(null);
+  const { images, galliriaLoading } = useSelector(
+    (state) => state.TowingVerifications
+  );
+  const [visible, setVisible] = useState(false);
+  const dispatch = useDispatch();
 
   const itemTemplate = (item) => {
     return (
-      <>
-        {/* {console.log("http://127.0.0.1:8060" + item.path)} */}
-        <img
-          src={"http://127.0.0.1:8060" + item.path}
-          alt={item.alt}
-          style={{ width: "100%", display: "block" }}
-        />
-      </>
+      <img
+        src={"http://127.0.0.1:8060" + item.path}
+        alt={item.alt}
+        style={{
+          width: "100%",
+          maxWidth: "30vw",
+          display: "block",
+        }}
+      />
     );
   };
 
   return (
-    <div className="card flex justify-content-center">
-      <Galleria
-        ref={props.galleria}
-        value={images}
-        numVisible={10}
-        style={{ maxWidth: "50%" }}
-        circular
-        fullScreen
-        showItemNavigators
-        showThumbnails={false}
-        item={itemTemplate}
+    <>
+      <div className="card">
+        {galliriaLoading && <LoadingFS />}
+        <Dialog
+          visible={visible}
+          style={{ width: "50vw" }}
+          onHide={() => setVisible(false)}
+          resizable
+          appendTo={"self"}
+        >
+          <div className="galleria">
+            <Galleria
+              className="container"
+              value={images}
+              numVisible={5}
+              circular
+              showThumbnails={false}
+              showIndicators
+              indicatorsPosition="top"
+              item={itemTemplate}
+            />
+          </div>
+        </Dialog>
+      </div>
+      <Button
+        icon="pi pi-eye"
+        className="p-button-rounded p-button-text p-button-success"
+        aria-label="Submit"
+        onClick={() => {
+          dispatch(getFileRequest(props.user_id)).then(setVisible(true));
+        }}
       />
-      {/* <Button
-        label="Show"
-        icon="pi pi-external-link"
-        onClick={() => galleria.current.show()}
-      /> */}
-    </div>
+    </>
   );
 };
 

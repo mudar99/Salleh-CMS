@@ -8,6 +8,7 @@ import towingVerifications from './API/verify/towing/towingVerifications';
 import storehouseVerifications from './API/verify/storehouse/storehouseVerifications';
 import usersSlice from './API/users/usersSlice';
 import categorySlice from './API/categorySlice';
+import ordersSlice from './API/ordersSlice';
 const store = configureStore({
     reducer: {
         DarkMode: themeSlice,
@@ -19,6 +20,7 @@ const store = configureStore({
         StorehouseVerifications: storehouseVerifications,
         users: usersSlice,
         category: categorySlice,
+        orders: ordersSlice,
     }
 });
 export default store

@@ -39,7 +39,7 @@
           text-align: left;
           direction: ltr;
         }
-        margin-top: 40px;
+        margin-top: 38px;
         label {
           display: flex;
           color: $primary-color;
@@ -59,6 +59,33 @@
           color: $home-color;
           &-raised:focus {
             box-shadow: 0 7px 30px -10px rgba(150, 170, 180, 0.5);
+          }
+        }
+      }
+      .remember {
+        justify-content: center;
+        display: flex;
+        margin-top: 15px;
+        margin-right: 10px;
+        label {
+          margin-right: 10px;
+          color: $primary-color;
+          font-size: 14px;
+          font-weight: 700;
+        }
+        .p-checkbox {
+          // margin: 10px;
+          height: 30px;
+          .p-checkbox-box.p-highlight {
+            background: $primary-color;
+            border-color: $primary-color;
+          }
+        }
+        .p-checkbox:not(.p-checkbox-disabled) {
+          .p-checkbox-box:hover,
+          .p-checkbox-box.p-focus {
+            border-color: $primary-color;
+            box-shadow: none;
           }
         }
       }

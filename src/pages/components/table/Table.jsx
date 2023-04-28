@@ -2,7 +2,7 @@ import React from "react";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import "./table.scss";
-const Table = () => {
+export const Table = () => {
   const data = [
     {
       id: 1143155,
@@ -84,4 +84,4 @@ const Table = () => {
   );
 };
 
-export default Table;
+ 

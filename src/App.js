@@ -15,8 +15,9 @@ import TowingCars from './pages/towing cars/TowingCars';
 import Warehouses from './pages/warehouses/Warehouses';
 import WarehouseVer from './pages/verfications/Warehouse/WarehouseVer';
 import TowingVer from './pages/verfications/Towing/TowingVer';
-import Requests from './pages/request-management/Requests';
 import Categories from './pages/categories/Categories';
+import Orders from './pages/oreders-management/Orders';
+import NotFound from './pages/components/notfound/NotFound';
 
 
 function App() {
@@ -26,6 +27,8 @@ function App() {
     <div className={darkMode ? "app dark" : "app"}>
       <BrowserRouter>
         <Routes>
+          <Route path="*" element={<NotFound />} />
+
           <Route path='/'>
             <Route index element={<Home />} />
             <Route path='login' element={<Login />} />
@@ -38,7 +41,7 @@ function App() {
 
             <Route path='workshops' >
               <Route index element={<Workshops />} />
-              <Route path=':userId' element={<Single />} />
+              <Route path=':workshopId' element={<Single />} />
             </Route>
 
             <Route path='towingcars' >
@@ -58,8 +61,8 @@ function App() {
               <Route path='new' element={<New />} />
             </Route>
 
-            <Route path='requests' >
-              <Route index element={<Requests />} />
+            <Route path='orders' >
+              <Route index element={<Orders />} />
             </Route>
 
             <Route path='categories' >

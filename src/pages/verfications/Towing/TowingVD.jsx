@@ -15,6 +15,7 @@ import {
   rejectRequest,
 } from "../../../redux/API/verify/towing/towingVerifications";
 import LoadingFS from "../../components/loading/LoadingFS";
+import { Link } from "react-router-dom";
 const TowingVD = () => {
   const headers = [
     "رقم السيارة",
@@ -97,15 +98,6 @@ const TowingVD = () => {
             });
           }}
         />
-        {/* <Button
-          icon="pi pi-eye"
-          className="p-button-rounded p-button-text p-button-success"
-          aria-label="Submit"
-          onClick={() => {
-            dispatch(getFileRequest(8));
-            galleria.current.show();
-          }}
-        /> */}
         <TowingExplore user_id={rowData.user_id} />
       </>
     );

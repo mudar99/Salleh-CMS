@@ -105,15 +105,7 @@ const WorkshopVD = () => {
             });
           }}
         />
-        <Button
-          icon="pi pi-eye"
-          className="p-button-rounded p-button-text p-button-success"
-          aria-label="Submit"
-          onClick={() => {
-            dispatch(getFileRequest(rowData.user_id));
-            galleria.current.show();
-          }}
-        />
+        <WorkshopExplore user_id={rowData.user_id} />
       </>
     );
   };
@@ -168,7 +160,6 @@ const WorkshopVD = () => {
           ></Column>
         </DataTable>
       </div>
-      <WorkshopExplore galleria={galleria} />
       <ConfirmPopup />
       <Toast ref={toast} />
     </div>

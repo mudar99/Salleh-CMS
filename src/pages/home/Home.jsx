@@ -4,9 +4,9 @@ import Featured from "../components/featured/Featured";
 import Navbar from "../components/navbar/Navbar";
 import Sidebar from "../components/sidebar/Sidebar";
 import Widget from "../components/widget/Widget";
-import Table from "../components/table/Table";
-import "./home.scss";
+ import "./home.scss";
 import Cookies from "universal-cookie";
+import { Table } from "../components/table/Table";
 
 const cookie = new Cookies();
 

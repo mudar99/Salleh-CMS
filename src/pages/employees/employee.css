@@ -1,1 +1,31 @@
-/* No CSS *//*# sourceMappingURL=employee.css.map */
+.users .addEmployee input {
+  height: 40px;
+  font-size: 18px;
+  text-align: left;
+  direction: ltr;
+}
+
+.users .addEmployee input:hover {
+  border-color: #4a8bdf;
+}
+
+.users .addEmployee input:focus {
+  -webkit-box-shadow: 0 7px 30px -10px rgba(150, 170, 180, 0.5);
+          box-shadow: 0 7px 30px -10px rgba(150, 170, 180, 0.5);
+}
+
+.users .addEmployee .actions {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 10px;
+  margin: 10px;
+}
+
+.users .addEmployee .actions .p-button {
+  direction: ltr;
+}
+/*# sourceMappingURL=employee.css.map */

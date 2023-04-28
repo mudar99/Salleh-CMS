@@ -102,32 +102,11 @@
       }
     }
   }
-  // .p-confirm-popup {
-  //   .p-confirm-popup-content {
-  //     .p-confirm-popup-message {
-  //     }
-  //   }
-  //   .p-confirm-popup-footer {
-  //     text-align: center;
-  //     .p-button {
-  //       margin: 5px;
-  //     }
-  //     .p-button-danger {
-  //       .p-button-label {
-  //         color: #eee;
-  //         margin: 0;
-  //       }
-  //       background: crimson;
-  //     }
-  //     .p-button-text {
-  //       background: $home-color;
-  //     }
-  //   }
-  // }
 
   .p-confirm-popup {
     background-color: $nav-color;
     .p-confirm-popup-message {
+      margin-right: 10px;
       color: $primary-color;
     }
     .p-confirm-popup-footer {

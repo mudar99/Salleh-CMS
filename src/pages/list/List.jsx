@@ -8,10 +8,10 @@ import CustomersDataTable from "../customers/CustomersDataTable";
 import WorkshopsDataTable from "../workshops/WorkshopsDataTable";
 import TowingDataTable from "../towing cars/TowingDataTable";
 import WarehousesDataTable from "../warehouses/WarehousesDataTable";
-import RequestsDataTable from "../request-management/RequestsDataTable";
 import CategoriesDataTable from "../categories/CategoriesDataTable";
 import TowingVD from "../verfications/Towing/TowingVD";
 import WarehouseVD from "../verfications/Warehouse/WarehouseVD";
+import OrdersDataTable from "../oreders-management/OrdersDataTable";
 const List = (props) => {
   const visibleCallBack = (e, rowData) => {
     // switch (e) {
@@ -27,7 +27,7 @@ const List = (props) => {
     // }
     props.visibleState(e, rowData);
   };
-  const x = () => {
+  const switchComponent = () => {
     // console.log(props.component);
     switch (props.component) {
       case "WorkshopVD":
@@ -41,13 +41,13 @@ const List = (props) => {
       case "CustomersDataTable":
         return <CustomersDataTable />;
       case "WorkshopsDataTable":
-        return <WorkshopsDataTable />;
+        return <WorkshopsDataTable showState={visibleCallBack} />;
       case "TowingDataTable":
         return <TowingDataTable />;
       case "WarehousesDataTable":
         return <WarehousesDataTable />;
-      case "RequestsDataTable":
-        return <RequestsDataTable />;
+      case "OrdersDataTable":
+        return <OrdersDataTable />;
       case "CategoriesDataTable":
         return (
           <CategoriesDataTable
@@ -64,7 +64,7 @@ const List = (props) => {
       <Sidebar />
       <div className="listContainer">
         <Navbar />
-        {x()}
+        {switchComponent()}
       </div>
     </div>
   );

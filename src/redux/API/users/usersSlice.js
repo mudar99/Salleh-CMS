@@ -10,7 +10,7 @@ export const GetCustomers = createAsyncThunk("admin/users/customers", async (inf
     axios.defaults.headers = {
         Authorization: `Bearer ${token}`,
     }
-    let { data } = await axios.get(GetCustomersAPI);
+    let { data } = await axios.get(GetCustomersAPI + info.size + "&page=" + info.page);
     console.log(data)
     return data;
 });
