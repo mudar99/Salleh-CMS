@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import List from "../list/List";
 import { Dialog } from "primereact/dialog";
-import AddEmployee from "./AddEmployee";
-import UpdateEmployee from "./UpdateEmployee";
-import { ShowAdmin } from "../../redux/API/adminSlice";
-import ViewEmployee from "./ViewEmployee";
+import AddRole from "./AddRole";
+import UpdateRole from "./UpdateRole";
 import { useDispatch } from "react-redux";
+import { ShowRole } from "../../redux/API/roles&permissions/rolesSlice";
+import ViewRole from "./ViewRole";
 
-const Employees = () => {
+const Roles = () => {
+  const dispatch = useDispatch();
   const [updateVisible, setUpdateVisible] = useState(false);
   const [createVisible, setCreateVisible] = useState(false);
   const [showVisible, setShowVisible] = useState(false);
   const [data, setData] = useState("");
-  const dispatch = useDispatch();
   const callback = (e, rowData) => {
     console.log(rowData);
     setData(rowData);
@@ -31,43 +31,43 @@ const Employees = () => {
     }
   };
   return (
-    <div className="employees">
-      <List visibleState={callback} component="EmployeeDataTable" />
+    <div className="roles">
+      <List visibleState={callback} component="RolesDataTable" />
       <Dialog
-        header="إضافة موظّف جديد"
+        header="إضافة دور جديد"
         visible={createVisible}
         style={{ width: "50vw" }}
         onHide={() => setCreateVisible(false)}
         resizable
         appendTo={"self"}
       >
-        <AddEmployee />
+        <AddRole visibleState={(e) => setCreateVisible(e)} />
       </Dialog>
 
       <Dialog
-        header="تعديل الموظّف"
+        header="تعديل الدور"
         visible={updateVisible}
         style={{ width: "50vw" }}
         onHide={() => setUpdateVisible(false)}
         resizable
         appendTo={"self"}
       >
-        <UpdateEmployee data={data} visibleState={(e) => setUpdateVisible(e)} />
+        <UpdateRole data={data} visibleState={(e) => setUpdateVisible(e)} />
       </Dialog>
 
       <Dialog
-        header="عرض معلومات الموظّف"
+        header="عرض الصلاحيات"
         visible={showVisible}
         style={{ width: "50vw" }}
         onHide={() => setShowVisible(false)}
-        onShow={() => dispatch(ShowAdmin(data.id))}
+        onShow={() => dispatch(ShowRole(data.id))}
         resizable
         appendTo={"self"}
       >
-        <ViewEmployee />
+        <ViewRole />
       </Dialog>
     </div>
   );
 };
 
-export default Employees;
+export default Roles;

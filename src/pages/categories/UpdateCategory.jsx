@@ -47,7 +47,7 @@ const UpdateCategory = (props) => {
       <Toast ref={toast} appendTo={document.querySelector(".categories")} />
       <div className="form-group wrapper">
         <div className="container mt-3">
-          <h1 className="mt-2 text-right">اسم الصنف</h1>
+          <h6 className="mt-2 text-right">اسم الصنف</h6>
           <InputText
             defaultValue={props.data.name}
             placeholder="Category name"

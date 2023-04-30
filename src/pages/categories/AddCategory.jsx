@@ -47,7 +47,7 @@ const AddCategory = (props) => {
           />
         </div>
         <div className="container mt-3">
-          <h6 className="mt-2 text-right">وصف الصنف</h6>{" "}
+          <h6 className="mt-2 text-right">وصف الصنف</h6>
           <InputText
             placeholder="Description"
             style={{ width: "100%" }}

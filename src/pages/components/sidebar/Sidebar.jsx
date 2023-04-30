@@ -9,6 +9,7 @@ import {
   dashboard,
   employees,
   requestsManage,
+  roles,
   towing,
   towingV,
   verfications,
@@ -207,6 +208,17 @@ const Sidebar = () => {
 
           <div className="collapse show" id="usage">
             <Link
+              to="/roles"
+              style={{ textDecoration: "none" }}
+              onClick={() => dispatch(roles())}
+            >
+              <li className={currentPlace === "roles" ? "visited" : ""}>
+                <i className="fas fa-tasks"></i>
+                <span>أدوار</span>
+              </li>
+            </Link>
+
+            <Link
               to="/employees"
               style={{ textDecoration: "none" }}
               onClick={() => dispatch(employees())}
@@ -216,11 +228,6 @@ const Sidebar = () => {
                 <span>موظفون</span>
               </li>
             </Link>
-
-            <li>
-              <i className="fas fa-bell"></i>
-              <span>إشعارات</span>
-            </li>
           </div>
 
           <div className="header" data-bs-toggle="collapse" href="#services">

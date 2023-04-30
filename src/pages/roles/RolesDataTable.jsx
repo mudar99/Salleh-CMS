@@ -3,17 +3,17 @@ import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import "../../style/datatable.scss";
 import { Button } from "primereact/button";
-import { DeleteAdmin, GetAdmins } from "../../redux/API/adminSlice";
-import { useDispatch, useSelector } from "react-redux";
-import { Toast } from "primereact/toast";
 import { Paginator } from "primereact/paginator";
-import { showInfo, showSuccess } from "../../ToastService";
+import { useDispatch, useSelector } from "react-redux";
+import LoadingFS from "../components/loading/LoadingFS";
+import { DeleteRole, GetRoles } from "../../redux/API/roles&permissions/rolesSlice";
 import { confirmPopup } from "primereact/confirmpopup";
-
-const EmployeeDataTable = (props) => {
+import { showInfo, showSuccess } from "../../ToastService";
+import { Toast } from "primereact/toast";
+const RolesDataTable = (props) => {
   const [currentPage, setCurrentPage] = useState(1);
   const dispatch = useDispatch();
-  const { loading, data, totalItems } = useSelector((state) => state.admins);
+  const { loading, data, totalItems } = useSelector((state) => state.roles);
   const toast = useRef(null);
 
   const [basicFirst, setBasicFirst] = useState(1);
@@ -21,7 +21,7 @@ const EmployeeDataTable = (props) => {
 
   useEffect(() => {
     let info = { size: basicRows, page: currentPage };
-    dispatch(GetAdmins(info));
+    dispatch(GetRoles(info));
   }, []);
   const onBasicPageChange = (event) => {
     let currentPage = event.page + 1;
@@ -29,14 +29,13 @@ const EmployeeDataTable = (props) => {
     setBasicFirst(event.first);
     setBasicRows(event.rows);
     let info = { size: basicRows, page: currentPage };
-    dispatch(GetAdmins(info));
+    dispatch(GetRoles(info));
   };
   const headers = [
     "المعرف",
-    "البريد الإلكتروني",
-    "رقم الجوال",
+    "اسم الدور",
     "تاريخ التسجيل",
-    "معرف الدور",
+    "تاريخ التحديث",
     "حدث",
   ];
   const acitonBodyTemplate = (rowData) => {
@@ -49,7 +48,7 @@ const EmployeeDataTable = (props) => {
           onClick={(event) => {
             confirmPopup({
               target: event.currentTarget,
-              message: "هل تود حذف هذا الموظّف؟",
+              message: "هل تود حذف هذا الدور؟",
               header: "تاكيد",
               icon: "pi pi-info-circle",
               acceptLabel: "تأكيد",
@@ -57,7 +56,7 @@ const EmployeeDataTable = (props) => {
               acceptClassName: "p-button-danger",
               rejectClassName: "p-button-text",
               accept: () => {
-                dispatch(DeleteAdmin(rowData.id)).then((res) => {
+                dispatch(DeleteRole(rowData.id)).then((res) => {
                   console.log(res);
                   if (res.payload.status === true) {
                     showSuccess(res.payload.message, toast);
@@ -88,10 +87,9 @@ const EmployeeDataTable = (props) => {
       </>
     );
   };
-
   const header = (
     <div className="header">
-      <span className="title">موظّفون</span>
+      <span className="title">أدوار</span>
       <Button
         icon="pi pi-plus"
         onClick={() => props.createState("C")}
@@ -104,6 +102,7 @@ const EmployeeDataTable = (props) => {
   );
   return (
     <div className="datatable">
+      {loading && <LoadingFS />}
       <div className="card">
         <DataTable
           header={header}
@@ -111,21 +110,20 @@ const EmployeeDataTable = (props) => {
           tableStyle={{ minWidth: "50rem" }}
         >
           <Column align="center" header={headers[0]} field="id"></Column>
-          <Column align="center" header={headers[1]} field="email"></Column>
+          <Column align="center" header={headers[1]} field={"name"}></Column>
           <Column
             align="center"
             header={headers[2]}
-            field="phone_number"
+            field={"created_at"}
           ></Column>
           <Column
             align="center"
             header={headers[3]}
-            field="created_at"
+            field="updated_at"
           ></Column>
-          <Column align="center" header={headers[4]} field="role_id"></Column>
           <Column
             align="center"
-            header={headers[5]}
+            header={headers[4]}
             field="action"
             body={acitonBodyTemplate}
           ></Column>
@@ -142,4 +140,4 @@ const EmployeeDataTable = (props) => {
   );
 };
 
-export default EmployeeDataTable;
+export default RolesDataTable;

@@ -12,6 +12,7 @@ import CategoriesDataTable from "../categories/CategoriesDataTable";
 import TowingVD from "../verfications/Towing/TowingVD";
 import WarehouseVD from "../verfications/Warehouse/WarehouseVD";
 import OrdersDataTable from "../oreders-management/OrdersDataTable";
+import RolesDataTable from "../roles/RolesDataTable";
 const List = (props) => {
   const visibleCallBack = (e, rowData) => {
     // switch (e) {
@@ -37,7 +38,21 @@ const List = (props) => {
       case "WarehouseVD":
         return <WarehouseVD />;
       case "EmployeeDataTable":
-        return <EmployeeDataTable />;
+        return (
+          <EmployeeDataTable
+            createState={visibleCallBack}
+            updateState={visibleCallBack}
+            showState={visibleCallBack}
+          />
+        );
+      case "RolesDataTable":
+        return (
+          <RolesDataTable
+            createState={visibleCallBack}
+            updateState={visibleCallBack}
+            showState={visibleCallBack}
+          />
+        );
       case "CustomersDataTable":
         return <CustomersDataTable />;
       case "WorkshopsDataTable":

@@ -3,6 +3,19 @@ export const local = 'http://127.0.0.1:8060/api/cms';
 export const loginAPI = `${local}/login`;
 export const logoutAPI = `${local}/logout`;
 
+export const GetRolesAPI = `${local}/roles?size=`;
+export const AddRoleAPI = `${local}/roles`;
+export const UpdateRoleAPI = `${local}/roles/`;
+export const ShowRoleAPI = `${local}/roles/`;
+export const DeleteRoleAPI = `${local}/roles/`;
+export const AssignToRoleAPI = `${local}/roles/permissions/assignment/`;
+
+export const GetAdminsAPI = `${local}/admins?size=`;
+export const AddAdminAPI = `${local}/admins`;
+export const UpdateAdminAPI = `${local}/admins/`;
+export const ShowAdminAPI = `${local}/admins/`;
+export const DeleteAdminAPI = `${local}/admins/`;
+
 export const GetCustomersAPI = `${local}/users?type=0&size=`;
 export const GetWorkShopsAPI = `${local}/users?type=1&size=`;
 export const GetTowingsAPI = `${local}/users?type=2&size=`;

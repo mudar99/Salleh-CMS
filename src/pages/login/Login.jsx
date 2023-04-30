@@ -1,10 +1,10 @@
 import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
 import { Toast } from "primereact/toast";
-import React, { useEffect, useReducer, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { adminLogin } from "../../redux/API/authSlice";
-import { showError, showInfo, showSuccess } from "../../ToastService";
+import { showError, showSuccess } from "../../ToastService";
 import "./login.scss";
 import NavBar from "./NavBar";
 import { Checkbox } from "primereact/checkbox";
@@ -13,7 +13,7 @@ const Login = () => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { loading } = useSelector((state) => state.admin);
+  const { loading } = useSelector((state) => state.auth);
   const toast = useRef(null);
   const cookie = new Cookies();
   const [checked, setChecked] = useState(false);
@@ -29,18 +29,17 @@ const Login = () => {
     let user = new FormData();
     user.append("email", email);
     user.append("password", password);
-    dispatch(adminLogin(user))
-      .then((res) => {
-        if (res.payload.status === true) {
-          showSuccess(res.payload.message, toast);
-          return;
-        }
-        if (typeof res.payload === "object") {
-          showError(res.payload.message, toast);
-        } else if (typeof res.payload === "string") {
-          showError(res.payload, toast);
-        }
-      })
+    dispatch(adminLogin(user)).then((res) => {
+      if (res.payload.status === true) {
+        showSuccess(res.payload.message, toast);
+        return;
+      }
+      if (typeof res.payload === "object") {
+        showError(res.payload.message, toast);
+      } else if (typeof res.payload === "string") {
+        showError(res.payload, toast);
+      }
+    });
   };
   return (
     <div className="login">

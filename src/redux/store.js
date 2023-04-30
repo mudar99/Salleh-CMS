@@ -9,11 +9,13 @@ import storehouseVerifications from './API/verify/storehouse/storehouseVerificat
 import usersSlice from './API/users/usersSlice';
 import categorySlice from './API/categorySlice';
 import ordersSlice from './API/ordersSlice';
+import rolesSlice from './API/roles&permissions/rolesSlice';
+import adminSlice from './API/adminSlice';
 const store = configureStore({
     reducer: {
         DarkMode: themeSlice,
         VisitStatus: visitSlice,
-        admin: authSlice,
+        auth: authSlice,
         VisibleExplore: visibleExplore,
         WorkshopVerifications: workshopVerifications,
         TowingVerifications: towingVerifications,
@@ -21,6 +23,8 @@ const store = configureStore({
         users: usersSlice,
         category: categorySlice,
         orders: ordersSlice,
+        roles: rolesSlice,
+        admins: adminSlice,
     }
 });
 export default store

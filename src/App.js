@@ -18,6 +18,7 @@ import TowingVer from './pages/verfications/Towing/TowingVer';
 import Categories from './pages/categories/Categories';
 import Orders from './pages/oreders-management/Orders';
 import NotFound from './pages/components/notfound/NotFound';
+import Roles from './pages/roles/Roles';
 
 
 function App() {
@@ -52,6 +53,11 @@ function App() {
             <Route path='warehouses' >
               <Route index element={<Warehouses />} />
               <Route path=':userId' element={<Single />} />
+            </Route>
+
+
+            <Route path='roles' >
+              <Route index element={<Roles />} />
             </Route>
 
 
