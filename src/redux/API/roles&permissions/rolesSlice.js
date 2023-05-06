@@ -1,16 +1,24 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import Cookies from "universal-cookie";
-import { AddRoleAPI, DeleteRoleAPI, GetRolesAPI, ShowRoleAPI, UpdateRoleAPI } from "../../../API";
+import { AddRoleAPI, AssignToRoleAPI, DeleteRoleAPI, GetPermissionsAPI, GetRolesAPI, ShowRoleAPI, UpdateRoleAPI } from "../../../API";
 
 const cookie = new Cookies();
 const token = cookie.get("jwt_authorization");
 
+export const GetPaginateRoles = createAsyncThunk("admin/roles/paginate", async (info) => {
+    axios.defaults.headers = {
+        Authorization: `Bearer ${token}`,
+    }
+    let { data } = await axios.get(GetRolesAPI + info.size + "&page=" + info.page + "&isPaginate=" + info.isPaginate);
+    console.log(data)
+    return data;
+});
 export const GetRoles = createAsyncThunk("admin/roles", async (info) => {
     axios.defaults.headers = {
         Authorization: `Bearer ${token}`,
     }
-    let { data } = await axios.get(GetRolesAPI + info.size + "&page=" + info.page);
+    let { data } = await axios.get(GetRolesAPI + info.size + "&page=" + info.page + "&isPaginate=" + info.isPaginate);
     console.log(data)
     return data;
 });
@@ -46,6 +54,26 @@ export const ShowRole = createAsyncThunk("admin/roles/show", async (id) => {
     console.log(data)
     return data;
 });
+export const GetPermissions = createAsyncThunk("admin/permissions/get", async (id) => {
+    axios.defaults.headers = {
+        Authorization: `Bearer ${token}`,
+    }
+    let { data } = await axios.post(GetPermissionsAPI);
+    console.log(data)
+    return data;
+});
+export const AssignPermissionsToRole = createAsyncThunk("admin/permissions/assign", async (obj) => {
+    axios.defaults.headers = {
+        Authorization: `Bearer ${token}`,
+    }
+    console.log(obj)
+    // for (const pair of info.entries()) {
+    //     console.log(`${pair[0]}, ${pair[1]}`);
+    // }
+    let { data } = await axios.post(AssignToRoleAPI + obj.id, obj.info);
+    console.log(data)
+    return data;
+});
 export const DeleteRole = createAsyncThunk("admin/roles/delete", async (id, { rejectWithValue }) => {
     axios.defaults.headers = {
         Authorization: `Bearer ${token}`,
@@ -64,7 +92,8 @@ export const rolesSlice = createSlice({
         loading: null,
         data: [],
         show: [],
-        message: "",
+        showLoading: null,
+        permissions: [],
         totalItems: "",
         btnLoading: null,
     },
@@ -73,10 +102,21 @@ export const rolesSlice = createSlice({
         builder.addCase(GetRoles.pending, (state) => {
             state.loading = true;
         }).addCase(GetRoles.fulfilled, (state, { payload }) => {
+            console.log(payload)
+            state.data = payload.data;
+            state.loading = false;
+        }).addCase(GetRoles.rejected, (state, { payload }) => {
+            state.loading = false;
+        })
+
+        builder.addCase(GetPaginateRoles.pending, (state) => {
+            state.loading = true;
+        }).addCase(GetPaginateRoles.fulfilled, (state, { payload }) => {
+            console.log(payload)
             state.data = payload.data.data;
             state.totalItems = payload.data.total
             state.loading = false;
-        }).addCase(GetRoles.rejected, (state, { payload }) => {
+        }).addCase(GetPaginateRoles.rejected, (state, { payload }) => {
             state.loading = false;
         })
 
@@ -99,12 +139,31 @@ export const rolesSlice = createSlice({
         })
 
         builder.addCase(ShowRole.pending, (state) => {
-            state.btnLoading = true;
+            state.showLoading = true;
         }).addCase(ShowRole.fulfilled, (state, { payload }) => {
             console.log(payload)
             state.show = payload.data;
-            state.btnLoading = false;
+            state.showLoading = false;
         }).addCase(ShowRole.rejected, (state, { payload }) => {
+            state.showLoading = false;
+        })
+
+        builder.addCase(GetPermissions.pending, (state) => {
+            state.btnLoading = true;
+        }).addCase(GetPermissions.fulfilled, (state, { payload }) => {
+            console.log(payload)
+            state.permissions = payload.data;
+            state.btnLoading = false;
+        }).addCase(GetPermissions.rejected, (state, { payload }) => {
+            state.btnLoading = false;
+        })
+
+        builder.addCase(AssignPermissionsToRole.pending, (state) => {
+            state.btnLoading = true;
+        }).addCase(AssignPermissionsToRole.fulfilled, (state, { payload }) => {
+            console.log(payload)
+            state.btnLoading = false;
+        }).addCase(AssignPermissionsToRole.rejected, (state, { payload }) => {
             state.btnLoading = false;
         })
     }

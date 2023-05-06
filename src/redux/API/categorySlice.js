@@ -1,16 +1,32 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import Cookies from "universal-cookie";
-import { CreateGategoryAPI, DeleteGategoryAPI, GetGategoriesAPI, UpdateGategoryAPI } from "../../API";
+import { CreateGategoryAPI, DeleteGategoryAPI, GetCategoriesAPI, UpdateGategoryAPI } from "../../API";
 
 const cookie = new Cookies();
 const token = cookie.get("jwt_authorization");
 
-export const getCategories = createAsyncThunk("admin/gategories/get", async () => {
+// export const getCategories = createAsyncThunk("admin/gategories/get", async () => {
+//     axios.defaults.headers = {
+//         Authorization: `Bearer ${token}`,
+//     }
+//     let { data } = await axios.get(GetGategoriesAPI);
+//     console.log(data)
+//     return data;
+// });
+export const GetCategories = createAsyncThunk("storehouse/categories/get", async (info) => {
     axios.defaults.headers = {
         Authorization: `Bearer ${token}`,
     }
-    let { data } = await axios.get(GetGategoriesAPI);
+    let api;
+    if (info.id === undefined && info.load === undefined) {
+        api = `${GetCategoriesAPI}?size=${info.size}&page=${info.page}&capacity=${info.capacity}`;
+    }
+    else {
+        api = `${GetCategoriesAPI + info.id}/${info.load}?size=${info.size}&page=${info.page}&capacity=${info.capacity}`;
+        console.log(api)
+    }
+    let { data } = await axios.get(api);
     console.log(data)
     return data;
 });
@@ -56,16 +72,19 @@ export const categorySlice = createSlice({
     initialState: {
         loading: null,
         data: [],
+        totalItems: "",
         btnLoading: null,
     },
     reducers: {},
     extraReducers: (builder) => {
-        builder.addCase(getCategories.pending, (state) => {
+        builder.addCase(GetCategories.pending, (state) => {
             state.loading = true;
-        }).addCase(getCategories.fulfilled, (state, { payload }) => {
-            state.data = payload.data;
+        }).addCase(GetCategories.fulfilled, (state, { payload }) => {
+            console.log(payload)
+            state.data = payload.data.data;
+            state.totalItems = payload.data.total
             state.loading = false;
-        }).addCase(getCategories.rejected, (state, { payload }) => {
+        }).addCase(GetCategories.rejected, (state, { payload }) => {
             state.loading = false;
         })
 

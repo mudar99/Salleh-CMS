@@ -48,7 +48,7 @@
 }
 
 .login .loginContainer form .card {
-  margin-top: 40px;
+  margin-top: 38px;
 }
 
 .login .loginContainer form .card input {
@@ -83,6 +83,40 @@
 .login .loginContainer form .submit .p-button-raised:focus {
   -webkit-box-shadow: 0 7px 30px -10px rgba(150, 170, 180, 0.5);
           box-shadow: 0 7px 30px -10px rgba(150, 170, 180, 0.5);
+}
+
+.login .loginContainer form .remember {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 15px;
+  margin-right: 10px;
+}
+
+.login .loginContainer form .remember label {
+  margin-right: 10px;
+  color: #4a8bdf;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.login .loginContainer form .remember .p-checkbox {
+  height: 30px;
+}
+
+.login .loginContainer form .remember .p-checkbox .p-checkbox-box.p-highlight {
+  background: #4a8bdf;
+  border-color: #4a8bdf;
+}
+
+.login .loginContainer form .remember .p-checkbox:not(.p-checkbox-disabled) .p-checkbox-box:hover,
+.login .loginContainer form .remember .p-checkbox:not(.p-checkbox-disabled) .p-checkbox-box.p-focus {
+  border-color: #4a8bdf;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 .login .loginContainer .p-float-label > label {

@@ -3,6 +3,7 @@ import List from "../list/List";
 import { Dialog } from "primereact/dialog";
 import AddCategory from "./AddCategory";
 import UpdateCategory from "./UpdateCategory";
+import "./categories.scss";
 
 const Categories = () => {
   const [updateVisible, setUpdateVisible] = useState(false);
@@ -41,6 +42,7 @@ const Categories = () => {
         onHide={() => setUpdateVisible(false)}
         resizable
         appendTo={"self"}
+        header={'تعديل الصنف'}
       >
         <UpdateCategory data={data} visibleState={(e) => setUpdateVisible(e)} />
       </Dialog>

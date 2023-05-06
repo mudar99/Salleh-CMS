@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
 import { useDispatch, useSelector } from "react-redux";
-import { CreateCategory, getCategories } from "../../redux/API/categorySlice";
+import { CreateCategory, GetCategories } from "../../redux/API/categorySlice";
 import { Toast } from "primereact/toast";
 import { showError, showSuccess } from "../../ToastService";
 
@@ -21,7 +21,7 @@ const AddCategory = (props) => {
         showSuccess(res.payload.message, toast);
         setTimeout(() => {
           props.visibleState(false);
-          dispatch(getCategories());
+          dispatch(GetCategories());
         }, 1000);
         return;
       }

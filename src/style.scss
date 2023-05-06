@@ -34,6 +34,8 @@ body {
 }
 
 .p-dialog {
+  min-width: max-content;
+  min-height: max-content;
   input {
     height: 40px;
     font-size: 18px;

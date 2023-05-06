@@ -8,11 +8,11 @@ import CustomersDataTable from "../customers/CustomersDataTable";
 import WorkshopsDataTable from "../workshops/WorkshopsDataTable";
 import TowingDataTable from "../towing cars/TowingDataTable";
 import WarehousesDataTable from "../warehouses/WarehousesDataTable";
-import CategoriesDataTable from "../categories/CategoriesDataTable";
 import TowingVD from "../verfications/Towing/TowingVD";
 import WarehouseVD from "../verfications/Warehouse/WarehouseVD";
 import OrdersDataTable from "../oreders-management/OrdersDataTable";
 import RolesDataTable from "../roles/RolesDataTable";
+import CategoriesTreeTable from "../categories/CategoriesTreeTable";
 const List = (props) => {
   const visibleCallBack = (e, rowData) => {
     // switch (e) {
@@ -65,7 +65,7 @@ const List = (props) => {
         return <OrdersDataTable />;
       case "CategoriesDataTable":
         return (
-          <CategoriesDataTable
+          <CategoriesTreeTable
             createState={visibleCallBack}
             updateState={visibleCallBack}
           />

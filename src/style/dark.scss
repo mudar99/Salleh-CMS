@@ -2,6 +2,7 @@
 .app.dark {
   background-color: #212529;
   color: rgb(156, 156, 156);
+
   .login {
     .navBar {
       background: $dark-secondary;
@@ -48,6 +49,40 @@
             }
           }
         }
+      }
+    }
+  }
+
+  .categories {
+    .treetable { 
+      .p-treetable-header {
+        background: $dark-secondary;
+      }
+      .p-treetable {
+        .parent {
+          background-color: #212529;
+          color: $dark-font-color;
+        }
+        span.p-column-title {
+          color: $primary-color;
+        }
+        .p-treetable-thead > tr > th {
+          background-color: $dark-secondary;
+          text-align: center;
+        }
+        .p-treetable-tbody > tr > td:not(.parent) {
+          background-color: $dark-secondary;
+          color: $dark-font-color;
+          text-align: right;
+        }
+
+        .p-treetable-tbody > tr.p-highlight,
+        .p-treetable-tbody > tr.p-highlight .p-treetable-toggler {
+          color: $dark-font-color;
+        }
+      }
+      .p-paginator {
+        background-color: $dark-secondary;
       }
     }
   }
@@ -262,6 +297,23 @@
     }
   }
 
+  .roles {
+    .multiselect-container {
+      .chip {
+        background-color: $dark-box-shadow;
+        color: $dark-font-color;
+      }
+      .option,
+      .notFound {
+        color: $dark-font-color;
+        background-color: $dark-secondary;
+        &:hover {
+          color: $header-color; 
+        }
+      }
+    }
+  }
+
   .p-dialog {
     .p-dialog-header {
       background-color: $dark-secondary;
@@ -278,6 +330,26 @@
       }
       &:focus {
         box-shadow: 0 7px 30px -10px rgba(150, 170, 180, 0.5);
+      }
+    }
+    .p-dropdown {
+      background-color: $dark-secondary;
+      .p-dropdown-label {
+        color: $dark-font-color;
+      }
+      .p-dropdown-items-wrapper {
+        background-color: $dark-secondary;
+        .p-dropdown-items {
+          .p-dropdown-item {
+            &.p-highlight {
+              background: $dark-box-shadow;
+            }
+            color: $dark-font-color;
+            &:hover {
+              background-color: $hover-color;
+            }
+          }
+        }
       }
     }
   }

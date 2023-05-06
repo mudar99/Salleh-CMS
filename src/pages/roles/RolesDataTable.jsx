@@ -6,7 +6,10 @@ import { Button } from "primereact/button";
 import { Paginator } from "primereact/paginator";
 import { useDispatch, useSelector } from "react-redux";
 import LoadingFS from "../components/loading/LoadingFS";
-import { DeleteRole, GetRoles } from "../../redux/API/roles&permissions/rolesSlice";
+import {
+  DeleteRole,
+  GetPaginateRoles,
+} from "../../redux/API/roles&permissions/rolesSlice";
 import { confirmPopup } from "primereact/confirmpopup";
 import { showInfo, showSuccess } from "../../ToastService";
 import { Toast } from "primereact/toast";
@@ -15,21 +18,20 @@ const RolesDataTable = (props) => {
   const dispatch = useDispatch();
   const { loading, data, totalItems } = useSelector((state) => state.roles);
   const toast = useRef(null);
-
   const [basicFirst, setBasicFirst] = useState(1);
   const [basicRows, setBasicRows] = useState(5);
 
   useEffect(() => {
-    let info = { size: basicRows, page: currentPage };
-    dispatch(GetRoles(info));
+    let info = { size: basicRows, page: currentPage, isPaginate: 1 };
+    dispatch(GetPaginateRoles(info));
   }, []);
   const onBasicPageChange = (event) => {
     let currentPage = event.page + 1;
     setCurrentPage(currentPage);
     setBasicFirst(event.first);
     setBasicRows(event.rows);
-    let info = { size: basicRows, page: currentPage };
-    dispatch(GetRoles(info));
+    let info = { size: basicRows, page: currentPage, isPaginate: 1 };
+    dispatch(GetPaginateRoles(info));
   };
   const headers = [
     "المعرف",

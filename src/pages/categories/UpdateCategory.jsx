@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Toast } from "primereact/toast";
 import { showError, showSuccess } from "../../ToastService";
 import {
-  getCategories,
+  GetCategories,
   UpdateCategory as updateApi,
 } from "../../redux/API/categorySlice";
 
@@ -13,12 +13,14 @@ const UpdateCategory = (props) => {
   const dispatch = useDispatch();
   const { btnLoading } = useSelector((state) => state.category);
 
-  const [catName, setCatName] = useState(props.data.name);
-  const [catDescription, setCatDescription] = useState(props.data.description);
+  const [catName, setCatName] = useState(props.data.data.name);
+  const [catDescription, setCatDescription] = useState(
+    props.data.data.description
+  );
   const [parentID, setParentID] = useState(props.data.category_id);
   const toast = useRef(null);
 
-  //   console.log(props.data);
+  console.log(props.data);
   const UpdateCategoryHandler = (e) => {
     e.preventDefault();
     console.log("first");
@@ -28,14 +30,14 @@ const UpdateCategory = (props) => {
     obj.append("name", catName);
     obj.append("description", catDescription);
     if (parentID) obj.append("category_id", parentID);
-    let data = { id: props.data.id, obj };
+    let data = { id: props.data.key, obj };
     dispatch(updateApi(data)).then((res) => {
       console.log(res);
       if (res.payload.status === true) {
         showSuccess(res.payload.message, toast);
         setTimeout(() => {
           props.visibleState(false);
-          dispatch(getCategories());
+          dispatch(GetCategories());
         }, 1000);
         return;
       }
@@ -49,7 +51,7 @@ const UpdateCategory = (props) => {
         <div className="container mt-3">
           <h6 className="mt-2 text-right">اسم الصنف</h6>
           <InputText
-            defaultValue={props.data.name}
+            defaultValue={props.data.data.name}
             placeholder="Category name"
             style={{ width: "100%" }}
             onChange={(e) => {
@@ -58,9 +60,9 @@ const UpdateCategory = (props) => {
           />
         </div>
         <div className="container mt-3">
-          <h6 className="mt-2 text-right">وصف الصنف</h6>{" "}
+          <h6 className="mt-2 text-right">وصف الصنف</h6>
           <InputText
-            defaultValue={props.data.description}
+            defaultValue={props.data.data.description}
             placeholder="Description"
             style={{ width: "100%" }}
             onChange={(e) => {
@@ -72,7 +74,7 @@ const UpdateCategory = (props) => {
           <h6 className="mt-2 text-right">معرف الصنف الأب</h6>
           <InputText
             defaultValue={
-              props.data.category_id !== null && props.data.category_id
+              props.data.data.category_id !== null && props.data.data.category_id
             }
             placeholder="Parent ID"
             style={{ width: "100%" }}

@@ -9,6 +9,7 @@ export const UpdateRoleAPI = `${local}/roles/`;
 export const ShowRoleAPI = `${local}/roles/`;
 export const DeleteRoleAPI = `${local}/roles/`;
 export const AssignToRoleAPI = `${local}/roles/permissions/assignment/`;
+export const GetPermissionsAPI = `${local}/permissions/except`
 
 export const GetAdminsAPI = `${local}/admins?size=`;
 export const AddAdminAPI = `${local}/admins`;
@@ -21,7 +22,7 @@ export const GetWorkShopsAPI = `${local}/users?type=1&size=`;
 export const GetTowingsAPI = `${local}/users?type=2&size=`;
 export const GetStorehousesAPI = `${local}/users?type=3&size=`;
 
-export const GetGategoriesAPI = `${local}/category/get`;
+export const GetCategoriesAPI = `${local}/category/get/`;
 export const CreateGategoryAPI = `${local}/category/create`;
 export const UpdateGategoryAPI = `${local}/category/`;
 export const DeleteGategoryAPI = `${local}/category/`;
