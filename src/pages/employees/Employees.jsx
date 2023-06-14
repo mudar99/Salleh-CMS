@@ -11,20 +11,23 @@ const Employees = () => {
   const [updateVisible, setUpdateVisible] = useState(false);
   const [createVisible, setCreateVisible] = useState(false);
   const [showVisible, setShowVisible] = useState(false);
+  const [basicRows, setBasicRows] = useState();
   const [data, setData] = useState("");
   const dispatch = useDispatch();
-  const callback = (e, rowData) => {
-    console.log(rowData);
+  const callback = (e, rowData, basicRows) => {
     setData(rowData);
     switch (e) {
       case "U":
         setUpdateVisible(true);
+        setBasicRows(basicRows);
         break;
       case "C":
         setCreateVisible(true);
+        setBasicRows(basicRows);
         break;
       case "S":
         setShowVisible(true);
+        setBasicRows(basicRows);
         break;
       default:
         break;
@@ -41,7 +44,10 @@ const Employees = () => {
         resizable
         appendTo={"self"}
       >
-        <AddEmployee />
+        <AddEmployee
+          basicRows={basicRows}
+          visibleState={(e) => setCreateVisible(e)}
+        />
       </Dialog>
 
       <Dialog
@@ -52,7 +58,11 @@ const Employees = () => {
         resizable
         appendTo={"self"}
       >
-        <UpdateEmployee data={data} visibleState={(e) => setUpdateVisible(e)} />
+        <UpdateEmployee
+          basicRows={basicRows}
+          data={data}
+          visibleState={(e) => setUpdateVisible(e)}
+        />
       </Dialog>
 
       <Dialog

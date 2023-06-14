@@ -1,10 +1,11 @@
 import React, { useRef, useState } from "react";
 import { Button } from "primereact/button";
-import { InputText } from "primereact/inputtext";
 import { useDispatch, useSelector } from "react-redux";
 import { CreateCategory, GetCategories } from "../../redux/API/categorySlice";
 import { Toast } from "primereact/toast";
 import { showError, showSuccess } from "../../ToastService";
+import LanguageInput from "../../utils/LanguageInput";
+import { FileUpload } from "primereact/fileupload";
 
 const AddCategory = (props) => {
   const dispatch = useDispatch();
@@ -14,15 +15,12 @@ const AddCategory = (props) => {
     let obj = new FormData();
     obj.append("name", catName);
     obj.append("description", catDescription);
+    obj.append("category_photo", catPhoto);
     if (parentID) obj.append("category_id", parentID);
     dispatch(CreateCategory(obj)).then((res) => {
       console.log(res);
       if (res.payload.status === true) {
         showSuccess(res.payload.message, toast);
-        setTimeout(() => {
-          props.visibleState(false);
-          dispatch(GetCategories());
-        }, 1000);
         return;
       }
       showError(res.payload, toast);
@@ -31,6 +29,8 @@ const AddCategory = (props) => {
   const [catName, setCatName] = useState();
   const [catDescription, setCatDescription] = useState();
   const [parentID, setParentID] = useState();
+  const [catPhoto, setCatPhoto] = useState();
+
   const toast = useRef(null);
   return (
     <form className="container" onSubmit={AddCategoryHandler}>
@@ -38,33 +38,43 @@ const AddCategory = (props) => {
       <div className="form-group wrapper">
         <div className="container mt-3">
           <h6 className="mt-2 text-right">اسم الصنف</h6>
-          <InputText
+          <LanguageInput
             placeholder="Category name"
-            style={{ width: "100%" }}
+            type="text"
             onChange={(e) => {
-              setCatName(e.target.value);
+              setCatName(e);
             }}
           />
         </div>
         <div className="container mt-3">
           <h6 className="mt-2 text-right">وصف الصنف</h6>
-          <InputText
+          <LanguageInput
             placeholder="Description"
-            style={{ width: "100%" }}
+            type="text"
             onChange={(e) => {
-              setCatDescription(e.target.value);
+              setCatDescription(e);
             }}
           />
         </div>
         <div className="container mt-3">
           <h6 className="mt-2 text-right">معرف الصنف الأب</h6>
-          <InputText
+          <LanguageInput
             placeholder="Parent ID"
-            style={{ width: "100%" }}
             type="number"
             onChange={(e) => {
-              setParentID(e.target.value);
+              setParentID(e);
             }}
+          />
+        </div>
+        <div className="container mt-3">
+          <h6 className="mt-2 text-right">صورة الصنف</h6>
+          <FileUpload
+            mode="advanced"
+            chooseLabel="اختر صورة"
+            cancelLabel="إلغاء"
+            accept="image/*"
+            maxFileSize={1000000}
+            onSelect={(event) => setCatPhoto(event.files[0])}
           />
         </div>
       </div>

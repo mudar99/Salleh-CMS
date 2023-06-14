@@ -1,16 +1,16 @@
 import React, { useRef, useState } from "react";
 import { Toast } from "primereact/toast";
 import { Button } from "primereact/button";
-import { InputText } from "primereact/inputtext";
-import { CreateAdmin } from "../../redux/API/adminSlice";
+import { CreateAdmin, GetAdmins } from "../../redux/API/adminSlice";
 import { showError, showSuccess } from "../../ToastService";
 import { useDispatch, useSelector } from "react-redux";
 import { Dropdown } from "primereact/dropdown";
 import { GetRoles } from "../../redux/API/roles&permissions/rolesSlice";
+import LanguageInput from "../../utils/LanguageInput";
 
 const AddEmployee = (props) => {
   const dispatch = useDispatch();
-  const { btnLoading } = useSelector((state) => state.admins);
+  const { btnLoading, currentPage } = useSelector((state) => state.admins);
   const { data } = useSelector((state) => state.roles);
   const [adminName, setAdminName] = useState();
   const [adminEmail, setAdminEmail] = useState();
@@ -26,11 +26,16 @@ const AddEmployee = (props) => {
     obj.append("phone_number", adminPhone);
     obj.append("password", adminPassword);
     obj.append("role_id", selectedRole.id);
+    let info = { size: props.basicRows, page: currentPage, isPaginate: 1 };
 
     dispatch(CreateAdmin(obj)).then((res) => {
       console.log(res);
       if (res.payload.status === true) {
         showSuccess(res.payload.message, toast);
+        setTimeout(() => {
+          props.visibleState(false);
+          dispatch(GetAdmins(info));
+        }, 1000);
         return;
       }
       showError(res.payload, toast);
@@ -58,53 +63,59 @@ const AddEmployee = (props) => {
         </div>
         <div className="container mt-3">
           <h6 className="mt-2 text-right">اسم المستخدم</h6>
-          <InputText
+          <LanguageInput
             required
             placeholder="User name"
-            style={{ width: "100%" }}
+            type="text"
             onChange={(e) => {
-              setAdminName(e.target.value);
+              setAdminName(e);
             }}
           />
         </div>
         <div className="container mt-3">
           <h6 className="mt-2 text-right">البريد الالكتروني</h6>
-          <InputText
+          <LanguageInput
             required
             placeholder="name@example.com"
-            style={{ width: "100%" }}
+            type="email"
             onChange={(e) => {
-              setAdminEmail(e.target.value);
+              setAdminEmail(e);
             }}
           />
         </div>
         <div className="container mt-3">
           <h6 className="mt-2 text-right">رقم الجوال</h6>
-          <InputText
+          <LanguageInput
             required
             placeholder="Phone Number"
-            style={{ width: "100%" }}
+            type="text"
             onChange={(e) => {
-              setAdminPhone(e.target.value);
+              setAdminPhone(e);
             }}
           />
         </div>
         <div className="container mt-3">
           <h6 className="mt-2 text-right">كلمة المرور</h6>
-          <InputText
+          <LanguageInput
             required
             placeholder="Password"
-            style={{ width: "100%" }}
-            onChange={(e) => {
-              setAdminPassword(e.target.value);
-            }}
             type="password"
+            onChange={(e) => {
+              setAdminPassword(e);
+            }}
           />
         </div>
       </div>
       <span className="actions">
-        <Button label="إضافة" icon="pi pi-check" raised loading={btnLoading} />
         <Button
+          label="إضافة"
+          type="submit"
+          icon="pi pi-check"
+          raised
+          loading={btnLoading}
+        />
+        <Button
+          type="button"
           label="إلغاء"
           icon="pi pi-times"
           severity="danger"

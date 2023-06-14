@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { toggle } from "../../../redux/themeSlice";
 
 import { InputText } from "primereact/inputtext";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -21,26 +22,28 @@ const Navbar = () => {
           <div className="item">
             <i className="pi pi-list"></i>
           </div>
+          <Link to="/notifications">
+            <div className="item">
+              <i className="bi bi-bell-fill"></i>
+              <div className="counter">2</div>
+            </div>
+          </Link>
           <div className="item">
-            <i className="far fa-bell"></i>
-            <div className="counter">2</div>
-          </div>
-          <div className="item">
-            <i className="far fa-paper-plane"></i>
+            <i className="bi bi-envelope-fill"></i>
             <div className="counter">1</div>
           </div>
           <div className="item">
             <i
-              className="pi pi-moon"
+              className="bi bi-moon-fill"
               style={{ cursor: "pointer" }}
               onClick={() => dispatch(toggle())}
             ></i>
           </div>
           <div className="item">
-            <i className="pi pi-folder"></i>
+            <i className="bi bi-folder-fill"></i>
           </div>
           <div className="item">
-            <i className="pi pi-globe m-1"></i>
+            <i className="bi bi-globe"></i>
           </div>
         </div>
 

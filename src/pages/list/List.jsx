@@ -13,8 +13,12 @@ import WarehouseVD from "../verfications/Warehouse/WarehouseVD";
 import OrdersDataTable from "../oreders-management/OrdersDataTable";
 import RolesDataTable from "../roles/RolesDataTable";
 import CategoriesTreeTable from "../categories/CategoriesTreeTable";
+import ClientsExplore from "../maps/ClientsExplore";
+import ComplaintsDataTable from "../complaints/ComplaintsDataTable";
+import SuggestionsDataTable from "../suggestions/SuggestionsDataTable";
+import NotificationPage from "../notifications/NotificationPage";
 const List = (props) => {
-  const visibleCallBack = (e, rowData) => {
+  const visibleCallBack = (e, rowData, basicRows) => {
     // switch (e) {
     //   case "U":
     //     props.updateState(e);
@@ -26,13 +30,17 @@ const List = (props) => {
     //   default:
     //     break;
     // }
-    props.visibleState(e, rowData);
+    console.log("------------------");
+    console.log(e, rowData, basicRows);
+    props.visibleState(e, rowData, basicRows);
   };
   const switchComponent = () => {
     // console.log(props.component);
     switch (props.component) {
       case "WorkshopVD":
         return <WorkshopVD />;
+      case "ClientsMap":
+        return <ClientsExplore />;
       case "TowingVD":
         return <TowingVD />;
       case "WarehouseVD":
@@ -70,6 +78,14 @@ const List = (props) => {
             updateState={visibleCallBack}
           />
         );
+      case "ComplaintsDataTable":
+        return <ComplaintsDataTable />;
+
+      case "SuggestionsDataTable":
+        return <SuggestionsDataTable />;
+
+      case "NotificationPage":
+        return <NotificationPage />;
       default:
         return;
     }

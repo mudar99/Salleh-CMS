@@ -1,0 +1,51 @@
+@import "../../style/vars";
+
+.notifications {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  .notification-page {
+    width: 50vw;
+    padding: 20px;
+    box-shadow: 2px 4px 10px 1px $dark-font-color;
+    background-color: $nav-color;
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: $header-color;
+      font-weight: bold;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+
+      label {
+        margin-bottom: 10px;
+        font-weight: bold;
+      }
+
+      .p-inputtext {
+        width: 100%;
+        margin-bottom: 20px;
+      }
+
+      .p-inputtextarea {
+        width: 100%;
+        margin-bottom: 20px;
+      }
+
+      .p-dropdown {
+        width: 100%;
+        margin-bottom: 20px;
+      }
+
+      .p-button {
+        width: 100px;
+      }
+    }
+  }
+}

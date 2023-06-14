@@ -58,11 +58,16 @@ const RolesDataTable = (props) => {
               acceptClassName: "p-button-danger",
               rejectClassName: "p-button-text",
               accept: () => {
+                let info = {
+                  size: basicRows,
+                  page: currentPage,
+                  isPaginate: 1,
+                };
                 dispatch(DeleteRole(rowData.id)).then((res) => {
                   console.log(res);
                   if (res.payload.status === true) {
                     showSuccess(res.payload.message, toast);
-                    // dispatch(getCategories());
+                    dispatch(GetPaginateRoles(info));
                     return;
                   }
                 });
@@ -78,13 +83,13 @@ const RolesDataTable = (props) => {
           icon="pi pi-pencil"
           className="p-button-rounded p-button-text p-button-primary"
           aria-label="Submit"
-          onClick={() => props.updateState("U", rowData)}
+          onClick={() => props.updateState("U", rowData, basicRows)}
         />
         <Button
           icon="pi pi-eye"
           className="p-button-rounded p-button-text p-button-success"
           aria-label="Submit"
-          onClick={() => props.showState("S", rowData)}
+          onClick={() => props.showState("S", rowData, basicRows)}
         />
       </>
     );
@@ -94,7 +99,7 @@ const RolesDataTable = (props) => {
       <span className="title">أدوار</span>
       <Button
         icon="pi pi-plus"
-        onClick={() => props.createState("C")}
+        onClick={() => props.createState("C", undefined, basicRows)}
         rounded
         text
         raised

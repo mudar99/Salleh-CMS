@@ -18,19 +18,22 @@ const Roles = () => {
   const [updateVisible, setUpdateVisible] = useState(false);
   const [createVisible, setCreateVisible] = useState(false);
   const [showVisible, setShowVisible] = useState(false);
+  const [basicRows, setBasicRows] = useState();
   const [data, setData] = useState("");
-  const callback = (e, rowData) => {
-    console.log(rowData);
+  const callback = (e, rowData, basicRows) => {
     setData(rowData);
     switch (e) {
       case "U":
         setUpdateVisible(true);
+        setBasicRows(basicRows);
         break;
       case "C":
         setCreateVisible(true);
+        setBasicRows(basicRows);
         break;
       case "S":
         setShowVisible(true);
+        setBasicRows(basicRows);
         break;
       default:
         break;
@@ -47,7 +50,10 @@ const Roles = () => {
         resizable
         appendTo={"self"}
       >
-        <AddRole visibleState={(e) => setCreateVisible(e)} />
+        <AddRole
+          basicRows={basicRows}
+          visibleState={(e) => setCreateVisible(e)}
+        />
       </Dialog>
 
       <Dialog
@@ -58,7 +64,11 @@ const Roles = () => {
         resizable
         appendTo={"self"}
       >
-        <UpdateRole data={data} visibleState={(e) => setUpdateVisible(e)} />
+        <UpdateRole
+          basicRows={basicRows}
+          data={data}
+          visibleState={(e) => setUpdateVisible(e)}
+        />
       </Dialog>
 
       <Dialog
@@ -76,7 +86,13 @@ const Roles = () => {
         resizable
         appendTo={"self"}
       >
-        {!showLoading && <AssignPermissions data={data} />}
+        {!showLoading && (
+          <AssignPermissions
+            basicRows={basicRows}
+            data={data}
+            visibleState={(e) => setShowVisible(e)}
+          />
+        )}
       </Dialog>
     </div>
   );

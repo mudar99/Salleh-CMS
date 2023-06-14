@@ -65,7 +65,7 @@ const Login = () => {
                 type="email"
               />
               <label htmlFor="email">
-                <i className="fa fa-envelope"></i>
+                <i class="bi bi-envelope-at-fill"></i>
                 <p>البريد الالكتروني</p>
               </label>
             </span>
@@ -82,7 +82,7 @@ const Login = () => {
                 type="password"
               />
               <label htmlFor="password">
-                <i className="fas fa-user-lock	"></i>
+                <i class="bi bi-person-fill-lock"></i>
                 <p>كلمة المرور</p>
               </label>
             </span>

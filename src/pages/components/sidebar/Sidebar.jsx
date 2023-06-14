@@ -5,11 +5,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { dark, light } from "../../../redux/themeSlice";
 import {
   categoriesManage,
+  complaints,
   customers,
   dashboard,
   employees,
+  maps,
   requestsManage,
   roles,
+  suggestions,
   towing,
   towingV,
   verfications,
@@ -67,7 +70,7 @@ const Sidebar = () => {
             href="#mainServices"
           >
             <p className="title">رئيسي</p>
-            <li className="fas fa-caret-down"></li>
+            <li className="bi bi-caret-down-fill"></li>
           </div>
 
           <div className="collapse show" id="mainServices">
@@ -77,8 +80,18 @@ const Sidebar = () => {
               onClick={() => dispatch(dashboard())}
             >
               <li className={currentPlace === "dashboard" ? "visited" : ""}>
-                <i className="fas fa-chart-pie"></i>
+                <i className="bi bi-pie-chart-fill"></i>
                 <span>لوحة التحكم</span>
+              </li>
+            </Link>
+            <Link
+              to="/clientsmap"
+              style={{ textDecoration: "none" }}
+              onClick={() => dispatch(maps())}
+            >
+              <li className={currentPlace === "maps" ? "visited" : ""}>
+                <i className="bi bi-globe-central-south-asia"></i>
+                <span>خارطة العملاء</span>
               </li>
             </Link>
             <Link
@@ -87,7 +100,7 @@ const Sidebar = () => {
               onClick={() => dispatch(customers())}
             >
               <li className={currentPlace === "customers" ? "visited" : ""}>
-                <i className="fas fa-users"></i>
+                <i className="bi bi-people-fill"></i>
                 <span>زبائن</span>
               </li>
             </Link>
@@ -97,7 +110,7 @@ const Sidebar = () => {
               onClick={() => dispatch(workshops())}
             >
               <li className={currentPlace === "workshops" ? "visited" : ""}>
-                <i className="fas fa-home"></i>
+                <i className="bi bi-house-fill"></i>
                 <span>ورشات</span>
               </li>
             </Link>
@@ -107,7 +120,7 @@ const Sidebar = () => {
               onClick={() => dispatch(towing())}
             >
               <li className={currentPlace === "towing" ? "visited" : ""}>
-                <i className="fas fa-truck-monster"></i>
+                <i className="bi bi-truck-flatbed"></i>
                 <span>سيارات سحب</span>
               </li>
             </Link>
@@ -118,7 +131,7 @@ const Sidebar = () => {
               onClick={() => dispatch(warehouses())}
             >
               <li className={currentPlace === "warehouses" ? "visited" : ""}>
-                <i className="fas fa-warehouse"></i>
+                <i className="bi bi-building-fill"></i>
                 <span>مستودعات</span>
               </li>
             </Link>
@@ -126,7 +139,7 @@ const Sidebar = () => {
 
           <div className="header" data-bs-toggle="collapse" href="#management">
             <p className="title">إدارة</p>
-            <li className="fas fa-caret-down"></li>
+            <li className="bi bi-caret-down-fill"></li>
           </div>
 
           <div className="collapse show" id="management">
@@ -138,8 +151,8 @@ const Sidebar = () => {
               <li
                 className={currentPlace === "requestsManage" ? "visited" : ""}
               >
-                <i className="fas fa-home"></i>
-                <span>إدارة الطلبات</span>
+                <i className="bi bi-house-gear-fill"></i>
+                <span>إدارة طلبات الورشات</span>
               </li>
             </Link>
 
@@ -151,7 +164,7 @@ const Sidebar = () => {
               <li
                 className={currentPlace === "categoriesManage" ? "visited" : ""}
               >
-                <i className="fas fa-truck-pickup	"></i>
+                <i className="bi bi-tags-fill"></i>
                 <span>إدارة الأصناف</span>
               </li>
             </Link>
@@ -163,7 +176,7 @@ const Sidebar = () => {
             href="#verifications"
           >
             <p className="title">طلبات التحقق</p>
-            <li className="fas fa-caret-down"></li>
+            <li className="bi bi-caret-down-fill"></li>
           </div>
 
           <div className="collapse show" id="verifications">
@@ -173,7 +186,7 @@ const Sidebar = () => {
               onClick={() => dispatch(workshopV())}
             >
               <li className={currentPlace === "workshopV" ? "visited" : ""}>
-                <i className="fas fa-home"></i>
+                <i className="bi bi-house-check-fill"></i>
                 <span>توثيق ورشات</span>
               </li>
             </Link>
@@ -184,7 +197,7 @@ const Sidebar = () => {
               onClick={() => dispatch(towingV())}
             >
               <li className={currentPlace === "towingV" ? "visited" : ""}>
-                <i className="fas fa-truck-pickup	"></i>
+                <i className="bi bi-truck-flatbed"></i>
                 <span>توثيق سيارات سحب</span>
               </li>
             </Link>
@@ -195,7 +208,7 @@ const Sidebar = () => {
               onClick={() => dispatch(warehouseV())}
             >
               <li className={currentPlace === "warehouseV" ? "visited" : ""}>
-                <i className="fas fa-check-double	"></i>
+                <i className="bi bi-building-fill-check"></i>
                 <span>توثيق مستودعات</span>
               </li>
             </Link>
@@ -203,7 +216,7 @@ const Sidebar = () => {
 
           <div className="header" data-bs-toggle="collapse" href="#usage">
             <p className="title">استخدام</p>
-            <li className="fas fa-caret-down"></li>
+            <li className="bi bi-caret-down-fill"></li>
           </div>
 
           <div className="collapse show" id="usage">
@@ -213,7 +226,7 @@ const Sidebar = () => {
               onClick={() => dispatch(roles())}
             >
               <li className={currentPlace === "roles" ? "visited" : ""}>
-                <i className="fas fa-tasks"></i>
+                <i className="bi bi-person-lines-fill"></i>
                 <span>أدوار</span>
               </li>
             </Link>
@@ -224,7 +237,7 @@ const Sidebar = () => {
               onClick={() => dispatch(employees())}
             >
               <li className={currentPlace === "employees" ? "visited" : ""}>
-                <i className="fas fa-user-friends"></i>
+                <i className="bi bi-person-circle"></i>
                 <span>موظفون</span>
               </li>
             </Link>
@@ -232,36 +245,52 @@ const Sidebar = () => {
 
           <div className="header" data-bs-toggle="collapse" href="#services">
             <p className="title">خدمات</p>
-            <li className="fas fa-caret-down"></li>
+            <li className="bi bi-caret-down-fill"></li>
           </div>
 
           <div className="collapse show" id="services">
+            <Link
+              to="/complaints"
+              style={{ textDecoration: "none" }}
+              onClick={() => dispatch(complaints())}
+            >
+              <li className={currentPlace === "complaints" ? "visited" : ""}>
+                <i className="bi bi-exclamation-circle-fill"></i>
+                <span>شكاوى</span>
+              </li>
+            </Link>
+            <Link
+              to="/suggestions"
+              style={{ textDecoration: "none" }}
+              onClick={() => dispatch(suggestions())}
+            >
+              <li className={currentPlace === "suggestions" ? "visited" : ""}>
+                <i className="bi bi-patch-check-fill"></i>
+                <span>اقتراحات</span>
+              </li>
+            </Link>
             <li>
-              <i className="fas fa-exclamation-circle	"></i>
-              <span>شكاوى</span>
-            </li>
-            <li>
-              <i className="fas fa-history"></i>
+              <i className="bi bi-file-earmark-fill"></i>
               <span>سجلات النظام</span>
             </li>
             <li>
-              <i className="fas fa-cogs"></i>
+              <i className="bi bi-gear-fill"></i>
               <span>إعدادات</span>
             </li>
           </div>
 
           <div className="header" data-bs-toggle="collapse" href="#user">
             <p className="title">مستخدم</p>
-            <li className="fas fa-caret-down"></li>
+            <li className="bi bi-caret-down-fill"></li>
           </div>
 
           <div className="collapse show" id="user">
             <li>
-              <i className="pi pi-user"></i>
+              <i className="bi bi-person-fill"></i>
               <span>{localStorage.getItem("email")}</span>
             </li>
             <li onClick={logoutConfirmation}>
-              <i className="fa fa-sign-out-alt"></i>
+              <i className="bi bi-box-arrow-right"></i>
               <span id="log-out">تسجيل خروج</span>
             </li>
           </div>

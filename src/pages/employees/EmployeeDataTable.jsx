@@ -57,11 +57,15 @@ const EmployeeDataTable = (props) => {
               acceptClassName: "p-button-danger",
               rejectClassName: "p-button-text",
               accept: () => {
+                let info = {
+                  size: basicRows,
+                  page: currentPage,
+                };
                 dispatch(DeleteAdmin(rowData.id)).then((res) => {
                   console.log(res);
                   if (res.payload.status === true) {
                     showSuccess(res.payload.message, toast);
-                    // dispatch(getCategories());
+                    dispatch(GetAdmins(info));
                     return;
                   }
                 });
@@ -77,13 +81,13 @@ const EmployeeDataTable = (props) => {
           icon="pi pi-pencil"
           className="p-button-rounded p-button-text p-button-primary"
           aria-label="Submit"
-          onClick={() => props.updateState("U", rowData)}
+          onClick={() => props.updateState("U", rowData, basicRows)}
         />
         <Button
           icon="pi pi-eye"
           className="p-button-rounded p-button-text p-button-success"
           aria-label="Submit"
-          onClick={() => props.showState("S", rowData)}
+          onClick={() => props.showState("S", rowData, basicRows)}
         />
       </>
     );
@@ -94,7 +98,7 @@ const EmployeeDataTable = (props) => {
       <span className="title">موظّفون</span>
       <Button
         icon="pi pi-plus"
-        onClick={() => props.createState("C")}
+        onClick={() => props.createState("C", undefined, basicRows)}
         rounded
         text
         raised

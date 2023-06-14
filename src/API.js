@@ -44,3 +44,6 @@ export const towingAcceptRequest = `${local}/towing/request/`;
 
 export const GetWorkshopOrdersAPI = `${local}/workshop/orders?size=`;
 export const GetSingleWorkshopOrdersAPI = `${local}/workshop/orders/`;
+
+export const GetSuggestionsAPI = `${local}/users/suggestions?size=`;
+export const GetComplaintsAPI = `${local}/users/complaints?size=`;

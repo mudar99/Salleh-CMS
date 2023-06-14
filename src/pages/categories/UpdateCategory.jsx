@@ -1,6 +1,5 @@
 import React, { useRef, useState } from "react";
 import { Button } from "primereact/button";
-import { InputText } from "primereact/inputtext";
 import { useDispatch, useSelector } from "react-redux";
 import { Toast } from "primereact/toast";
 import { showError, showSuccess } from "../../ToastService";
@@ -8,6 +7,7 @@ import {
   GetCategories,
   UpdateCategory as updateApi,
 } from "../../redux/API/categorySlice";
+import LanguageInput from "../../utils/LanguageInput";
 
 const UpdateCategory = (props) => {
   const dispatch = useDispatch();
@@ -50,37 +50,37 @@ const UpdateCategory = (props) => {
       <div className="form-group wrapper">
         <div className="container mt-3">
           <h6 className="mt-2 text-right">اسم الصنف</h6>
-          <InputText
+          <LanguageInput
             defaultValue={props.data.data.name}
             placeholder="Category name"
-            style={{ width: "100%" }}
+            type="text"
             onChange={(e) => {
-              setCatName(e.target.value);
+              setCatName(e);
             }}
           />
         </div>
         <div className="container mt-3">
           <h6 className="mt-2 text-right">وصف الصنف</h6>
-          <InputText
+          <LanguageInput
             defaultValue={props.data.data.description}
             placeholder="Description"
-            style={{ width: "100%" }}
+            type="text"
             onChange={(e) => {
-              setCatDescription(e.target.value);
+              setCatDescription(e);
             }}
           />
         </div>
         <div className="container mt-3">
           <h6 className="mt-2 text-right">معرف الصنف الأب</h6>
-          <InputText
+          <LanguageInput
             defaultValue={
-              props.data.data.category_id !== null && props.data.data.category_id
+              props.data.data.category_id !== null &&
+              props.data.data.category_id
             }
             placeholder="Parent ID"
-            style={{ width: "100%" }}
             type="number"
             onChange={(e) => {
-              setParentID(e.target.value);
+              setParentID(e);
             }}
           />
         </div>

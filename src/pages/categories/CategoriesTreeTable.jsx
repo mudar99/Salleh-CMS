@@ -10,12 +10,13 @@ import { confirmPopup } from "primereact/confirmpopup";
 import { Toast } from "primereact/toast";
 import { TreeTable } from "primereact/treetable";
 import { Paginator } from "primereact/paginator";
+import { isArabic } from "../../utils/langType";
 
 const CategoriesTreeTable = (props) => {
   const dispatch = useDispatch();
   const [selectedNodeKey, setSelectedNodeKey] = useState(null);
   const [basicFirst, setBasicFirst] = useState(1);
-  const [basicRows, setBasicRows] = useState(2);
+  const [basicRows, setBasicRows] = useState(3);
   const [currentPage, setCurrentPage] = useState(1);
   const [capacity, setCapacity] = useState(2);
   const { data, totalItems } = useSelector((state) => state.category);
@@ -190,6 +191,19 @@ const CategoriesTreeTable = (props) => {
       );
     }
   };
+  const bodyClassName = (category_id, field) => {
+    let className = undefined;
+    if (category_id === null) {
+      className = "parent text-break ";
+    }
+    if (isArabic(field)) {
+      className = className ? className + "arabic" : "arabic";
+    } else {
+      className = className ? className + "english" : "english";
+    }
+    return className;
+  };
+
   const onSelect = (event) => {
     let id = event.node.data.id;
   };
@@ -217,7 +231,7 @@ const CategoriesTreeTable = (props) => {
         ></Column>
         <Column
           bodyClassName={(rowData) =>
-            rowData.category_id === null && "parent text-break"
+            bodyClassName(rowData.category_id, rowData.name)
           }
           field="name"
           className="text-break"
@@ -225,7 +239,7 @@ const CategoriesTreeTable = (props) => {
         ></Column>
         <Column
           bodyClassName={(rowData) =>
-            rowData.category_id === null && "parent text-break"
+            bodyClassName(rowData.category_id, rowData.created_at)
           }
           className="text-break"
           field="created_at"
@@ -233,11 +247,26 @@ const CategoriesTreeTable = (props) => {
         ></Column>
         <Column
           bodyClassName={(rowData) =>
-            rowData.category_id === null && "parent text-break"
+            bodyClassName(rowData.category_id, rowData.description)
           }
           className="text-break"
           field="description"
           header="الوصف"
+        ></Column>
+        <Column
+          bodyClassName={(rowData) =>
+            rowData.category_id === null && "image parent text-break"
+          }
+          body={(rowData) => {
+            return (
+              <div className="text-center">
+                <img
+                  src={"http://127.0.0.1:8060" + rowData.data.image_path}
+                ></img>
+              </div>
+            );
+          }}
+          header="صورة"
         ></Column>
         <Column
           bodyClassName={(rowData) =>

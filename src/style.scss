@@ -47,6 +47,15 @@ body {
     &:focus {
       box-shadow: 0 7px 30px -10px rgba(150, 170, 180, 0.5);
     }
+    direction: ltr;
+  }
+  .arabic {
+    direction: rtl;
+    text-align: right;
+  }
+  .english {
+    direction: ltr;
+    text-align: left;
   }
   .actions {
     display: flex;
@@ -55,6 +64,28 @@ body {
     margin: 10px;
     .p-button {
       direction: ltr;
+    }
+  }
+}
+.leaflet-container {
+  width: 75vw;
+  height: 40vw;
+}
+.p-paginator {
+  direction: ltr;
+}
+.p-fileupload {
+  button[aria-label="Upload"] {
+    display: none;
+  }
+  direction: ltr;
+  .p-fileupload-content {
+    width: 50vw;
+    height: 15vw;
+    img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
     }
   }
 }

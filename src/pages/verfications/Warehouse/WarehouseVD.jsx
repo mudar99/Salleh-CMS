@@ -120,14 +120,30 @@ const WarehouseVD = () => {
           value={data}
           tableStyle={{ minWidth: "50rem" }}
         >
-          <Column
-            align="center"
-            header={headers[0]}
-            field="car_number"
-          ></Column>
+          <Column align="center" header={headers[0]} field="store_id"></Column>
           <Column
             align="center"
             header={headers[1]}
+            field="store_name"
+          ></Column>
+          <Column
+            align="center"
+            header={headers[2]}
+            field="latitude"
+          ></Column>
+          <Column
+            align="center"
+            header={headers[3]}
+            field="longitude"
+          ></Column>
+          <Column
+            align="center"
+            header={headers[4]}
+            field="created_at"
+          ></Column>
+          <Column
+            align="created_at"
+            header={headers[5]}
             body={(rowData) => {
               return (
                 <div>
@@ -136,19 +152,12 @@ const WarehouseVD = () => {
               );
             }}
           ></Column>
+          <Column align="center" header={headers[6]} field="email"></Column>
           <Column
             align="center"
-            header={headers[2]}
-            field="created_at"
-          ></Column>
-          <Column
-            align="center"
-            header={headers[4]}
+            header={headers[7]}
             field="phone_number"
           ></Column>
-          <Column align="center" header={headers[5]} field="email"></Column>
-          <Column align="center" header={headers[6]} field="price"></Column>
-          <Column align="center" header={headers[7]} field="type"></Column>
           <Column
             align="center"
             header={headers[8]}

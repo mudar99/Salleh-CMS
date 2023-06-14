@@ -1,7 +1,7 @@
 @import "./vars";
 .datatable {
   // .p-datatable-loading-icon {
-  //   margin-top: 150px; 
+  //   margin-top: 150px;
   // }
   .header {
     display: flex;
@@ -37,6 +37,14 @@
     color: $primary-color;
   }
 
+  .p-datatable .p-datatable-tbody > tr > .arabic {
+    text-align: right;
+    direction: rtl;
+  }
+  .p-datatable .p-datatable-tbody > tr > .english {
+    text-align: left;
+    direction: ltr;
+  }
   .p-confirm-popup {
     .p-confirm-popup-icon {
       margin: 10px;

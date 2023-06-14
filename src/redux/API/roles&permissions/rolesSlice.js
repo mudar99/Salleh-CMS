@@ -96,6 +96,7 @@ export const rolesSlice = createSlice({
         permissions: [],
         totalItems: "",
         btnLoading: null,
+        currentPage: "",
     },
     reducers: {},
     extraReducers: (builder) => {
@@ -115,6 +116,7 @@ export const rolesSlice = createSlice({
             console.log(payload)
             state.data = payload.data.data;
             state.totalItems = payload.data.total
+            state.currentPage = payload.data.current_page
             state.loading = false;
         }).addCase(GetPaginateRoles.rejected, (state, { payload }) => {
             state.loading = false;

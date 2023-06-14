@@ -6,9 +6,10 @@ import { Dialog } from "primereact/dialog";
 import { Button } from "primereact/button";
 import { getFileRequest } from "../../../redux/API/verify/workshop/workshopVerifications";
 const WorkshopExplore = (props) => {
-  const { images, galliriaLoading } = useSelector(
-    (state) => state.TowingVerifications
+  const { images, loading } = useSelector(
+    (state) => state.WorkshopVerifications
   );
+  console.log(images)
   const [visible, setVisible] = useState(false);
   const dispatch = useDispatch();
 
@@ -29,7 +30,7 @@ const WorkshopExplore = (props) => {
   return (
     <>
       <div className="card">
-        {galliriaLoading && <LoadingFS />}
+        {loading && <LoadingFS />}
         <Dialog
           visible={visible}
           style={{ width: "50vw" }}

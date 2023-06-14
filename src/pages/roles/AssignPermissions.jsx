@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   AssignPermissionsToRole,
+  GetPaginateRoles,
   GetPermissions,
 } from "../../redux/API/roles&permissions/rolesSlice";
 import { showError, showSuccess } from "../../ToastService";
@@ -14,7 +15,7 @@ const AssignPermissions = (props) => {
   const toast = useRef(null);
 
   const multiselectRef = React.createRef();
-  const { show, btnLoading } = useSelector((state) => state.roles);
+  const { show, btnLoading, currentPage } = useSelector((state) => state.roles);
   const [permissions, setPermissions] = useState([]);
   const [selectedPermissions, setSelectedPermissions] = useState(
     show.permissions
@@ -59,10 +60,16 @@ const AssignPermissions = (props) => {
       console.log(`${pair[0]}, ${pair[1]}`);
     }
     obj = { id: props.data.id, info: formData };
+    let info = { size: props.basicRows, page: currentPage, isPaginate: 1 };
     dispatch(AssignPermissionsToRole(obj)).then((res) => {
       console.log(res);
       if (res.payload.status === true) {
         showSuccess(res.payload.message, toast);
+        setTimeout(() => {
+          props.visibleState(false);
+          dispatch(GetPaginateRoles(info));
+        }, 1000);
+
         return;
       }
       showError(res.payload, toast);
@@ -88,7 +95,11 @@ const AssignPermissions = (props) => {
                   </h6>
                 )}
                 {show.permissions.map((item) => {
-                  return <li style={{ textAlign: "left" }}>{item.name}</li>;
+                  return (
+                    <li key={item.id} style={{ textAlign: "left" }}>
+                      {item.name}
+                    </li>
+                  );
                 })}
               </ul>
             </div>

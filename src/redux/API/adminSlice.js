@@ -67,6 +67,7 @@ export const adminSlice = createSlice({
         totalItems: "",
         btnLoading: null,
         show: [],
+        currentPage: "",
     },
     reducers: {},
     extraReducers: (builder) => {
@@ -75,6 +76,7 @@ export const adminSlice = createSlice({
         }).addCase(GetAdmins.fulfilled, (state, { payload }) => {
             state.data = payload.data.data;
             state.totalItems = payload.data.total
+            state.currentPage = payload.data.current_page
             state.loading = false;
         }).addCase(GetAdmins.rejected, (state, { payload }) => {
             state.loading = false;

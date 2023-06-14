@@ -54,7 +54,7 @@
   }
 
   .categories {
-    .treetable { 
+    .treetable {
       .p-treetable-header {
         background: $dark-secondary;
       }
@@ -80,9 +80,6 @@
         .p-treetable-tbody > tr.p-highlight .p-treetable-toggler {
           color: $dark-font-color;
         }
-      }
-      .p-paginator {
-        background-color: $dark-secondary;
       }
     }
   }
@@ -205,7 +202,36 @@
       color: $dark-font-color;
     }
   }
+  .suggestions-datatable,
+  .complaints-datatable {
+    .suggestions,
+    .complaints {
+      .suggestion,
+      .complaint {
+        box-shadow: 2px 4px 10px 1px $dark-box-shadow;
+        background-color: $dark-secondary;
 
+        &:hover {
+          cursor: pointer;
+          box-shadow: 4px 6px 12px 2px $dark-box-shadow;
+        }
+
+        .title {
+          color: $header-color;
+        }
+
+        .description {
+          color: $dark-font-color;
+        }
+        .arabic {
+          text-align: right;
+        }
+        .english {
+          text-align: left;
+        }
+      }
+    }
+  }
   .datatable {
     .header,
     .p-datatable-header {
@@ -229,9 +255,6 @@
     .p-datatable-tbody > tr > td,
     .p-datatable-thead > tr > th {
       color: $dark-font-color;
-    }
-    .p-paginator {
-      background-color: $dark-secondary;
     }
 
     .p-confirm-popup {
@@ -308,7 +331,7 @@
         color: $dark-font-color;
         background-color: $dark-secondary;
         &:hover {
-          color: $header-color; 
+          color: $header-color;
         }
       }
     }
@@ -353,7 +376,23 @@
       }
     }
   }
+  .p-paginator {
+    background-color: $dark-secondary;
+  }
+  .p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
+    background: $dark-box-shadow;
+    color: $dark-font-color;
+  }
 
+  .p-fileupload {
+    .p-fileupload-buttonbar {
+      background-color: #212529;
+    }
+    .p-fileupload-content {
+      background-color: #212529;
+      color: $dark-font-color;
+    }
+  }
   input {
     background-color: transparent;
     color: $dark-secondary;

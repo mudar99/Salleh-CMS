@@ -1,23 +1,33 @@
 import React, { useRef, useState } from "react";
 import { Button } from "primereact/button";
-import { InputText } from "primereact/inputtext";
 import { useDispatch, useSelector } from "react-redux";
-import { CreateCategory, getCategories } from "../../redux/API/categorySlice";
 import { Toast } from "primereact/toast";
 import { showError, showSuccess } from "../../ToastService";
-import { CreateRole, GetRoles } from "../../redux/API/roles&permissions/rolesSlice";
+import {
+  CreateRole,
+  GetPaginateRoles,
+  GetRoles,
+} from "../../redux/API/roles&permissions/rolesSlice";
+import LanguageInput from "../../utils/LanguageInput";
 
 const AddRole = (props) => {
   const dispatch = useDispatch();
-  const { btnLoading } = useSelector((state) => state.roles);
+  const { btnLoading, currentPage } = useSelector((state) => state.roles);
+
   const AddRoleHandler = (e) => {
     e.preventDefault();
     let obj = new FormData();
     obj.append("name", roleName);
+    console.log(props.basicRows, currentPage);
+    let info = { size: props.basicRows, page: currentPage, isPaginate: 1 };
     dispatch(CreateRole(obj)).then((res) => {
       console.log(res);
       if (res.payload.status === true) {
         showSuccess(res.payload.message, toast);
+        setTimeout(() => {
+          props.visibleState(false);
+          dispatch(GetPaginateRoles(info));
+        }, 1000);
         return;
       }
       showError(res.payload, toast);
@@ -31,11 +41,12 @@ const AddRole = (props) => {
       <div className="form-group wrapper">
         <div className="container mt-3">
           <h6 className="mt-2 text-right">اسم الدور</h6>
-          <InputText
+          <LanguageInput
+            required
             placeholder="Role name"
-            style={{ width: "100%" }}
+            type="text"
             onChange={(e) => {
-              setRoleName(e.target.value);
+              setRoleName(e);
             }}
           />
         </div>

@@ -9,8 +9,8 @@ class NotFound extends Component {
         return (
             <div className="notfound">
                 {/* <Helmet title='Error 404 | Page Not Found' /> */}
-                <div class="header">
-                    <div class="notfound-404">
+                <div className="header">
+                    <div className="notfound-404">
                         <h1>Oops!</h1>
                     </div>
                     <h2 className="text-danger mt-5">404 - Page not found</h2>

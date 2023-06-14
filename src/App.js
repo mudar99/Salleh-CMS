@@ -19,6 +19,10 @@ import Categories from './pages/categories/Categories';
 import Orders from './pages/oreders-management/Orders';
 import NotFound from './pages/components/notfound/NotFound';
 import Roles from './pages/roles/Roles';
+import Maps from './pages/maps/Maps';
+import Complaints from './pages/complaints/Complaints';
+import Suggestions from './pages/suggestions/Suggestions';
+import Notification from './pages/notifications/Notification';
 
 
 function App() {
@@ -33,6 +37,11 @@ function App() {
           <Route path='/'>
             <Route index element={<Home />} />
             <Route path='login' element={<Login />} />
+
+
+            <Route path='clientsmap' >
+              <Route index element={<Maps />} />
+            </Route>
 
             <Route path='customers' >
               <Route index element={<Customers />} />
@@ -91,6 +100,18 @@ function App() {
 
             <Route path='towings-verification' >
               <Route index element={<TowingVer />} />
+            </Route>
+
+            <Route path='complaints' >
+              <Route index element={<Complaints />} />
+            </Route>
+
+            <Route path='suggestions' >
+              <Route index element={<Suggestions />} />
+            </Route>
+
+            <Route path='notifications' >
+              <Route index element={<Notification />} />
             </Route>
 
             <Route />

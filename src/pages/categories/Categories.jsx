@@ -33,6 +33,7 @@ const Categories = () => {
         onHide={() => setCreateVisible(false)}
         resizable
         appendTo={"self"}
+        header="إضافة صنف"
       >
         <AddCategory visibleState={(e) => setCreateVisible(e)} />
       </Dialog>

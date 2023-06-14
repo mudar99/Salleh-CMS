@@ -9,7 +9,7 @@ import { getFileRequest } from "../../../redux/API/verify/storehouse/storehouseV
 
 export const WarehouseExplore = (props) => {
   const { images, galliriaLoading } = useSelector(
-    (state) => state.storehouseVerifications
+    (state) => state.StorehouseVerifications
   );
   const [visible, setVisible] = useState(false);
   const dispatch = useDispatch();
