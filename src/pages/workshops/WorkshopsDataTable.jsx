@@ -3,7 +3,7 @@ import { Column } from "primereact/column";
 import { DataTable } from "primereact/datatable";
 import { Button } from "primereact/button";
 import { useDispatch, useSelector } from "react-redux";
-import { GetStorehouses, GetWorkShops } from "../../redux/API/users/usersSlice";
+import { GetWorkShops } from "../../redux/API/users/usersSlice";
 import { Paginator } from "primereact/paginator";
 import LoadingFS from "../components/loading/LoadingFS";
 import { Link } from "react-router-dom";
@@ -21,11 +21,11 @@ const WorkshopsDataTable = (props) => {
     setCurrentPage(currentPage);
     setBasicFirst(event.first);
     setBasicRows(event.rows);
-    let info = { size: basicRows, page: currentPage };
+    let info = { size: basicRows, page: currentPage, isPaginate: 1 };
     dispatch(GetWorkShops(info));
   };
   useEffect(() => {
-    let info = { size: basicRows, page: currentPage };
+    let info = { size: basicRows, page: currentPage, isPaginate: 1 };
     dispatch(GetWorkShops(info));
   }, []);
   const headers = [
@@ -34,21 +34,21 @@ const WorkshopsDataTable = (props) => {
     "رقم الهاتف",
     "تاريخ التسجيل",
     "البريد",
+    "وصف الورشة",
+    "تخصص الورشة",
+    "عنوان",
     "حدث",
   ];
 
   const acitonBodyTemplate = (rowData) => {
     return (
-      <>
-        <Link to={`${rowData.id}`}>
-          <Button
-            icon="pi pi-eye"
-            className="p-button-rounded p-button-text p-button-success"
-            aria-label="Submit"
-            onClick={() => props.showState("S", rowData)}
-          />
-        </Link>
-      </>
+      <Link to={String(rowData.id)}>
+        <Button
+          icon="pi pi-eye"
+          className="p-button-rounded p-button-text p-button-success"
+          aria-label="Submit"
+        />
+      </Link>
     );
   };
   return (
@@ -79,6 +79,9 @@ const WorkshopsDataTable = (props) => {
             field="created_at"
           ></Column>
           <Column align="center" header={headers[4]} field="email"></Column>
+          <Column align="center" header={headers[5]} field="email"></Column>
+          <Column align="center" header={headers[6]} field="email"></Column>
+          <Column align="center" header={headers[7]} field="email"></Column>
           <Column
             align="center"
             header={headers[5]}

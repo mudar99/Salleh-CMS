@@ -1,8 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MapContainer, Marker, TileLayer, Popup } from "react-leaflet";
 import { SearchField } from "./SeacrchField";
 import "leaflet-geosearch/dist/geosearch.css";
 import { Dropdown } from "primereact/dropdown";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  GetStorehousesMarkers,
+  GetTowingsMarkers,
+  GetWorkShopsMarkers,
+} from "../../redux/API/users/markersSlice";
+import LoadingFS from "../components/loading/LoadingFS";
+import "./clientexplore.scss";
 
 const ClientsExplore = (props) => {
   const [selectedOption, setSelectedOption] = useState(null);
@@ -11,54 +19,51 @@ const ClientsExplore = (props) => {
     { label: "مستودعات", value: "storehouses" },
     { label: "سيارات سحب", value: "towings" },
   ];
+  const dispatch = useDispatch();
+
   const handleSelect = (e) => {
     setSelectedOption(e.value);
   };
-  const [position, setPosition] = useState({ lat: 33.492021, lng: 36.332652 });
-  const workshopPositions = [
-    {
-      position: { lat: 33.492021, lng: 36.332652 },
-      name: "السعادة",
-      number: "0935150221",
-    },
+  const [setPosition] = useState({ lat: 33.492021, lng: 36.332652 });
+  const { loading, data } = useSelector((state) => state.markers);
+  console.log(data);
+  useEffect(() => {
+    switch (selectedOption) {
+      case "workshops":
+        dispatch(GetWorkShopsMarkers());
+        break;
+      case "storehouses":
+        dispatch(GetStorehousesMarkers());
+        break;
+      case "towings":
+        dispatch(GetTowingsMarkers());
+        break;
+      default:
+        break;
+    }
+    console.log(selectedOption);
+  }, [selectedOption]);
 
-    {
-      position: { lat: 33.502021, lng: 36.332652 },
-      name: "ورشة معتز",
-      number: "0935150221",
-    },
-    {
-      position: { lat: 33.512021, lng: 36.332652 },
-      name: "ورشة الأنوار",
-      number: "0935150221",
-    },
-    {
-      position: { lat: 33.2021, lng: 36.332652 },
-      name: "ورشة سيارات",
-      number: "0935150221",
-    },
-  ];
+  const lightTheme = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
 
   return (
-    <>
-      <div className="d-flex align-items-center justify-content-center mt-2">
-        <div className="w-50 card p-2">
+    <div className="client-explore">
+      {loading && <LoadingFS />}
+      <div className="selection-container">
+        <div className="selection">
+          <h6>اختر نوع العميل</h6>
           <div className="">
-            <div className="d-flex justify-content-between">
-              <h6 className="mt-3">اختر نوع العميل</h6>
-              <div className="dropdown-container">
-                <Dropdown
-                  value={selectedOption}
-                  options={options}
-                  onChange={handleSelect}
-                  placeholder="Select an option"
-                />
-              </div>
-            </div>
+            <Dropdown
+              appendTo={"self"}
+              value={selectedOption}
+              options={options}
+              onChange={handleSelect}
+              placeholder="Select an option"
+            />
           </div>
         </div>
       </div>
-
+      
       <div className="d-flex justify-content-center mt-4">
         <MapContainer
           center={{ lat: 33.492021, lng: 36.332652 }}
@@ -71,19 +76,23 @@ const ClientsExplore = (props) => {
           animate={true}
           easeLinearity={0.35}
         >
-          <TileLayer
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            attribution="OpenStreetMap"
-          />
-          {workshopPositions.map((item) => {
+          <TileLayer url={lightTheme} attribution="OpenStreetMap" />
+          {data.map((item) => {
             return (
-              <Marker position={item.position} draggable={false} >
+              <Marker
+                key={item.id}
+                position={{ lat: item.user_latitude, lng: item.user_longitude }}
+                draggable={false}
+              >
                 <Popup>
                   <div>
                     {/* Display your marker information here */}
-                    <h4>Workshop Information</h4>
-                    <p>Address: {item.name}</p>
-                    <p>Contact: {item.number}</p>
+                    <h4>معلومات المستخدم</h4>
+                    <p>
+                      Name: {item.firstname} {item.lastname}
+                    </p>
+                    <p>Store Name: {item.store_name}</p>
+                    <p>Phone: {item.phone_number}</p>
                   </div>
                 </Popup>
               </Marker>
@@ -96,7 +105,7 @@ const ClientsExplore = (props) => {
           />
         </MapContainer>
       </div>
-    </>
+    </div>
   );
 };
 

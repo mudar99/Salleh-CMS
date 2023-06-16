@@ -95,6 +95,4 @@ export const storehouseVerifications = createSlice({
   }
 });
 
-export const { } = storehouseVerifications.actions;
-
 export default storehouseVerifications.reducer;

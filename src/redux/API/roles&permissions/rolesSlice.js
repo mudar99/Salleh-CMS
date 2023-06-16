@@ -171,6 +171,4 @@ export const rolesSlice = createSlice({
     }
 });
 
-export const { } = rolesSlice.actions;
-
 export default rolesSlice.reducer;

@@ -21,6 +21,7 @@ export const GetCustomersAPI = `${local}/users?type=0&size=`;
 export const GetWorkShopsAPI = `${local}/users?type=1&size=`;
 export const GetTowingsAPI = `${local}/users?type=2&size=`;
 export const GetStorehousesAPI = `${local}/users?type=3&size=`;
+export const ShowUserAPI = `${local}/users/show/`;
 
 export const GetCategoriesAPI = `${local}/category/get/`;
 export const CreateGategoryAPI = `${local}/category/create`;
@@ -47,3 +48,6 @@ export const GetSingleWorkshopOrdersAPI = `${local}/workshop/orders/`;
 
 export const GetSuggestionsAPI = `${local}/users/suggestions?size=`;
 export const GetComplaintsAPI = `${local}/users/complaints?size=`;
+
+export const ChargeWalletAPI = `${local}/users/wallets/charges/`;
+export const GetUserChargesAPI = `${local}/users/wallets/charges/`;

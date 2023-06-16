@@ -1,8 +1,6 @@
 import Home from './pages/home/Home';
 import Login from './pages/login/Login';
 import List from './pages/list/List';
-import New from './pages/new/New';
-import Single from './pages/single/Single';
 import { Routes, BrowserRouter, Route } from 'react-router-dom';
 import "./style.scss";
 import "./style/dark.scss";
@@ -23,6 +21,7 @@ import Maps from './pages/maps/Maps';
 import Complaints from './pages/complaints/Complaints';
 import Suggestions from './pages/suggestions/Suggestions';
 import Notification from './pages/notifications/Notification';
+import UserProfile from './pages/user-profile/UserProfile';
 
 
 function App() {
@@ -45,23 +44,22 @@ function App() {
 
             <Route path='customers' >
               <Route index element={<Customers />} />
-              <Route path=':userId' element={<Single />} />
-              <Route path='new' element={<New />} />
+              <Route path=':userId' element={<UserProfile />} />
             </Route>
 
             <Route path='workshops' >
               <Route index element={<Workshops />} />
-              <Route path=':workshopId' element={<Single />} />
+              <Route path=':workshopId' element={<UserProfile />} />
             </Route>
 
             <Route path='towingcars' >
               <Route index element={<TowingCars />} />
-              <Route path=':userId' element={<Single />} />
+              <Route path=':userId' element={<UserProfile />} />
             </Route>
 
             <Route path='warehouses' >
               <Route index element={<Warehouses />} />
-              <Route path=':userId' element={<Single />} />
+              <Route path=':userId' element={<UserProfile />} />
             </Route>
 
 
@@ -72,8 +70,7 @@ function App() {
 
             <Route path='employees' >
               <Route index element={<Employees />} />
-              <Route path=':userId' element={<Single />} />
-              <Route path='new' element={<New />} />
+              <Route path=':userId' element={<UserProfile />} />
             </Route>
 
             <Route path='orders' >
@@ -86,8 +83,7 @@ function App() {
 
             <Route path='products' >
               <Route index element={<List />} />
-              <Route path=':productId' element={<Single />} />
-              <Route path='new' element={<New />} />
+              <Route path=':productId' element={<UserProfile />} />
             </Route>
 
             <Route path='workshops-verification' >

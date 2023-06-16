@@ -107,6 +107,9 @@
     color: $dark-font-color;
     border-color: $hover-color;
     background-color: $dark-secondary;
+    .item {
+      color: $dark-font-color;
+    }
     .search {
       .p-inputtext {
         border-color: $dark-font-color;
@@ -202,6 +205,7 @@
       color: $dark-font-color;
     }
   }
+
   .suggestions-datatable,
   .complaints-datatable {
     .suggestions,
@@ -232,6 +236,7 @@
       }
     }
   }
+
   .datatable {
     .header,
     .p-datatable-header {
@@ -308,14 +313,27 @@
     .singleContainer {
       .top {
         .left {
-          .item {
-            .details {
-              .itemTitle {
-                color: $dark-font-color;
-              }
+          background-color: $dark-secondary;
+          box-shadow: 2px 4px 10px 1px $dark-box-shadow;
+          .card-name {
+            color: $header-color;
+          }
+          .card-details {
+            .card-label {
+              color: $primary-color;
+            }
+            .card-value {
+              color: $dark-font-color;
             }
           }
         }
+      }
+      .bottom {
+        background-color: $dark-secondary;
+        box-shadow: 2px 4px 10px 1px $dark-box-shadow;
+      }
+      .title {
+        color: $header-color;
       }
     }
   }
@@ -355,26 +373,6 @@
         box-shadow: 0 7px 30px -10px rgba(150, 170, 180, 0.5);
       }
     }
-    .p-dropdown {
-      background-color: $dark-secondary;
-      .p-dropdown-label {
-        color: $dark-font-color;
-      }
-      .p-dropdown-items-wrapper {
-        background-color: $dark-secondary;
-        .p-dropdown-items {
-          .p-dropdown-item {
-            &.p-highlight {
-              background: $dark-box-shadow;
-            }
-            color: $dark-font-color;
-            &:hover {
-              background-color: $hover-color;
-            }
-          }
-        }
-      }
-    }
   }
   .p-paginator {
     background-color: $dark-secondary;
@@ -391,6 +389,37 @@
     .p-fileupload-content {
       background-color: #212529;
       color: $dark-font-color;
+    }
+  }
+
+  .client-explore {
+    .selection-container {
+      .selection {
+        box-shadow: 2px 4px 10px 1px $dark-box-shadow;
+        background-color: $dark-secondary;
+      }
+    }
+  }
+
+  .p-dropdown {
+    background-color: $dark-secondary;
+    .p-dropdown-label {
+      color: $dark-font-color;
+    }
+    .p-dropdown-items-wrapper {
+      background-color: $dark-secondary;
+      .p-dropdown-items {
+        .p-dropdown-item {
+          &.p-highlight {
+            background: $dark-box-shadow;
+          }
+          color: $dark-font-color;
+          &:hover {
+            background-color: $hover-color;
+            color: $dark-font-color;
+          }
+        }
+      }
     }
   }
   input {

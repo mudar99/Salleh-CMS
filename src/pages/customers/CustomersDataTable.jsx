@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { GetCustomers, GetStorehouses } from "../../redux/API/users/usersSlice";
 import { Paginator } from "primereact/paginator";
 import LoadingFS from "../components/loading/LoadingFS";
+import { Link } from "react-router-dom";
 
 const CustomersDataTable = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -20,13 +21,14 @@ const CustomersDataTable = () => {
     setCurrentPage(currentPage);
     setBasicFirst(event.first);
     setBasicRows(event.rows);
-    let info = { size: basicRows, page: currentPage };
+    let info = { size: basicRows, page: currentPage, isPaginate: 1 };
     dispatch(GetCustomers(info));
   };
   useEffect(() => {
-    let info = { size: basicRows, page: currentPage };
+    let info = { size: basicRows, page: currentPage, isPaginate: 1 };
     dispatch(GetCustomers(info));
   }, []);
+
   const headers = [
     "المعرف",
     "اسم الزبون",
@@ -37,13 +39,13 @@ const CustomersDataTable = () => {
   ];
   const acitonBodyTemplate = (rowData) => {
     return (
-      <>
+      <Link to={String(rowData.id)}>
         <Button
           icon="pi pi-eye"
           className="p-button-rounded p-button-text p-button-success"
           aria-label="Submit"
         />
-      </>
+      </Link>
     );
   };
   return (

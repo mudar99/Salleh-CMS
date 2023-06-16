@@ -1,87 +1,74 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import "./table.scss";
-export const Table = () => {
-  const data = [
-    {
-      id: 1143155,
-      payment: "كاش",
-      img: "/Img/Hyundai.png",
-      customer: "مضر أبو فخر",
-      date: "1 March",
-      amount: 120000,
-      workshop: "ورشة الفحامة",
-      status: "كهربائي",
-    },
-    {
-      id: 2235235,
-      payment: "أونلاين",
-      img: "/Img/Hyundai.png",
-      customer: "عبد الله",
-      date: "1 March",
-      amount: 40000,
-      workshop: "ورشة عالم الصيانة",
-      status: "ميكانيكي",
-    },
-    {
-      id: 2342353,
-      payment: "سيرياتيل كاش",
-      img: "/Img/Peugeot.png",
-      customer: "عبير جريرة",
-      date: "1 March",
-      amount: 10000,
-      workshop: "ورشة عالم الصيانة",
-      status: "كهربائي",
-    },
-    {
-      id: 2357741,
-      payment: "كاش",
-      img: "/Img/Nissan.png",
-      customer: "علي خضر",
-      date: "1 March",
-      amount: 25000,
-      workshop: "ورشة سلام",
-      status: "ميكانيكي",
-    },
-    {
-      id: 2342355,
-      payment: "كاش",
-      img: "/Img/Nissan.png",
-      customer: "حازم سلامي",
-      date: "1 March",
-      amount: 35000,
-      workshop: "ورشة عالم الصيانة",
-      status: "كهربائي",
-    },
-  ];
+import { useDispatch, useSelector } from "react-redux";
+import { GetUserCharges } from "../../../redux/API/users/usersSlice";
+import { Paginator } from "primereact/paginator";
+import LoadingFS from "../loading/LoadingFS";
+export const Table = (props) => {
+  const dispatch = useDispatch();
+  const [basicFirst, setBasicFirst] = useState(1);
+  const [basicRows, setBasicRows] = useState(5);
+  const [currentPage, setCurrentPage] = useState(1);
+  const { loading, userData, totalItems } = useSelector((state) => state.users);
 
-  const imageBodyTemplate = (rowData) => {
-    return (
-      <img src={rowData.img} alt={rowData.img} className="product-image" />
-    );
+  const onBasicPageChange = (event) => {
+    let currentPage = event.page + 1;
+    setCurrentPage(currentPage);
+    setBasicFirst(event.first);
+    setBasicRows(event.rows);
+    let info = { size: basicRows, page: currentPage, id: props.id };
+    dispatch(GetUserCharges(info));
   };
+  useEffect(() => {
+    let info = { size: basicRows, page: currentPage, id: props.id };
+    dispatch(GetUserCharges(info));
+  }, [props.id]);
+
   return (
-    <div>
-      <div className="table card">
-        <DataTable value={data} responsiveLayout="scroll">
-          <Column align="center" field="id" header="المعرف"></Column>
-          <Column align="center" field="customer" header="الزبون"></Column>
+    <div className="datatable">
+      {loading && <LoadingFS />}
+      <div className="card">
+        <DataTable value={userData.charges} tableStyle={{ minWidth: "50rem" }}>
+          <Column align="center" field="id" header="معرف العملية"></Column>
           <Column
             align="center"
-            body={imageBodyTemplate}
-            field="img"
-            header="نوع السيارة"
+            field="pre_mount"
+            header="القيمة السابقة"
           ></Column>
-          <Column align="center" field="payment" header="الدفع"></Column>
-          <Column align="center" field="date" header="التاريخ"></Column>
-          <Column align="center" field="amount" header="الكلفة"></Column>
-          <Column align="center" field="workshop" header="الورشة"></Column>
-          <Column align="center" field="status" header="نوع العطل"></Column>
+          <Column
+            align="center"
+            field="new_amount"
+            header="القيمة الجديدة"
+          ></Column>
+          <Column align="center" field="charge" header="المبلغ"></Column>
+          <Column
+            align="center"
+            field="created_at"
+            header="تاريخ العملية"
+          ></Column>
+          <Column align="center" field="type" header="نوع العملية"></Column>
         </DataTable>
+        <Paginator
+          first={basicFirst}
+          rows={basicRows}
+          totalRecords={totalItems}
+          onPageChange={onBasicPageChange}
+        ></Paginator>
       </div>
     </div>
+    // <div>
+    //   <div className="table card">
+    //     <DataTable>
+    // <Column field="id" header="معرف العملية"></Column>
+    // <Column field="pre_mount" header="القيمة السابقة"></Column>
+    // <Column field="new_amount" header="القيمة الجديدة"></Column>
+    // <Column field="charge" header="المبلغ"></Column>
+    // <Column field="created_at" header="تاريخ العملية"></Column>
+    // <Column field="type" header="نوع العملية"></Column>
+    //     </DataTable>
+    //   </div>
+    // </div>
   );
 };
-
- 

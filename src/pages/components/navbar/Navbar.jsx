@@ -12,20 +12,21 @@ const Navbar = () => {
     <div className="navbar">
       <div className="wrapper">
         <div className="items">
+          <Link to="/">
+            <div className="item">
+              <img
+                src="https://images.pexels.com/photos/941693/pexels-photo-941693.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+                alt=""
+                className="avatar"
+              />
+            </div>
+          </Link>
           <div className="item">
-            <img
-              src="https://images.pexels.com/photos/941693/pexels-photo-941693.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-              alt=""
-              className="avatar"
-            />
-          </div>
-          <div className="item">
-            <i className="pi pi-list"></i>
+            <i className="bi bi-gear-fill"></i>
           </div>
           <Link to="/notifications">
             <div className="item">
               <i className="bi bi-bell-fill"></i>
-              <div className="counter">2</div>
             </div>
           </Link>
           <div className="item">
@@ -38,12 +39,6 @@ const Navbar = () => {
               style={{ cursor: "pointer" }}
               onClick={() => dispatch(toggle())}
             ></i>
-          </div>
-          <div className="item">
-            <i className="bi bi-folder-fill"></i>
-          </div>
-          <div className="item">
-            <i className="bi bi-globe"></i>
           </div>
         </div>
 

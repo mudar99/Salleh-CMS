@@ -37,6 +37,4 @@ export const complaintsSlice = createSlice({
     }
 });
 
-export const { } = complaintsSlice.actions;
-
 export default complaintsSlice.reducer;

@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { GetStorehouses } from "../../redux/API/users/usersSlice";
 import { Paginator } from "primereact/paginator";
 import LoadingFS from "../components/loading/LoadingFS";
+import { Link } from "react-router-dom";
 const WarehousesDataTable = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const dispatch = useDispatch();
@@ -19,11 +20,11 @@ const WarehousesDataTable = () => {
     setCurrentPage(currentPage);
     setBasicFirst(event.first);
     setBasicRows(event.rows);
-    let info = { size: basicRows, page: currentPage };
+    let info = { size: basicRows, page: currentPage , isPaginate: 1 };
     dispatch(GetStorehouses(info));
   };
   useEffect(() => {
-    let info = { size: basicRows, page: currentPage };
+    let info = { size: basicRows, page: currentPage , isPaginate: 1 };
     dispatch(GetStorehouses(info));
   }, []);
   const headers = [
@@ -36,23 +37,20 @@ const WarehousesDataTable = () => {
   ];
   const acitonBodyTemplate = (rowData) => {
     return (
-      <>
+      <Link to={String(rowData.id)}>
         <Button
           icon="pi pi-eye"
           className="p-button-rounded p-button-text p-button-success"
           aria-label="Submit"
         />
-      </>
+      </Link>
     );
   };
   return (
     <div className="datatable">
       {loading && <LoadingFS />}
       <div className="card">
-        <DataTable
-          value={data}
-          tableStyle={{ minWidth: "50rem" }}
-        >
+        <DataTable value={data} tableStyle={{ minWidth: "50rem" }}>
           <Column align="center" header={headers[0]} field="id"></Column>
           <Column
             align="center"

@@ -90,6 +90,4 @@ export const towingVerifications = createSlice({
   }
 });
 
-export const { } = towingVerifications.actions;
-
 export default towingVerifications.reducer;

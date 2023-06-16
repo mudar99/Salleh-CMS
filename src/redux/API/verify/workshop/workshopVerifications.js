@@ -89,6 +89,4 @@ export const workshopVerifications = createSlice({
   }
 });
 
-export const { } = workshopVerifications.actions;
-
 export default workshopVerifications.reducer;

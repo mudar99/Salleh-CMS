@@ -13,6 +13,7 @@ import rolesSlice from './API/roles&permissions/rolesSlice';
 import adminSlice from './API/adminSlice';
 import suggestionsSlice from './API/complaints & suggestions/suggestionsSlice';
 import complaintsSlice from './API/complaints & suggestions/complaintsSlice';
+import markersSlice from './API/users/markersSlice';
 const store = configureStore({
     reducer: {
         DarkMode: themeSlice,
@@ -23,6 +24,7 @@ const store = configureStore({
         TowingVerifications: towingVerifications,
         StorehouseVerifications: storehouseVerifications,
         users: usersSlice,
+        markers: markersSlice,
         category: categorySlice,
         orders: ordersSlice,
         roles: rolesSlice,

@@ -138,7 +138,7 @@ const Sidebar = () => {
           </div>
 
           <div className="header" data-bs-toggle="collapse" href="#management">
-            <p className="title">إدارة</p>
+            <p className="title">صيانة</p>
             <li className="bi bi-caret-down-fill"></li>
           </div>
 
@@ -152,7 +152,7 @@ const Sidebar = () => {
                 className={currentPlace === "requestsManage" ? "visited" : ""}
               >
                 <i className="bi bi-house-gear-fill"></i>
-                <span>إدارة طلبات الورشات</span>
+                <span>طلبات صيانة فورية</span>
               </li>
             </Link>
 

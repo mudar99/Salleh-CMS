@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, } from "@reduxjs/toolkit";
 import axios from "axios";
 import Cookies from "universal-cookie";
-import { GetSuggestionsAPI, AddSuggestionAPI } from "../../../API";
+import { GetSuggestionsAPI } from "../../../API";
 
 const cookie = new Cookies();
 const token = cookie.get("jwt_authorization");
@@ -37,7 +37,5 @@ export const suggestionsSlice = createSlice({
 
     }
 });
-
-export const { } = suggestionsSlice.actions;
 
 export default suggestionsSlice.reducer;

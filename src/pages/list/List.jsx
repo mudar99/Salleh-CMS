@@ -64,7 +64,7 @@ const List = (props) => {
       case "CustomersDataTable":
         return <CustomersDataTable />;
       case "WorkshopsDataTable":
-        return <WorkshopsDataTable showState={visibleCallBack} />;
+        return <WorkshopsDataTable />;
       case "TowingDataTable":
         return <TowingDataTable />;
       case "WarehousesDataTable":

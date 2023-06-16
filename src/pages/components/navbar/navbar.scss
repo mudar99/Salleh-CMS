@@ -31,8 +31,7 @@
       display: flex;
       align-items: center;
       .item {
-        display: flex;
-        align-items: center;
+        color: $primary-color;
         margin-right: 20px;
         position: relative;
         i {
@@ -47,6 +46,7 @@
           width: 30px;
           height: 30px;
           border-radius: 50%;
+          margin-bottom: 10px;
         }
 
         .counter {
