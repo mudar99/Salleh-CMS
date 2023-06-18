@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { GetUserCharges } from "../../../redux/API/users/usersSlice";
 import { Paginator } from "primereact/paginator";
 import LoadingFS from "../loading/LoadingFS";
+import { Tag } from "primereact/tag";
 export const Table = (props) => {
   const dispatch = useDispatch();
   const [basicFirst, setBasicFirst] = useState(1);
@@ -25,6 +26,30 @@ export const Table = (props) => {
     let info = { size: basicRows, page: currentPage, id: props.id };
     dispatch(GetUserCharges(info));
   }, [props.id]);
+  const getSeverity = (rowData) => {
+    switch (rowData.type) {
+      case 0:
+        return "warning";
+      case 1:
+        return "info";
+      default:
+        return null;
+    }
+  };
+  const statusBodyTemplate = (rowData) => {
+    let val;
+    switch (rowData.type) {
+      case 0:
+        val = "شحن";
+        break;
+      case 1:
+        val = "سحب";
+        break;
+      default:
+        break;
+    }
+    return <Tag className="text-dark" value={val} severity={getSeverity(rowData)}></Tag>;
+  };
 
   return (
     <div className="datatable">
@@ -48,7 +73,12 @@ export const Table = (props) => {
             field="created_at"
             header="تاريخ العملية"
           ></Column>
-          <Column align="center" field="type" header="نوع العملية"></Column>
+          <Column
+            align="center"
+            field="type"
+            body={statusBodyTemplate}
+            header="نوع العملية"
+          ></Column>
         </DataTable>
         <Paginator
           first={basicFirst}
@@ -58,17 +88,5 @@ export const Table = (props) => {
         ></Paginator>
       </div>
     </div>
-    // <div>
-    //   <div className="table card">
-    //     <DataTable>
-    // <Column field="id" header="معرف العملية"></Column>
-    // <Column field="pre_mount" header="القيمة السابقة"></Column>
-    // <Column field="new_amount" header="القيمة الجديدة"></Column>
-    // <Column field="charge" header="المبلغ"></Column>
-    // <Column field="created_at" header="تاريخ العملية"></Column>
-    // <Column field="type" header="نوع العملية"></Column>
-    //     </DataTable>
-    //   </div>
-    // </div>
   );
 };

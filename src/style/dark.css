@@ -59,6 +59,35 @@
           box-shadow: 0 7px 30px -10px #2e2e2e;
 }
 
+.app.dark .categories .treetable .p-treetable-header {
+  background: #212121;
+}
+
+.app.dark .categories .treetable .p-treetable .parent {
+  background-color: #212529;
+  color: #c9c9c9;
+}
+
+.app.dark .categories .treetable .p-treetable span.p-column-title {
+  color: #4a8bdf;
+}
+
+.app.dark .categories .treetable .p-treetable .p-treetable-thead > tr > th {
+  background-color: #212121;
+  text-align: center;
+}
+
+.app.dark .categories .treetable .p-treetable .p-treetable-tbody > tr > td:not(.parent) {
+  background-color: #212121;
+  color: #c9c9c9;
+  text-align: right;
+}
+
+.app.dark .categories .treetable .p-treetable .p-treetable-tbody > tr.p-highlight,
+.app.dark .categories .treetable .p-treetable .p-treetable-tbody > tr.p-highlight .p-treetable-toggler {
+  color: #c9c9c9;
+}
+
 .app.dark .home .homeContainer {
   background-color: #212529;
 }
@@ -83,6 +112,10 @@
   color: #c9c9c9;
   border-color: #2e2e2e;
   background-color: #212121;
+}
+
+.app.dark .navbar .item {
+  color: #c9c9c9;
 }
 
 .app.dark .navbar .search .p-inputtext {
@@ -181,6 +214,76 @@
   color: #c9c9c9;
 }
 
+.app.dark .suggestions-datatable .suggestions .suggestion,
+.app.dark .suggestions-datatable .suggestions .complaint,
+.app.dark .suggestions-datatable .complaints .suggestion,
+.app.dark .suggestions-datatable .complaints .complaint,
+.app.dark .complaints-datatable .suggestions .suggestion,
+.app.dark .complaints-datatable .suggestions .complaint,
+.app.dark .complaints-datatable .complaints .suggestion,
+.app.dark .complaints-datatable .complaints .complaint {
+  -webkit-box-shadow: 2px 4px 10px 1px #2e2e2e;
+          box-shadow: 2px 4px 10px 1px #2e2e2e;
+  background-color: #212121;
+}
+
+.app.dark .suggestions-datatable .suggestions .suggestion:hover,
+.app.dark .suggestions-datatable .suggestions .complaint:hover,
+.app.dark .suggestions-datatable .complaints .suggestion:hover,
+.app.dark .suggestions-datatable .complaints .complaint:hover,
+.app.dark .complaints-datatable .suggestions .suggestion:hover,
+.app.dark .complaints-datatable .suggestions .complaint:hover,
+.app.dark .complaints-datatable .complaints .suggestion:hover,
+.app.dark .complaints-datatable .complaints .complaint:hover {
+  cursor: pointer;
+  -webkit-box-shadow: 4px 6px 12px 2px #2e2e2e;
+          box-shadow: 4px 6px 12px 2px #2e2e2e;
+}
+
+.app.dark .suggestions-datatable .suggestions .suggestion .title,
+.app.dark .suggestions-datatable .suggestions .complaint .title,
+.app.dark .suggestions-datatable .complaints .suggestion .title,
+.app.dark .suggestions-datatable .complaints .complaint .title,
+.app.dark .complaints-datatable .suggestions .suggestion .title,
+.app.dark .complaints-datatable .suggestions .complaint .title,
+.app.dark .complaints-datatable .complaints .suggestion .title,
+.app.dark .complaints-datatable .complaints .complaint .title {
+  color: #daa520;
+}
+
+.app.dark .suggestions-datatable .suggestions .suggestion .description,
+.app.dark .suggestions-datatable .suggestions .complaint .description,
+.app.dark .suggestions-datatable .complaints .suggestion .description,
+.app.dark .suggestions-datatable .complaints .complaint .description,
+.app.dark .complaints-datatable .suggestions .suggestion .description,
+.app.dark .complaints-datatable .suggestions .complaint .description,
+.app.dark .complaints-datatable .complaints .suggestion .description,
+.app.dark .complaints-datatable .complaints .complaint .description {
+  color: #c9c9c9;
+}
+
+.app.dark .suggestions-datatable .suggestions .suggestion .arabic,
+.app.dark .suggestions-datatable .suggestions .complaint .arabic,
+.app.dark .suggestions-datatable .complaints .suggestion .arabic,
+.app.dark .suggestions-datatable .complaints .complaint .arabic,
+.app.dark .complaints-datatable .suggestions .suggestion .arabic,
+.app.dark .complaints-datatable .suggestions .complaint .arabic,
+.app.dark .complaints-datatable .complaints .suggestion .arabic,
+.app.dark .complaints-datatable .complaints .complaint .arabic {
+  text-align: right;
+}
+
+.app.dark .suggestions-datatable .suggestions .suggestion .english,
+.app.dark .suggestions-datatable .suggestions .complaint .english,
+.app.dark .suggestions-datatable .complaints .suggestion .english,
+.app.dark .suggestions-datatable .complaints .complaint .english,
+.app.dark .complaints-datatable .suggestions .suggestion .english,
+.app.dark .complaints-datatable .suggestions .complaint .english,
+.app.dark .complaints-datatable .complaints .suggestion .english,
+.app.dark .complaints-datatable .complaints .complaint .english {
+  text-align: left;
+}
+
 .app.dark .datatable .header,
 .app.dark .datatable .p-datatable-header {
   background: #212121;
@@ -206,10 +309,6 @@
 .app.dark .datatable .p-datatable-tbody > tr > td,
 .app.dark .datatable .p-datatable-thead > tr > th {
   color: #c9c9c9;
-}
-
-.app.dark .datatable .p-paginator {
-  background-color: #212121;
 }
 
 .app.dark .datatable .p-confirm-popup {
@@ -259,8 +358,48 @@
   color: #4a8bdf;
 }
 
-.app.dark .single .singleContainer .top .left .item .details .itemTitle {
+.app.dark .single .singleContainer .top .left {
+  background-color: #212121;
+  -webkit-box-shadow: 2px 4px 10px 1px #2e2e2e;
+          box-shadow: 2px 4px 10px 1px #2e2e2e;
+}
+
+.app.dark .single .singleContainer .top .left .card-name {
+  color: #daa520;
+}
+
+.app.dark .single .singleContainer .top .left .card-details .card-label {
+  color: #4a8bdf;
+}
+
+.app.dark .single .singleContainer .top .left .card-details .card-value {
   color: #c9c9c9;
+}
+
+.app.dark .single .singleContainer .bottom {
+  background-color: #212121;
+  -webkit-box-shadow: 2px 4px 10px 1px #2e2e2e;
+          box-shadow: 2px 4px 10px 1px #2e2e2e;
+}
+
+.app.dark .single .singleContainer .title {
+  color: #daa520;
+}
+
+.app.dark .roles .multiselect-container .chip {
+  background-color: #2e2e2e;
+  color: #c9c9c9;
+}
+
+.app.dark .roles .multiselect-container .option,
+.app.dark .roles .multiselect-container .notFound {
+  color: #c9c9c9;
+  background-color: #212121;
+}
+
+.app.dark .roles .multiselect-container .option:hover,
+.app.dark .roles .multiselect-container .notFound:hover {
+  color: #daa520;
 }
 
 .app.dark .p-dialog .p-dialog-header {
@@ -286,28 +425,53 @@
           box-shadow: 0 7px 30px -10px rgba(150, 170, 180, 0.5);
 }
 
-.app.dark .p-dialog .p-dropdown {
+.app.dark .p-paginator {
   background-color: #212121;
 }
 
-.app.dark .p-dialog .p-dropdown .p-dropdown-label {
+.app.dark .p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
+  background: #2e2e2e;
   color: #c9c9c9;
 }
 
-.app.dark .p-dialog .p-dropdown .p-dropdown-items-wrapper {
+.app.dark .p-fileupload .p-fileupload-buttonbar {
+  background-color: #212529;
+}
+
+.app.dark .p-fileupload .p-fileupload-content {
+  background-color: #212529;
+  color: #c9c9c9;
+}
+
+.app.dark .client-explore .selection-container .selection {
+  -webkit-box-shadow: 2px 4px 10px 1px #2e2e2e;
+          box-shadow: 2px 4px 10px 1px #2e2e2e;
   background-color: #212121;
 }
 
-.app.dark .p-dialog .p-dropdown .p-dropdown-items-wrapper .p-dropdown-items .p-dropdown-item {
+.app.dark .p-dropdown {
+  background-color: #212121;
+}
+
+.app.dark .p-dropdown .p-dropdown-label {
   color: #c9c9c9;
 }
 
-.app.dark .p-dialog .p-dropdown .p-dropdown-items-wrapper .p-dropdown-items .p-dropdown-item.p-highlight {
+.app.dark .p-dropdown .p-dropdown-items-wrapper {
+  background-color: #212121;
+}
+
+.app.dark .p-dropdown .p-dropdown-items-wrapper .p-dropdown-items .p-dropdown-item {
+  color: #c9c9c9;
+}
+
+.app.dark .p-dropdown .p-dropdown-items-wrapper .p-dropdown-items .p-dropdown-item.p-highlight {
   background: #2e2e2e;
 }
 
-.app.dark .p-dialog .p-dropdown .p-dropdown-items-wrapper .p-dropdown-items .p-dropdown-item:hover {
+.app.dark .p-dropdown .p-dropdown-items-wrapper .p-dropdown-items .p-dropdown-item:hover {
   background-color: #2e2e2e;
+  color: #c9c9c9;
 }
 
 .app.dark input {

@@ -11,7 +11,7 @@ const ComplaintsDataTable = (props) => {
   const toast = useRef(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [basicFirst, setBasicFirst] = useState(1);
-  const [basicRows, setBasicRows] = useState(6);
+  const [basicRows, setBasicRows] = useState(3);
   const isArabic = (text) => {
     const arabicPattern = /[\u0600-\u06FF\u0750-\u077F]/;
     return arabicPattern.test(text);

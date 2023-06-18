@@ -10,7 +10,7 @@ import TowingDataTable from "../towing cars/TowingDataTable";
 import WarehousesDataTable from "../warehouses/WarehousesDataTable";
 import TowingVD from "../verfications/Towing/TowingVD";
 import WarehouseVD from "../verfications/Warehouse/WarehouseVD";
-import OrdersDataTable from "../oreders-management/OrdersDataTable";
+import OrdersDataTable from "../orders-management/OrdersDataTable";
 import RolesDataTable from "../roles/RolesDataTable";
 import CategoriesTreeTable from "../categories/CategoriesTreeTable";
 import ClientsExplore from "../maps/ClientsExplore";

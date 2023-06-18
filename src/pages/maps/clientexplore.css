@@ -1,0 +1,115 @@
+.client-explore .selection-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.client-explore .selection-container .selection {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 20px;
+  padding: 15px;
+  -webkit-box-shadow: 2px 4px 10px 1px #c9c9c9;
+          box-shadow: 2px 4px 10px 1px #c9c9c9;
+  border-radius: 10px;
+  background-color: #ffffff;
+  width: 50%;
+}
+
+.client-explore .selection-container .selection h6 {
+  margin: 10px;
+  font-weight: bold;
+  color: #daa520;
+}
+
+.client-explore .card-information {
+  text-align: right;
+}
+
+.client-explore .card-information .card-title {
+  margin-bottom: 20px;
+  color: #daa520;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.client-explore .card-information .card-body .card-info {
+  margin-bottom: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.client-explore .card-information .card-body .card-info h6 {
+  font-weight: bold;
+}
+
+.client-explore .card-information .card-body .card-info div {
+  font-size: 15px;
+}
+
+.client-explore .leaflet-container .leaflet-control-container .leaflet-right {
+  display: none;
+}
+
+.client-explore .leaflet-container .leaflet-control-container .leaflet-left .leaflet-control-zoom-in,
+.client-explore .leaflet-container .leaflet-control-container .leaflet-left .leaflet-control-zoom-out {
+  color: #daa520;
+  background-color: #ffffff;
+}
+
+.client-explore .leaflet-container .leaflet-control-container .leaflet-control-geosearch {
+  background-color: #ffffff;
+}
+
+.client-explore .leaflet-container .leaflet-control-container .leaflet-control-geosearch form {
+  background-color: #ffffff;
+}
+
+.client-explore .leaflet-container .leaflet-control-container .leaflet-control-geosearch form .glass::-webkit-input-placeholder,
+.client-explore .leaflet-container .leaflet-control-container .leaflet-control-geosearch form .glass {
+  margin-right: 10px;
+  font-weight: bold;
+  color: #daa520;
+  /* Replace "red" with your desired color */
+}
+
+.client-explore .leaflet-container .leaflet-control-container .leaflet-control-geosearch form .glass:-ms-input-placeholder,
+.client-explore .leaflet-container .leaflet-control-container .leaflet-control-geosearch form .glass {
+  margin-right: 10px;
+  font-weight: bold;
+  color: #daa520;
+  /* Replace "red" with your desired color */
+}
+
+.client-explore .leaflet-container .leaflet-control-container .leaflet-control-geosearch form .glass::-ms-input-placeholder,
+.client-explore .leaflet-container .leaflet-control-container .leaflet-control-geosearch form .glass {
+  margin-right: 10px;
+  font-weight: bold;
+  color: #daa520;
+  /* Replace "red" with your desired color */
+}
+
+.client-explore .leaflet-container .leaflet-control-container .leaflet-control-geosearch form .glass::placeholder,
+.client-explore .leaflet-container .leaflet-control-container .leaflet-control-geosearch form .glass {
+  margin-right: 10px;
+  font-weight: bold;
+  color: #daa520;
+  /* Replace "red" with your desired color */
+}
+
+.client-explore .leaflet-container .leaflet-control-container .leaflet-control-geosearch form .reset {
+  font-weight: bold;
+  background-color: #ffffff;
+  color: #daa520;
+}
+/*# sourceMappingURL=clientexplore.css.map */

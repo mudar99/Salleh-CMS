@@ -1,0 +1,85 @@
+.categories .treetable {
+  margin: 30px;
+}
+
+.categories .treetable .header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.categories .treetable .header .title {
+  font-weight: 900;
+  padding: 10px;
+  font-size: 20px;
+  color: #daa520;
+}
+
+.categories .treetable .header .p-button {
+  color: #4a8bdf;
+}
+
+.categories .treetable .header .p-button.p-button-text:focus {
+  -webkit-box-shadow: inset 0 -3em 3em #eee;
+          box-shadow: inset 0 -3em 3em #eee;
+}
+
+.categories .treetable .p-treetable-toggler {
+  margin: 10px;
+}
+
+.categories .treetable .p-treetable {
+  direction: rtl;
+}
+
+.categories .treetable .p-treetable .parent {
+  background-color: #fcfcfc;
+}
+
+.categories .treetable .p-treetable span.p-column-title {
+  color: #4a8bdf;
+}
+
+.categories .treetable .p-treetable .p-treetable-thead > tr > th {
+  text-align: center;
+}
+
+.categories .treetable .p-treetable .p-treetable-tbody > tr > td {
+  text-align: right;
+}
+
+.categories .treetable .p-treetable .p-treetable-tbody > tr > .arabic {
+  text-align: right;
+  direction: rtl;
+}
+
+.categories .treetable .p-treetable .p-treetable-tbody > tr > .english {
+  text-align: left;
+  direction: ltr;
+}
+
+.categories .treetable .p-treetable .p-treetable-tbody > tr.p-highlight,
+.categories .treetable .p-treetable .p-treetable-tbody > tr.p-highlight .p-treetable-toggler {
+  color: #daa520;
+}
+
+.categories .treetable .p-treetable-toggler {
+  left: 12px;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.categories .treetable .p-treetable-toggler .pi-chevron-down {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.categories .treetable img {
+  width: 100px;
+  height: 100px;
+  border-radius: 10%;
+}
+/*# sourceMappingURL=categories.css.map */

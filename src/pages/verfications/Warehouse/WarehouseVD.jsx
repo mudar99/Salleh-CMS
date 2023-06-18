@@ -57,6 +57,7 @@ const WarehouseVD = () => {
                 dispatch(rejectRequest(rowData.user_id)).then((res) => {
                   if (res.payload.status === true) {
                     showSuccess(res.payload.message, toast);
+                    getVerifyRequests();
                     return;
                   }
                 });
@@ -87,6 +88,7 @@ const WarehouseVD = () => {
                   console.log(res);
                   if (res.payload.status === true) {
                     showSuccess(res.payload.message, toast);
+                    getVerifyRequests();
                     return;
                   }
                 });
@@ -98,15 +100,6 @@ const WarehouseVD = () => {
             });
           }}
         />
-        {/* <Button
-          icon="pi pi-eye"
-          className="p-button-rounded p-button-text p-button-success"
-          aria-label="Submit"
-          onClick={() => {
-            dispatch(getFileRequest(8));
-            galleria.current.show();
-          }}
-        /> */}
         <WarehouseExplore user_id={rowData.user_id} />
       </>
     );
@@ -126,16 +119,8 @@ const WarehouseVD = () => {
             header={headers[1]}
             field="store_name"
           ></Column>
-          <Column
-            align="center"
-            header={headers[2]}
-            field="latitude"
-          ></Column>
-          <Column
-            align="center"
-            header={headers[3]}
-            field="longitude"
-          ></Column>
+          <Column align="center" header={headers[2]} field="latitude"></Column>
+          <Column align="center" header={headers[3]} field="longitude"></Column>
           <Column
             align="center"
             header={headers[4]}

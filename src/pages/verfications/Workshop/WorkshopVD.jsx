@@ -7,11 +7,9 @@ import { useDispatch, useSelector } from "react-redux";
 import WorkshopExplore from "./WorkshopExplore";
 import {
   acceptRequest,
-  getFileRequest,
   getVerifyRequests,
   rejectRequest,
 } from "../../../redux/API/verify/workshop/workshopVerifications";
-import Cookies from "universal-cookie";
 import { ConfirmPopup, confirmPopup } from "primereact/confirmpopup";
 import { Toast } from "primereact/toast";
 import { showInfo, showSuccess } from "../../../ToastService";
@@ -37,11 +35,6 @@ const WorkshopVD = () => {
     dispatch(getVerifyRequests());
   }, []);
   // console.log(data);
-  const explore = (e) => {
-    e.preventDefault();
-    console.log(e);
-    galleria.current.show();
-  };
 
   const acitonBodyTemplate = (rowData) => {
     return (
@@ -64,6 +57,7 @@ const WorkshopVD = () => {
                 dispatch(rejectRequest(rowData.user_id)).then((res) => {
                   if (res.payload.status === true) {
                     showSuccess(res.payload.message, toast);
+                    dispatch(getVerifyRequests());
                     return;
                   }
                 });
@@ -94,6 +88,7 @@ const WorkshopVD = () => {
                   console.log(res);
                   if (res.payload.status === true) {
                     showSuccess(res.payload.message, toast);
+                    dispatch(getVerifyRequests());
                     return;
                   }
                 });

@@ -14,7 +14,7 @@ import Warehouses from './pages/warehouses/Warehouses';
 import WarehouseVer from './pages/verfications/Warehouse/WarehouseVer';
 import TowingVer from './pages/verfications/Towing/TowingVer';
 import Categories from './pages/categories/Categories';
-import Orders from './pages/oreders-management/Orders';
+import Orders from './pages/orders-management/Orders';
 import NotFound from './pages/components/notfound/NotFound';
 import Roles from './pages/roles/Roles';
 import Maps from './pages/maps/Maps';

@@ -10,12 +10,10 @@ import { showInfo, showSuccess } from "../../../ToastService";
 import { useDispatch, useSelector } from "react-redux";
 import {
   acceptRequest,
-  getFileRequest,
   getVerifyRequests,
   rejectRequest,
 } from "../../../redux/API/verify/towing/towingVerifications";
 import LoadingFS from "../../components/loading/LoadingFS";
-import { Link } from "react-router-dom";
 const TowingVD = () => {
   const headers = [
     "رقم السيارة",
@@ -57,6 +55,7 @@ const TowingVD = () => {
                 dispatch(rejectRequest(rowData.user_id)).then((res) => {
                   if (res.payload.status === true) {
                     showSuccess(res.payload.message, toast);
+                    dispatch(getVerifyRequests());
                     return;
                   }
                 });
@@ -87,6 +86,7 @@ const TowingVD = () => {
                   console.log(res);
                   if (res.payload.status === true) {
                     showSuccess(res.payload.message, toast);
+                    dispatch(getVerifyRequests());
                     return;
                   }
                 });

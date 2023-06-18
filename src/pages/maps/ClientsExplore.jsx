@@ -11,13 +11,16 @@ import {
 } from "../../redux/API/users/markersSlice";
 import LoadingFS from "../components/loading/LoadingFS";
 import "./clientexplore.scss";
+import { Button } from "primereact/button";
+import { Link } from "react-router-dom";
+import L from "leaflet";
 
 const ClientsExplore = (props) => {
-  const [selectedOption, setSelectedOption] = useState(null);
+  const [selectedOption, setSelectedOption] = useState("workshops");
   const options = [
     { label: "ورشات", value: "workshops" },
-    { label: "مستودعات", value: "storehouses" },
-    { label: "سيارات سحب", value: "towings" },
+    { label: "مستودعات", value: "warehouses" },
+    { label: "سيارات سحب", value: "towingcars" },
   ];
   const dispatch = useDispatch();
 
@@ -32,10 +35,10 @@ const ClientsExplore = (props) => {
       case "workshops":
         dispatch(GetWorkShopsMarkers());
         break;
-      case "storehouses":
+      case "warehouses":
         dispatch(GetStorehousesMarkers());
         break;
-      case "towings":
+      case "towingcars":
         dispatch(GetTowingsMarkers());
         break;
       default:
@@ -45,7 +48,31 @@ const ClientsExplore = (props) => {
   }, [selectedOption]);
 
   const lightTheme = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
-
+  const workshopIcon = L.icon({
+    iconUrl: "/Img/workshop-icon.png",
+    iconSize: [50, 50],
+    iconAnchor: [25, 5],
+  });
+  const storeIcon = L.icon({
+    iconUrl: "/Img/store-icon.png",
+    iconSize: [50, 50],
+    iconAnchor: [25, 5],
+  });
+  const towingIcon = L.icon({
+    iconUrl: "/Img/towing-icon.png",
+    iconSize: [50, 50],
+    iconAnchor: [25, 5],
+  });
+  const iconHandler = () => {
+    switch (selectedOption) {
+      case "workshops":
+        return workshopIcon;
+      case "warehouses":
+        return storeIcon;
+      case "towingcars":
+        return towingIcon;
+    }
+  };
   return (
     <div className="client-explore">
       {loading && <LoadingFS />}
@@ -63,7 +90,7 @@ const ClientsExplore = (props) => {
           </div>
         </div>
       </div>
-      
+
       <div className="d-flex justify-content-center mt-4">
         <MapContainer
           center={{ lat: 33.492021, lng: 36.332652 }}
@@ -80,19 +107,37 @@ const ClientsExplore = (props) => {
           {data.map((item) => {
             return (
               <Marker
+                icon={iconHandler()}
                 key={item.id}
                 position={{ lat: item.user_latitude, lng: item.user_longitude }}
                 draggable={false}
               >
                 <Popup>
+                  <div className="card-information">
+                    <h6 className="card-title">معلومات المستخدم</h6>
+                    <div className="card-body">
+                      <div className="card-info">
+                        <h6>الاسم:</h6>
+                        <div>
+                          {item.firstname} {item.lastname}
+                        </div>
+                      </div>
+                      <div className="card-info">
+                        <h6>الرقم:</h6>
+                        <div>{item.phone_number}</div>
+                      </div>
+                    </div>
+                  </div>
+
                   <div>
-                    {/* Display your marker information here */}
-                    <h4>معلومات المستخدم</h4>
-                    <p>
-                      Name: {item.firstname} {item.lastname}
-                    </p>
-                    <p>Store Name: {item.store_name}</p>
-                    <p>Phone: {item.phone_number}</p>
+                    <div className="text-center">
+                      <Link
+                        //  to={`${selectedOption + String(item.id)}`}
+                        to={`/${selectedOption + "/" + String(item.id)}`}
+                      >
+                        <Button label="زيارة" raised />
+                      </Link>
+                    </div>
                   </div>
                 </Popup>
               </Marker>

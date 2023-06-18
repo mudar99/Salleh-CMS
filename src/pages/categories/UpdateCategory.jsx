@@ -8,6 +8,7 @@ import {
   UpdateCategory as updateApi,
 } from "../../redux/API/categorySlice";
 import LanguageInput from "../../utils/LanguageInput";
+import { FileUpload } from "primereact/fileupload";
 
 const UpdateCategory = (props) => {
   const dispatch = useDispatch();
@@ -18,17 +19,17 @@ const UpdateCategory = (props) => {
     props.data.data.description
   );
   const [parentID, setParentID] = useState(props.data.category_id);
+  const [catPhoto, setCatPhoto] = useState();
   const toast = useRef(null);
 
   console.log(props.data);
   const UpdateCategoryHandler = (e) => {
     e.preventDefault();
-    console.log("first");
-
     // console.log(catName, catDescription, parentID);
     let obj = new FormData();
     obj.append("name", catName);
     obj.append("description", catDescription);
+    if (catPhoto !== undefined) obj.append("category_photo", catPhoto);
     if (parentID) obj.append("category_id", parentID);
     let data = { id: props.data.key, obj };
     dispatch(updateApi(data)).then((res) => {
@@ -82,6 +83,17 @@ const UpdateCategory = (props) => {
             onChange={(e) => {
               setParentID(e);
             }}
+          />
+        </div>
+        <div className="container mt-3">
+          <h6 className="mt-2 text-right">صورة الصنف</h6>
+          <FileUpload
+            mode="advanced"
+            chooseLabel="اختر صورة"
+            cancelLabel="إلغاء"
+            accept="image/*"
+            maxFileSize={1000000}
+            onSelect={(event) => setCatPhoto(event.files[0])}
           />
         </div>
       </div>

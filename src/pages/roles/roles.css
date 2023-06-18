@@ -1,0 +1,37 @@
+.roles .multiselect-container .searchBox:hover {
+  cursor: pointer;
+}
+
+.roles .multiselect-container .searchBox {
+  width: 100%;
+}
+
+.roles .multiselect-container .chip {
+  background-color: #4a8bdf;
+  color: #ffffff;
+  font-weight: bolder;
+  font-size: 15px;
+  padding: 10px;
+}
+
+.roles .multiselect-container .chip .icon_cancel {
+  margin: 2px 5px 5px 5px;
+  width: 18px;
+  height: 16px;
+}
+
+.roles .multiselect-container .option,
+.roles .multiselect-container .notFound {
+  color: #4a8bdf;
+  background-color: inherit;
+}
+
+.roles .multiselect-container .option:hover,
+.roles .multiselect-container .notFound:hover {
+  color: #daa520;
+}
+
+.roles .multiselect-container .optionListContainer {
+  width: 100%;
+}
+/*# sourceMappingURL=roles.css.map */
