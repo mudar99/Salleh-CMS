@@ -10,6 +10,28 @@
   border-radius: 10px;
 }
 
+.chart .rangeClass {
+  border: 1px solid #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f1f5f9;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 20px 50px 20px 50px;
+}
+
+.chart .rangeClass h6 {
+  margin-top: 10px;
+}
+
+.chart .rangeClass .p-datepicker {
+  direction: ltr;
+}
+
 .chart .title {
   margin-bottom: 20px;
   font-weight: bold;

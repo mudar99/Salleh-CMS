@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
-import "./table.scss";
+import "./chargetable.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { GetUserCharges } from "../../../redux/API/users/usersSlice";
 import { Paginator } from "primereact/paginator";
 import LoadingFS from "../loading/LoadingFS";
 import { Tag } from "primereact/tag";
-export const Table = (props) => {
+export const ChargeTable = (props) => {
   const dispatch = useDispatch();
   const [basicFirst, setBasicFirst] = useState(1);
   const [basicRows, setBasicRows] = useState(5);
@@ -48,9 +48,17 @@ export const Table = (props) => {
       default:
         break;
     }
-    return <Tag className="text-dark" value={val} severity={getSeverity(rowData)}></Tag>;
+    return (
+      <Tag
+        className="text-dark"
+        value={val}
+        severity={getSeverity(rowData)}
+      ></Tag>
+    );
   };
-
+  const balanceBodyTemplate = (balance) => {
+    return balance.toLocaleString();
+  };
   return (
     <div className="datatable">
       {loading && <LoadingFS />}
@@ -59,15 +67,19 @@ export const Table = (props) => {
           <Column align="center" field="id" header="معرف العملية"></Column>
           <Column
             align="center"
-            field="pre_mount"
+            body={(rowData) => balanceBodyTemplate(rowData.pre_mount)}
             header="القيمة السابقة"
           ></Column>
           <Column
             align="center"
-            field="new_amount"
+            body={(rowData) => balanceBodyTemplate(rowData.new_amount)}
             header="القيمة الجديدة"
           ></Column>
-          <Column align="center" field="charge" header="المبلغ"></Column>
+          <Column
+            align="center"
+            body={(rowData) => balanceBodyTemplate(rowData.charge)}
+            header="المبلغ"
+          ></Column>
           <Column
             align="center"
             field="created_at"

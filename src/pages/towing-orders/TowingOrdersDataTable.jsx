@@ -6,11 +6,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { GetWorkshopOrders } from "../../redux/API/ordersSlice";
 import LoadingFS from "../components/loading/LoadingFS";
 import { Paginator } from "primereact/paginator";
-const OrdersDataTable = () => {
+const TowingOrdersDataTable = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const dispatch = useDispatch();
   const { loading, data, totalItems } = useSelector((state) => state.orders);
-
   const [basicFirst, setBasicFirst] = useState(1);
   const [basicRows, setBasicRows] = useState(5);
 
@@ -145,4 +144,4 @@ const OrdersDataTable = () => {
   );
 };
 
-export default OrdersDataTable;
+export default TowingOrdersDataTable;

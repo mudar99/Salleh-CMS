@@ -98,8 +98,32 @@
   .chart {
     box-shadow: 2px 4px 10px 1px $dark-box-shadow;
     background-color: $dark-secondary;
-    .chartGrid {
-      stroke: rgba(228, 228, 228, 0.219);
+    .rangeClass {
+      border: 1px solid $dark-box-shadow;
+      padding: 20px;
+      border-radius: 10px;
+      background-color: $dark-secondary;
+      .p-inputtext {
+        color: $dark-font-color;
+      }
+      .p-datepicker {
+        background-color: $dark-box-shadow;
+        color: $dark-font-color;
+        .p-datepicker-header {
+          background-color: $dark-box-shadow;
+          .p-datepicker-title {
+            .p-datepicker-year,
+            .p-datepicker-month,
+            .p-datepicker-decade {
+              color: $dark-font-color;
+            }
+          }
+        }
+      }
+      .p-datepicker table td > span:hover {
+        background-color: $dark-font-color;
+        color: $dark-secondary;
+      }
     }
   }
 
@@ -291,6 +315,33 @@
   .featured {
     background-color: $dark-secondary;
     box-shadow: 2px 4px 10px 1px $dark-box-shadow;
+
+    .rangeClass {
+      background-color: $dark-secondary;
+      .p-inputtext {
+        color: $dark-font-color;
+      }
+      .p-datepicker {
+        background-color: $dark-box-shadow;
+        color: $dark-font-color;
+        .p-datepicker-header {
+          background-color: $dark-box-shadow;
+          .p-datepicker-title {
+            .p-datepicker-year,
+            .p-datepicker-month,
+            .p-datepicker-decade {
+              color: $dark-font-color;
+            }
+          }
+        }
+      }
+      .p-datepicker table td > span:hover {
+        background-color: $dark-font-color;
+        color: $dark-secondary;
+      }
+    }
+
+
     .bottom {
       .title {
         color: $dark-font-color;
@@ -355,6 +406,42 @@
     }
   }
 
+  .blockpage {
+    box-shadow: 2px 4px 10px 1px $dark-box-shadow;
+    background-color: $dark-secondary;
+    h1 {
+      color: $header-color;
+    }
+
+    .form-container {
+      .form-header {
+        .dropdown {
+          .p-dropdown-header {
+            background-color: $dark-secondary;
+            .p-dropdown-filter-container .p-inputtext {
+              color: $dark-font-color;
+            }
+          }
+        }
+
+        h6 {
+          margin: 10px;
+          font-weight: bold;
+          color: $dark-font-color;
+        }
+      }
+
+      .form-footer {
+        margin: 30px;
+        text-align: center;
+        .p-button {
+          width: 100px;
+          direction: ltr;
+        }
+      }
+    }
+  }
+
   .p-dialog {
     .p-dialog-header {
       background-color: $dark-secondary;
@@ -392,12 +479,10 @@
     }
   }
 
-  .client-explore {
-    .selection-container {
-      .selection {
-        box-shadow: 2px 4px 10px 1px $dark-box-shadow;
-        background-color: $dark-secondary;
-      }
+  .selection-container {
+    .selection {
+      box-shadow: 2px 4px 10px 1px $dark-box-shadow;
+      background-color: $dark-secondary;
     }
   }
 

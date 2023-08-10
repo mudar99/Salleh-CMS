@@ -22,6 +22,9 @@ import Complaints from './pages/complaints/Complaints';
 import Suggestions from './pages/suggestions/Suggestions';
 import Notification from './pages/notifications/Notification';
 import UserProfile from './pages/user-profile/UserProfile';
+import BlackList from './pages/black-list/BlackList';
+import PreOrders from './pages/preorders-management/PreOrders';
+import TowingOrders from './pages/towing-orders/TowingOrders';
 
 
 function App() {
@@ -77,6 +80,14 @@ function App() {
               <Route index element={<Orders />} />
             </Route>
 
+            <Route path='pre-orders' >
+              <Route index element={<PreOrders />} />
+            </Route>
+
+            <Route path='towing-orders' >
+              <Route index element={<TowingOrders />} />
+            </Route>
+
             <Route path='categories' >
               <Route index element={<Categories />} />
             </Route>
@@ -108,6 +119,10 @@ function App() {
 
             <Route path='notifications' >
               <Route index element={<Notification />} />
+            </Route>
+
+            <Route path='black-list' >
+              <Route index element={<BlackList />} />
             </Route>
 
             <Route />

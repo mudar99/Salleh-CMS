@@ -17,6 +17,9 @@ import ClientsExplore from "../maps/ClientsExplore";
 import ComplaintsDataTable from "../complaints/ComplaintsDataTable";
 import SuggestionsDataTable from "../suggestions/SuggestionsDataTable";
 import NotificationPage from "../notifications/NotificationPage";
+import BlockPage from "../black-list/BlockPage";
+import PreOrdersDataTable from "../preorders-management/PreOrdersDataTable";
+import TowingOrdersDataTable from "../towing-orders/TowingOrdersDataTable";
 const List = (props) => {
   const visibleCallBack = (e, rowData, basicRows) => {
     // switch (e) {
@@ -71,6 +74,10 @@ const List = (props) => {
         return <WarehousesDataTable />;
       case "OrdersDataTable":
         return <OrdersDataTable />;
+      case "PreOrdersDataTable":
+        return <PreOrdersDataTable />;
+        case "TowingOrdersDataTable":
+          return <TowingOrdersDataTable />;
       case "CategoriesDataTable":
         return (
           <CategoriesTreeTable
@@ -80,12 +87,12 @@ const List = (props) => {
         );
       case "ComplaintsDataTable":
         return <ComplaintsDataTable />;
-
       case "SuggestionsDataTable":
         return <SuggestionsDataTable />;
-
       case "NotificationPage":
         return <NotificationPage />;
+      case "BlockPage":
+        return <BlockPage />;
       default:
         return;
     }

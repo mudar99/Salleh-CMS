@@ -402,6 +402,40 @@
   color: #daa520;
 }
 
+.app.dark .blockpage {
+  -webkit-box-shadow: 2px 4px 10px 1px #2e2e2e;
+          box-shadow: 2px 4px 10px 1px #2e2e2e;
+  background-color: #212121;
+}
+
+.app.dark .blockpage h1 {
+  color: #daa520;
+}
+
+.app.dark .blockpage .form-container .form-header .dropdown .p-dropdown-header {
+  background-color: #212121;
+}
+
+.app.dark .blockpage .form-container .form-header .dropdown .p-dropdown-header .p-dropdown-filter-container .p-inputtext {
+  color: #c9c9c9;
+}
+
+.app.dark .blockpage .form-container .form-header h6 {
+  margin: 10px;
+  font-weight: bold;
+  color: #c9c9c9;
+}
+
+.app.dark .blockpage .form-container .form-footer {
+  margin: 30px;
+  text-align: center;
+}
+
+.app.dark .blockpage .form-container .form-footer .p-button {
+  width: 100px;
+  direction: ltr;
+}
+
 .app.dark .p-dialog .p-dialog-header {
   background-color: #212121;
   color: #c9c9c9;

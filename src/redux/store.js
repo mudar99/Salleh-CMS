@@ -14,6 +14,8 @@ import adminSlice from './API/adminSlice';
 import suggestionsSlice from './API/complaints & suggestions/suggestionsSlice';
 import complaintsSlice from './API/complaints & suggestions/complaintsSlice';
 import markersSlice from './API/users/markersSlice';
+import usersStatisticsSlice from './API/visualizations/usersStatisticsSlice';
+import usersChartSlice from './API/visualizations/usersChartSlice';
 const store = configureStore({
     reducer: {
         DarkMode: themeSlice,
@@ -30,7 +32,10 @@ const store = configureStore({
         roles: rolesSlice,
         admins: adminSlice,
         suggestions: suggestionsSlice,
-        complaints: complaintsSlice
+        complaints: complaintsSlice,
+        userStatistic : usersStatisticsSlice,
+        userChart : usersChartSlice,
+
     }
 });
 export default store

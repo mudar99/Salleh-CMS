@@ -6,7 +6,21 @@
   color: $header-color;
   background-color: $body-color;
   border-radius: 10px;
-
+  .rangeClass {
+    border: 1px solid $body-color;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: $home-color;
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 50px 20px 50px;
+    h6 {
+      margin-top: 15px;
+    }
+    .p-datepicker {
+      direction: ltr;
+    }
+  }
   .title {
     margin-bottom: 20px;
     font-weight: bold;
@@ -15,7 +29,7 @@
     color: $header-color;
   }
 
-  .chartGrid {
-    stroke: rgb(228, 225, 225);
+  .spinner {
+    margin-top: 140px;
   }
 }

@@ -53,6 +53,7 @@
   font-size: 12px;
   border-bottom: 1px solid gray;
   cursor: pointer;
+  margin-bottom: 5px;
 }
 
 .widget .left .percentage,
@@ -79,10 +80,9 @@
 
 .widget .left i,
 .widget .right i {
+  color: #4a8bdf;
+  margin-right: 20px;
+  padding: 0;
   font-size: 18px;
-  padding: 5px;
-  border-radius: 5px;
-  -ms-flex-item-align: end;
-      align-self: flex-end;
 }
 /*# sourceMappingURL=widget.css.map */

@@ -33,6 +33,7 @@
       font-size: 12px;
       border-bottom: 1px solid gray;
       cursor: pointer;
+      margin-bottom: 5px;
     }
 
     .percentage {
@@ -49,10 +50,10 @@
     }
 
     i {
+      color: $primary-color;
+      margin-right: 20px;
+      padding: 0;
       font-size: 18px;
-      padding: 5px;
-      border-radius: 5px;
-      align-self: flex-end;
     }
   }
 }

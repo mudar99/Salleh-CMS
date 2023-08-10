@@ -19,7 +19,19 @@
       color: $header-color;
     }
   }
-
+  .rangeClass {
+    display: block;
+    border-radius: 10px;
+    text-align: center;
+    margin: 40px;
+    h6 {
+      margin-top: 12px;
+    }
+    .submit {
+      width: 20%;
+      margin-top: 20px;
+    }
+  }
   .bottom {
     padding: 20px;
     display: flex;

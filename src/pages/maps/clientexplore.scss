@@ -1,24 +1,6 @@
 @import "../../style/vars";
 .client-explore {
-  .selection-container {
-    display: flex;
-    justify-content: center;
-    .selection {
-      display: flex;
-      justify-content: space-between;
-      margin: 20px;
-      padding: 15px;
-      box-shadow: 2px 4px 10px 1px $dark-font-color;
-      border-radius: 10px;
-      background-color: $body-color;
-      width: 50%;
-      h6 {
-        margin: 10px;
-        font-weight: bold;
-        color: $header-color;
-      }
-    }
-  }
+
   .card-information {
     text-align: right;
 

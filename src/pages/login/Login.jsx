@@ -7,7 +7,7 @@ import { adminLogin } from "../../redux/API/authSlice";
 import { showError, showSuccess } from "../../ToastService";
 import "./login.scss";
 import NavBar from "./NavBar";
-import { Checkbox } from "primereact/checkbox";
+// import { Checkbox } from "primereact/checkbox";
 import Cookies from "universal-cookie";
 const Login = () => {
   const dispatch = useDispatch();
@@ -16,7 +16,7 @@ const Login = () => {
   const { loading } = useSelector((state) => state.auth);
   const toast = useRef(null);
   const cookie = new Cookies();
-  const [checked, setChecked] = useState(false);
+  // const [checked, setChecked] = useState(false);
 
   useEffect(() => {
     if (cookie.get("jwt_authorization") !== undefined) {
@@ -87,13 +87,13 @@ const Login = () => {
               </label>
             </span>
           </div>
-          <span className="remember">
+          {/* <span className="remember">
             <Checkbox
               onChange={(e) => setChecked(e.checked)}
               checked={checked}
             ></Checkbox>
             <label>حفظ كلمة المرور</label>
-          </span>
+          </span> */}
           <div className="submit">
             <Button
               label="تسجيل الدخول"

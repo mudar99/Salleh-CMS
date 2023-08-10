@@ -1,0 +1,57 @@
+@import "../../style/vars";
+
+.blockpage {
+  width: 50vw;
+  padding: 20px;
+  box-shadow: 2px 4px 10px 1px $dark-font-color;
+  background-color: $nav-color;
+  margin-top: 50px;
+  h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: $header-color;
+    font-weight: bold;
+  }
+  @media screen and (max-width: 876px) {
+    margin: 20px;
+    width: 80vw;
+  }
+
+  .form-container {
+    .form-header {
+      display: flex;
+      justify-content: space-between;
+      margin: 20px;
+      padding: 15px;
+
+      @media screen and (max-width: 768px) {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .dropdown {
+        width: 60%;
+        direction: ltr;
+
+        @media screen and (max-width: 768px) {
+          width: 100%;
+        }
+      }
+
+      h6 {
+        margin: 10px;
+        font-weight: bold;
+        color: $list-color;
+      }
+    }
+
+    .form-footer {
+      margin: 30px;
+      text-align: center;
+      .p-button {
+        width: 100px;
+        direction: ltr;
+      }
+    }
+  }
+}

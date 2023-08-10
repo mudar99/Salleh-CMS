@@ -1,69 +1,37 @@
 import React from "react";
 import "./widget.scss";
 
-const Widget = ({ type }) => {
+const Widget = ({ type, num, ratio }) => {
   let data;
-
-  //temporary
-  const amount = 100;
-  const diff = 20;
-
   switch (type) {
     case "user":
       data = {
         title: "المستخدمون",
-        isMoney: false,
-        icon: (
-          <i
-            className="pi pi-user"
-            style={{
-              color: "crimson",
-              backgroundColor: "rgba(255, 0, 0, 0.2)",
-            }}
-          ></i>
-        ),
+        icon: <i className="bi bi-person-fill"></i>,
       };
       break;
-    case "order":
+    case "customer":
       data = {
-        title: "الطلبات",
-        isMoney: false,
-        icon: (
-          <i
-            className="pi pi-briefcase"
-            style={{
-              backgroundColor: "rgba(218, 165, 32, 0.2)",
-              color: "goldenrod",
-            }}
-          ></i>
-        ),
+        title: "الزبائن",
+        icon: <i className="bi bi-people-fill"></i>,
       };
       break;
-    case "earning":
+    case "workshop":
       data = {
-        title: "الأرباح",
-        isMoney: true,
-        icon: (
-          <i
-            className="pi pi-chart-line"
-            style={{ backgroundColor: "rgba(0, 128, 0, 0.2)", color: "green" }}
-          ></i>
-        ),
+        title: "ورشات",
+        icon: <i className="bi bi-house-fill"></i>,
       };
       break;
-    case "balance":
+    case "towing":
       data = {
-        title: "الميزانية",
-        isMoney: true,
-        icon: (
-          <i
-            className="pi pi-dollar"
-            style={{
-              backgroundColor: "rgba(128, 0, 128, 0.2)",
-              color: "purple",
-            }}
-          ></i>
-        ),
+        title: "سيارات سحب",
+        icon: <i className="bi bi-truck-flatbed"></i>,
+      };
+      break;
+    case "storehouse":
+      data = {
+        title: "مستودعات",
+        icon: <i className="bi bi-building-fill"></i>,
       };
       break;
     default:
@@ -74,13 +42,11 @@ const Widget = ({ type }) => {
     <div className="widget">
       <div className="left">
         <span className="title">{data.title}</span>
-        <span className="counter">
-          {data.isMoney && "$"} {amount}
-        </span>
+        <span className="counter">{num}</span>
         <span className="link">عرض التفاصيل</span>
       </div>
       <div className="right">
-        <div className="percentage positive">% {diff}</div>
+        <div className="percentage positive">% {ratio}</div>
         {data.icon}
       </div>
     </div>

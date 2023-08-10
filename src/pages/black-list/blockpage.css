@@ -1,0 +1,73 @@
+.blockpage {
+  width: 50vw;
+  padding: 20px;
+  -webkit-box-shadow: 2px 4px 10px 1px #c9c9c9;
+          box-shadow: 2px 4px 10px 1px #c9c9c9;
+  background-color: #ffffff;
+  margin-top: 50px;
+}
+
+.blockpage h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #daa520;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 876px) {
+  .blockpage {
+    margin: 20px;
+    width: 80vw;
+  }
+}
+
+.blockpage .form-container .form-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 20px;
+  padding: 15px;
+}
+
+@media screen and (max-width: 768px) {
+  .blockpage .form-container .form-header {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
+
+.blockpage .form-container .form-header .dropdown {
+  width: 60%;
+  direction: ltr;
+}
+
+@media screen and (max-width: 768px) {
+  .blockpage .form-container .form-header .dropdown {
+    width: 100%;
+  }
+}
+
+.blockpage .form-container .form-header h6 {
+  margin: 10px;
+  font-weight: bold;
+  color: #01257d;
+}
+
+.blockpage .form-container .form-footer {
+  margin: 30px;
+  text-align: center;
+}
+
+.blockpage .form-container .form-footer .p-button {
+  width: 100px;
+  direction: ltr;
+}
+/*# sourceMappingURL=blockpage.css.map */

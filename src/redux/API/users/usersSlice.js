@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import Cookies from "universal-cookie";
-import { ChargeWalletAPI, GetCustomersAPI, GetStorehousesAPI, GetTowingsAPI, GetUserChargesAPI, GetWorkShopsAPI, ShowUserAPI } from "../../../API";
+import { BlockUserAPI, ChargeWalletAPI, GetCustomersAPI, GetStoreProductsAPI, GetStorehousesAPI, GetTowingsAPI, GetUserChargesAPI, GetWorkShopsAPI, ShowUserAPI } from "../../../API";
 
 const cookie = new Cookies();
 const token = cookie.get("jwt_authorization");
@@ -10,40 +10,74 @@ export const GetCustomers = createAsyncThunk("admin/users/customers", async (inf
     axios.defaults.headers = {
         Authorization: `Bearer ${token}`,
     }
-    let { data } = await axios.get(GetCustomersAPI + info.size + "&page=" + info.page + "&isPaginate=" + info.isPaginate);
-    console.log(data)
-    return data;
+    if (info) {
+        let { data } = await axios.get(GetCustomersAPI + info.size + "&page=" + info.page + "&isPaginate=" + info.isPaginate);
+        console.log(data.data)
+        return data.data;
+    } else {
+        let { data } = await axios.get(GetCustomersAPI);
+        console.log(data)
+        return data;
+    }
 });
 export const GetWorkShops = createAsyncThunk("admin/users/workshops", async (info) => {
     axios.defaults.headers = {
         Authorization: `Bearer ${token}`,
     }
-    let { data } = await axios.get(GetWorkShopsAPI + info.size + "&page=" + info.page + "&isPaginate=" + info.isPaginate);
-    console.log(data)
-    return data
+    if (info) {
+        let { data } = await axios.get(GetWorkShopsAPI + info.size + "&page=" + info.page + "&isPaginate=" + info.isPaginate);
+        console.log(data.data)
+        return data.data
+    } else {
+        let { data } = await axios.get(GetWorkShopsAPI);
+        console.log(data)
+        return data;
+    }
 });
 export const GetTowings = createAsyncThunk("admin/users/towings", async (info) => {
     axios.defaults.headers = {
         Authorization: `Bearer ${token}`,
     }
-    let { data } = await axios.get(GetTowingsAPI + info.size + "&page=" + info.page + "&isPaginate=" + info.isPaginate);
-    console.log(data)
-    return data
+    if (info) {
+        let { data } = await axios.get(GetTowingsAPI + info.size + "&page=" + info.page + "&isPaginate=" + info.isPaginate);
+        console.log(data.data)
+        return data.data
+    }
+    else {
+        let { data } = await axios.get(GetTowingsAPI);
+        console.log(data)
+        return data;
+    }
 });
 export const GetStorehouses = createAsyncThunk("admin/users/storehouses", async (info) => {
     axios.defaults.headers = {
         Authorization: `Bearer ${token}`,
     }
+    if (info) {
 
-    let { data } = await axios.get(GetStorehousesAPI + info.size + "&page=" + info.page + "&isPaginate=" + info.isPaginate);
-    console.log(data)
-    return data
+        let { data } = await axios.get(GetStorehousesAPI + info.size + "&page=" + info.page + "&isPaginate=" + info.isPaginate);
+        console.log(data.data)
+        return data.data
+    }
+    else {
+        let { data } = await axios.get(GetStorehousesAPI);
+        console.log(data)
+        return data;
+    }
 });
 export const ShowUser = createAsyncThunk("admin/user/show", async (id) => {
     axios.defaults.headers = {
         Authorization: `Bearer ${token}`,
     }
     let { data } = await axios.get(ShowUserAPI + id);
+    console.log(data)
+    return data;
+});
+export const BlockUser = createAsyncThunk("admin/user/block", async (id) => {
+    axios.defaults.headers = {
+        Authorization: `Bearer ${token}`,
+    }
+    let { data } = await axios.post(BlockUserAPI + id);
     console.log(data)
     return data;
 });
@@ -67,6 +101,14 @@ export const WalletChargeService = createAsyncThunk("admin/user/wallet/charge", 
         return rejectWithValue(error.response.data.message);
     }
 });
+export const GetStoreHouseProducts = createAsyncThunk("admin/user/store/products", async (info) => {
+    axios.defaults.headers = {
+        Authorization: `Bearer ${token}`,
+    }
+    let { data } = await axios.get(GetStoreProductsAPI + info.id + "?size=" + info.size + "&page=" + info.page);
+    console.log(data)
+    return data;
+});
 
 export const usersSlice = createSlice({
     name: "usersSlice",
@@ -76,15 +118,15 @@ export const usersSlice = createSlice({
         data: [],
         message: "",
         totalItems: "",
-        userData: { information: {}, charges: {}, chart: {} }
+        userData: { information: {}, charges: {}, chart: {} ,products :{}}
     },
     reducers: {},
     extraReducers: (builder) => {
         builder.addCase(GetStorehouses.pending, (state) => {
             state.loading = true;
         }).addCase(GetStorehouses.fulfilled, (state, { payload }) => {
-            state.data = payload.data.data;
-            state.totalItems = payload.data.total
+            state.data = payload.data;
+            state.totalItems = payload.total
             state.loading = false;
         }).addCase(GetStorehouses.rejected, (state, { payload }) => {
             state.loading = false;
@@ -93,8 +135,8 @@ export const usersSlice = createSlice({
         builder.addCase(GetTowings.pending, (state) => {
             state.loading = true;
         }).addCase(GetTowings.fulfilled, (state, { payload }) => {
-            state.data = payload.data.data;
-            state.totalItems = payload.data.total
+            state.data = payload.data;
+            state.totalItems = payload.total
             state.loading = false;
         }).addCase(GetTowings.rejected, (state, { payload }) => {
             state.loading = false;
@@ -103,8 +145,8 @@ export const usersSlice = createSlice({
         builder.addCase(GetWorkShops.pending, (state) => {
             state.loading = true;
         }).addCase(GetWorkShops.fulfilled, (state, { payload }) => {
-            state.data = payload.data.data;
-            state.totalItems = payload.data.total
+            state.data = payload.data;
+            state.totalItems = payload.total
             state.loading = false;
         }).addCase(GetWorkShops.rejected, (state, { payload }) => {
             state.loading = false;
@@ -113,8 +155,9 @@ export const usersSlice = createSlice({
         builder.addCase(GetCustomers.pending, (state) => {
             state.loading = true;
         }).addCase(GetCustomers.fulfilled, (state, { payload }) => {
-            state.data = payload.data.data;
-            state.totalItems = payload.data.total
+            console.log(payload)
+            state.data = payload.data;
+            state.totalItems = payload.total
             state.loading = false;
         }).addCase(GetCustomers.rejected, (state, { payload }) => {
             state.loading = false;
@@ -129,6 +172,14 @@ export const usersSlice = createSlice({
             state.loading = false;
         })
 
+        builder.addCase(BlockUser.pending, (state) => {
+            state.btnLoading = true;
+        }).addCase(BlockUser.fulfilled, (state, { payload }) => {
+            state.btnLoading = false;
+        }).addCase(BlockUser.rejected, (state, { payload }) => {
+            state.btnLoading = false;
+        })
+
         builder.addCase(GetUserCharges.pending, (state) => {
             state.loading = true;
         }).addCase(GetUserCharges.fulfilled, (state, { payload }) => {
@@ -139,6 +190,16 @@ export const usersSlice = createSlice({
             state.loading = false;
         })
 
+        builder.addCase(GetStoreHouseProducts.pending, (state) => {
+            state.loading = true;
+        }).addCase(GetStoreHouseProducts.fulfilled, (state, { payload }) => {
+            state.userData.products = payload.data.data;
+            state.totalItems = payload.data.total
+            state.loading = false;
+        }).addCase(GetStoreHouseProducts.rejected, (state, { payload }) => {
+            state.loading = false;
+        })
+        
         builder.addCase(WalletChargeService.pending, (state) => {
             state.btnLoading = true;
         }).addCase(WalletChargeService.fulfilled, (state, { payload }) => {

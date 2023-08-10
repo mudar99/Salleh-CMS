@@ -4,16 +4,19 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { dark, light } from "../../../redux/themeSlice";
 import {
+  block,
   categoriesManage,
   complaints,
   customers,
   dashboard,
   employees,
   maps,
+  preRequestsManage,
   requestsManage,
   roles,
   suggestions,
   towing,
+  towingRequests,
   towingV,
   verfications,
   warehouseV,
@@ -94,6 +97,13 @@ const Sidebar = () => {
                 <span>خارطة العملاء</span>
               </li>
             </Link>
+          </div>
+          <div className="header" data-bs-toggle="collapse" href="#users">
+            <p className="title">مستخدمين</p>
+            <li className="bi bi-caret-down-fill"></li>
+          </div>
+
+          <div className="collapse show" id="users">
             <Link
               to="/customers"
               style={{ textDecoration: "none" }}
@@ -135,6 +145,17 @@ const Sidebar = () => {
                 <span>مستودعات</span>
               </li>
             </Link>
+
+            <Link
+              to="/black-list"
+              style={{ textDecoration: "none" }}
+              onClick={() => dispatch(block())}
+            >
+              <li className={currentPlace === "block" ? "visited" : ""}>
+                <i className="bi bi-person-fill-slash"></i>
+                <span>حظر</span>
+              </li>
+            </Link>
           </div>
 
           <div className="header" data-bs-toggle="collapse" href="#management">
@@ -153,6 +174,34 @@ const Sidebar = () => {
               >
                 <i className="bi bi-house-gear-fill"></i>
                 <span>طلبات صيانة فورية</span>
+              </li>
+            </Link>
+
+            <Link
+              to="/pre-orders"
+              style={{ textDecoration: "none" }}
+              onClick={() => dispatch(preRequestsManage())}
+            >
+              <li
+                className={
+                  currentPlace === "preRequestsManage" ? "visited" : ""
+                }
+              >
+                <i className="bi bi-house-gear-fill"></i>
+                <span>طلبات صيانة مسبقة</span>
+              </li>
+            </Link>
+
+            <Link
+              to="/towing-orders"
+              style={{ textDecoration: "none" }}
+              onClick={() => dispatch(towingRequests())}
+            >
+              <li
+                className={currentPlace === "towingRequests" ? "visited" : ""}
+              >
+                <i className="bi bi-truck-flatbed"></i>
+                <span>طلبات سيارات السحب</span>
               </li>
             </Link>
 

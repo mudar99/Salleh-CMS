@@ -44,10 +44,29 @@ export const towingRejectRequest = `${local}/towing/request/`;
 export const towingAcceptRequest = `${local}/towing/request/`;
 
 export const GetWorkshopOrdersAPI = `${local}/workshop/orders?size=`;
-export const GetSingleWorkshopOrdersAPI = `${local}/workshop/orders/`;
+export const ShowWorkshopOrdersAPI = `${local}/workshop/orders/`;
+export const GetWorkshopPreordersAPI = `${local}/workshop/preorders?size=`;
+export const ShowWorkshopPreordersAPI = `${local}/workshop/preorders/`;
+
+export const GetTowinOrdersAPI = `${local}/towing/orders?size=`;
+export const ShowTowinOrdersAPI = `${local}/towing/orders/`;
+
 
 export const GetSuggestionsAPI = `${local}/users/suggestions?size=`;
 export const GetComplaintsAPI = `${local}/users/complaints?size=`;
 
 export const ChargeWalletAPI = `${local}/users/wallets/charges/`;
 export const GetUserChargesAPI = `${local}/users/wallets/charges/`;
+
+export const GetStoreProductsAPI = `${local}/product/get/`;
+
+export const BlockUserAPI = `${local}/users/block/`;
+
+export const GetUsersNumberAPI = `${local}/users/num`;
+export const GetUsersRatioAPI = `${local}/users/ratio`;
+export const GetUsersNumberChartAPI = `${local}/users/chart`;
+export const GetRevenuesAPI = `${local}/users/revenues`;
+export const GetRevenuesByUserAPI = `${local}/users/revenues/`;
+
+
+

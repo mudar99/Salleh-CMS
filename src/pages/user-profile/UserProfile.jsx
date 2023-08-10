@@ -2,23 +2,44 @@ import React, { useEffect, useState } from "react";
 import "./userprofile.scss";
 import Navbar from "../components/navbar/Navbar";
 import Sidebar from "../components/sidebar/Sidebar";
-import Chart from "../components/chart/Chart";
 import { Button } from "primereact/button";
 import { useDispatch, useSelector } from "react-redux";
-import { Table } from "../components/table/Table";
+import { ChargeTable } from "../components/charge-table/ChargeTable";
 import { ShowUser } from "../../redux/API/users/usersSlice";
 import { Dialog } from "primereact/dialog";
 import WalletCharge from "./WalletCharge";
+import ProductTable from "../components/product-table/ProductTable";
+import { Dropdown } from "primereact/dropdown";
+import OrderTable from "../components/order-table/OrderTable";
+import { Chart, PrimeReactChart } from "../components/chart/PrimeReactChart";
 
 const UserProfile = () => {
   const dispatch = useDispatch();
   const { userData } = useSelector((state) => state.users);
   const [id, setId] = useState();
   const [walletDialog, setWalletDialog] = useState();
+  const [store, setStore] = useState(false);
+  const [workshop, setWorkshop] = useState(false);
+  const [selectedOption, setSelectedOption] = useState("orders");
+  const options = [
+    { label: "فورية", value: "orders" },
+    { label: "مسبقة", value: "preorders" },
+  ];
+  const handleSelect = (e) => {
+    setSelectedOption(e.value);
+  };
+
   console.log(userData);
   useEffect(() => {
-    // let currentPlace = window.location.pathname.split("/")[1];
+    let currentPlace = window.location.pathname.split("/")[1];
     let id = window.location.pathname.split("/")[2];
+    if (currentPlace === "warehouses") {
+      setStore(true);
+    }
+    if (currentPlace === "workshops") {
+      setWorkshop(true);
+    }
+
     setId(id);
     dispatch(ShowUser(id));
   }, []);
@@ -70,13 +91,13 @@ const UserProfile = () => {
                 </div>
               </div>
               <div className="right">
-                <Chart aspect={3 / 1} title="إنفاق المستخدم" />
+                <PrimeReactChart aspect={3 / 1} title="إنفاق المستخدم" />
               </div>
             </div>
             <div className="bottom">
               <h1 className="title">شحنات المحفظة</h1>
               {userData.information.wallet ? (
-                <Table id={id} />
+                <ChargeTable id={id} />
               ) : (
                 <div className="warning">
                   <span className="warning-message">
@@ -86,6 +107,39 @@ const UserProfile = () => {
                 </div>
               )}
             </div>
+
+            {store && (
+              <div className="bottom">
+                <h1 className="title">منتجات المستودع</h1>
+                <ProductTable id={id} />
+              </div>
+            )}
+
+            {workshop && (
+              <>
+                <div className="selection-container">
+                  <div className="selection">
+                    <h6>اختر نوع طلب الصيانة</h6>
+                    <div>
+                      <Dropdown
+                        appendTo={"self"}
+                        value={selectedOption}
+                        options={options}
+                        onChange={handleSelect}
+                        placeholder="قم بالاختيار"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="bottom">
+                  <h1 className="title">
+                    طلبات صيانة{" "}
+                    {selectedOption === "preorders" ? "المسبقة" : "الفورية"}
+                  </h1>
+                  <OrderTable type={selectedOption} id={id} />
+                </div>
+              </>
+            )}
           </div>
         </div>
       )}
