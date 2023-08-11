@@ -51,7 +51,7 @@ const CustomersDataTable = () => {
   return (
     <div className="datatable">
       {loading && <LoadingFS />}
-      <div className="card">
+      <div className="">
         <DataTable value={data} tableStyle={{ minWidth: "50rem" }}>
           <Column align="center" header={headers[0]} field="id"></Column>
           <Column

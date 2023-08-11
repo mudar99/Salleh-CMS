@@ -110,7 +110,7 @@ const RolesDataTable = (props) => {
   return (
     <div className="datatable">
       {loading && <LoadingFS />}
-      <div className="card">
+      <div className="">
         <DataTable
           header={header}
           value={data}

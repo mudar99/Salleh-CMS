@@ -29,7 +29,7 @@ const WorkshopExplore = (props) => {
 
   return (
     <>
-      <div className="card">
+      <div className="">
         {loading && <LoadingFS />}
         <Dialog
           visible={visible}

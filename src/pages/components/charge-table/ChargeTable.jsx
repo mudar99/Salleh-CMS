@@ -62,7 +62,7 @@ export const ChargeTable = (props) => {
   return (
     <div className="datatable">
       {loading && <LoadingFS />}
-      <div className="card">
+      <div className="">
         <DataTable value={userData.charges} tableStyle={{ minWidth: "50rem" }}>
           <Column align="center" field="id" header="معرف العملية"></Column>
           <Column

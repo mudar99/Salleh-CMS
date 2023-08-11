@@ -107,7 +107,7 @@ const WorkshopVD = () => {
   return (
     <div className="datatable">
       {loading && <LoadingFS />}
-      <div className="card">
+      <div className="">
         <DataTable
           showGridlines
           value={data}

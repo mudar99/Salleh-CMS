@@ -108,7 +108,7 @@ const EmployeeDataTable = (props) => {
   );
   return (
     <div className="datatable">
-      <div className="card">
+      <div className="">
         <DataTable
           header={header}
           value={data}

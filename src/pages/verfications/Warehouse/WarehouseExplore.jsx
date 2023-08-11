@@ -30,7 +30,7 @@ export const WarehouseExplore = (props) => {
 
   return (
     <>
-      <div className="card">
+      <div className="">
         {galliriaLoading && <LoadingFS />}
         <Dialog
           visible={visible}

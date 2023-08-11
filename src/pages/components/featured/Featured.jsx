@@ -4,11 +4,18 @@ import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { Calendar } from "primereact/calendar";
 import { Button } from "primereact/button";
+import { GetRevenues } from "../../../redux/API/visualizations/revenuesSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { showError, showSuccess } from "../../../ToastService";
+import { Toast } from "primereact/toast";
 
 const Featured = () => {
   const [fromDate, setFromDate] = useState(null);
   const [toDate, setToDate] = useState(null);
   const toast = useRef(null);
+  const dispatch = useDispatch();
+  const [isLocked, setIsLocked] = useState(true);
+  const { amount, revenueLoading } = useSelector((state) => state.revenue);
 
   const handleFromDateChange = (e) => {
     setFromDate(e.value);
@@ -34,17 +41,19 @@ const Featured = () => {
 
     console.log("Selected date range:", fromDate, " ----- ", toDate);
 
-    // dispatch(GetUsersNumberChart(obj)).then((res) => {
-    //   console.log(res);
-    //   if (res.payload.status === true) {
-    //     showSuccess(res.payload.message, toast);
-    //     return;
-    //   }
-    //   showError(res.payload, toast);
-    // });
+    dispatch(GetRevenues(obj)).then((res) => {
+      console.log(res);
+      if (res.payload.status === true) {
+        showSuccess(res.payload.message, toast);
+        setIsLocked(false);
+        return;
+      }
+      showError(res.payload, toast);
+    });
   };
   return (
     <div className="featured">
+      <Toast ref={toast} />
       <div className="top">
         <h1 className="title">إجمالي الإيرادات</h1>
         <li
@@ -60,7 +69,7 @@ const Featured = () => {
       <form className="rangeClass" onSubmit={submitHandler}>
         <div>
           <Calendar
-          baseZIndex={1}
+            baseZIndex={1}
             className="smaller-calendar"
             showButtonBar
             appendTo={"self"}
@@ -87,37 +96,24 @@ const Featured = () => {
         <Button className="submit" type="submit" label="تأكيد" />
       </form>
 
-      <div className="bottom">
-        <div className="featuredChart">
-          <CircularProgressbar value={70} text={"70%"} strokeWidth={5} />
-        </div>
-        <p className="title">مجموع مبيعات اليوم</p>
-        <p className="amount">$499.99</p>
-        <p className="desc">الإيرادات والدخل السابقين</p>
-        <div className="summary">
-          <div className="item">
-            <div className="itemTitle">الهدف</div>
-            <div className="itemResult negative container">
-              <li className="pi pi-angle-down"></li>
-              <div className="resultAmount">$12.4k</div>
-            </div>
-          </div>
-          <div className="item">
-            <div className="itemTitle">الأسبوع الماضي</div>
-            <div className="itemResult positive container">
-              <li className="pi pi-angle-up"></li>
-              <div className="resultAmount">$12.4k</div>
-            </div>
-          </div>
-          <div className="item">
-            <div className="itemTitle">الشهر الماضي</div>
-            <div className="itemResult positive container">
-              <li className="pi pi-angle-up"></li>
-              <div className="resultAmount">$12.4k</div>
-            </div>
+      {revenueLoading ? (
+        <div className="spinner text-center">
+          <div className="spinner-border" role="status">
+            <span className="sr-only"></span>
           </div>
         </div>
-      </div>
+      ) : (
+        <div className="bottom">
+          {isLocked ? (
+            <i className="lock-icon bi bi-slash-circle"></i>
+          ) : (
+            <>
+              <p className="title">مجموع الأرباح</p>
+              <p className="amount">{amount} ل.س</p>
+            </>
+          )}
+        </div>
+      )}
     </div>
   );
 };

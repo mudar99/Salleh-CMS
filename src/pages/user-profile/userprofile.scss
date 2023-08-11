@@ -51,15 +51,19 @@
           display: flex;
           flex-direction: column;
           align-items: center;
-          gap: 5px;
-
+          gap: 10px;
+          padding: 10px;
           .card-label {
+            i {
+              margin-left: 5px;
+            }
             font-size: 14px;
             font-weight: bold;
             color: $primary-color;
           }
 
           .card-value {
+            text-align: right; /* Align the text to the right */
             font-size: 14px;
             font-weight: 300;
           }
@@ -67,34 +71,38 @@
       }
 
       .right {
+        border-radius: 10px;
+        background-color: $body-color;
+        box-shadow: 2px 4px 10px 1px $dark-font-color;
+        padding: 20px;
         flex: 2;
+        .warning {
+          display: flex;
+          align-items: center;
+          background-color: $header-color;
+          color: #ffffff;
+          padding: 10px;
+          border-radius: 4px;
+        }
+
+        .warning-icon {
+          font-size: 20px;
+          font-weight: bold;
+          margin-right: 10px;
+        }
+
+        .warning-message {
+          font-size: 16px;
+        }
       }
     }
 
     .bottom {
+      border-radius: 10px;
       background-color: $body-color;
       box-shadow: 2px 4px 10px 1px $dark-font-color;
       padding: 20px;
       margin: 10px 20px;
-
-      .warning {
-        display: flex;
-        align-items: center;
-        background-color: $header-color;
-        color: #ffffff;
-        padding: 10px;
-        border-radius: 4px;
-      }
-
-      .warning-icon {
-        font-size: 20px;
-        font-weight: bold;
-        margin-right: 10px;
-      }
-
-      .warning-message {
-        font-size: 16px;
-      }
     }
 
     .title {

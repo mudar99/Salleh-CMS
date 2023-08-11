@@ -379,6 +379,10 @@
           }
         }
       }
+      .right {
+        background-color: $dark-secondary;
+        box-shadow: 2px 4px 10px 1px $dark-box-shadow;
+      }
       .bottom {
         background-color: $dark-secondary;
         box-shadow: 2px 4px 10px 1px $dark-box-shadow;
