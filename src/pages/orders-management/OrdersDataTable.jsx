@@ -9,7 +9,7 @@ import { Paginator } from "primereact/paginator";
 const OrdersDataTable = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const dispatch = useDispatch();
-  const { loading, data, totalItems } = useSelector((state) => state.orders);
+  const { loading, ordersData, totalItems } = useSelector((state) => state.orders);
 
   const [basicFirst, setBasicFirst] = useState(1);
   const [basicRows, setBasicRows] = useState(5);
@@ -26,7 +26,7 @@ const OrdersDataTable = () => {
     let info = { size: basicRows, page: currentPage };
     dispatch(GetWorkshopOrders(info));
   }, []);
-  console.log(data);
+  console.log(ordersData);
   const headers = [
     "الورشة المسؤولة",
     "عنوان الورشة",
@@ -74,7 +74,7 @@ const OrdersDataTable = () => {
     <div className="datatable">
       {loading && <LoadingFS />}
       <div className="">
-        <DataTable value={data} tableStyle={{ minWidth: "50rem" }}>
+        <DataTable value={ordersData} tableStyle={{ minWidth: "50rem" }}>
           <Column
             align="center"
             header={headers[0]}

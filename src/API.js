@@ -44,12 +44,12 @@ export const towingRejectRequest = `${local}/towing/request/`;
 export const towingAcceptRequest = `${local}/towing/request/`;
 
 export const GetWorkshopOrdersAPI = `${local}/workshop/orders?size=`;
-export const ShowWorkshopOrdersAPI = `${local}/workshop/orders/`;
+export const ShowWorkshopOrdersAPI = `${local}/workshop/`;
 export const GetWorkshopPreordersAPI = `${local}/workshop/preorders?size=`;
-export const ShowWorkshopPreordersAPI = `${local}/workshop/preorders/`;
+export const ShowWorkshopPreordersAPI = `${local}/workshop/`;
 
 export const GetTowinOrdersAPI = `${local}/towing/orders?size=`;
-export const ShowTowinOrdersAPI = `${local}/towing/orders/`;
+export const ShowTowinOrdersAPI = `${local}/towing/`;
 
 
 export const GetSuggestionsAPI = `${local}/users/suggestions?size=`;

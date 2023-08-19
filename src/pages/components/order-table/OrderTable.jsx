@@ -10,73 +10,88 @@ import {
   ShowWorkshopOrders,
   ShowWorkshopPreOrders,
 } from "../../../redux/API/ordersSlice";
+import { Tag } from "primereact/tag";
 
 const OrderTable = (props) => {
   const dispatch = useDispatch();
-  const { loading, data, totalItems } = useSelector((state) => state.orders);
+  const { loading, userOrders, totalItems } = useSelector(
+    (state) => state.orders
+  );
   const [currentPage, setCurrentPage] = useState(1);
   const [basicFirst, setBasicFirst] = useState(1);
   const [basicRows, setBasicRows] = useState(5);
-
   useEffect(() => {
-    console.log(props.type, props.id);
-    if (props.type === "orders") {
-      dispatch(ShowWorkshopOrders(props.id));
-    }
-    if (props.type === "preorders") {
-      dispatch(ShowWorkshopPreOrders(props.id));
-    }
-  }, [props.type]);
-  const headers = [
-    "اسم المنتج",
-    "تاريخ الإضافة",
-    "السعر",
-    "الكمية",
-    "البلد المصنع",
-    "وصف",
-    "صورة المنتج",
-  ];
+    let info = { id: props.id, size: basicRows, page: currentPage };
+    dispatch(ShowWorkshopOrders(info));
+  }, []);
+  const headers = ["الورشة", "مقدم الطلب", "تاريخ التسجيل", "الحالة"];
   const onBasicPageChange = (event) => {
     let currentPage = event.page + 1;
     setCurrentPage(currentPage);
     setBasicFirst(event.first);
     setBasicRows(event.rows);
     let info = { id: props.id, size: basicRows, page: currentPage };
-    // dispatch(GetStoreHouseProducts(info));
+    dispatch(ShowWorkshopOrders(info));
+  };
+  const statusBodyTemplate = (rowData) => {
+    let val;
+    switch (rowData.stage) {
+      case 0:
+        val = "انتظار";
+        break;
+      case 1:
+        val = "بدء";
+        break;
+      case 2:
+        val = "صيانة";
+        break;
+      case 3:
+        val = "تم";
+        break;
+      default:
+        break;
+    }
+    return <Tag value={val} severity={getSeverity(rowData)}></Tag>;
+  };
+  const getSeverity = (rowData) => {
+    switch (rowData.stage) {
+      case 0:
+        return "danger";
+      case 1:
+        return "warning";
+      case 2:
+        return "info";
+      case 3:
+        return "success";
+      default:
+        return null;
+    }
   };
   return (
     <div className="datatable">
       {loading && <LoadingFS />}
       <div className="">
-        <DataTable value={data} tableStyle={{ minWidth: "50rem" }}>
-          <Column align="center" header={headers[0]} field="name"></Column>
-          <Column align="center" header={headers[2]} field={"price"}></Column>
-          <Column align="center" header={headers[3]} field="quantity"></Column>
-          <Column align="center" header={headers[4]} field="made"></Column>
+        <DataTable value={userOrders} tableStyle={{ minWidth: "50rem" }}>
           <Column
-            alignHeader="center"
-            bodyClassName={(rowData) => {
-              return isArabic(rowData.description) ? "arabic" : "english";
-            }}
-            header={headers[5]}
-            field="description"
+            align="center"
+            header={headers[0]}
+            field="workshop_email"
           ></Column>
           <Column
             align="center"
             header={headers[1]}
+            field="user_email"
+          ></Column>
+          <Column
+            align="center"
+            header={headers[2]}
             field="created_at"
           ></Column>
           <Column
             align="center"
-            header={headers[6]}
-            body={(rowData) => {
-              return (
-                <img
-                  src={"http://127.0.0.1:8060" + rowData.image_path}
-                  style={{ width: "100px" }}
-                />
-              );
-            }}
+            header={headers[3]}
+            field="action"
+            body={statusBodyTemplate}
           ></Column>
         </DataTable>
 
@@ -90,5 +105,4 @@ const OrderTable = (props) => {
     </div>
   );
 };
-
 export default OrderTable;

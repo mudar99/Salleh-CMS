@@ -52,7 +52,13 @@ const CustomersDataTable = () => {
     <div className="datatable">
       {loading && <LoadingFS />}
       <div className="">
-        <DataTable value={data} tableStyle={{ minWidth: "50rem" }}>
+        <DataTable
+          value={data}
+          tableStyle={{ minWidth: "50rem" }}
+          rowClassName={(rowData) => {
+            if (rowData.blocked) return "blocked";
+          }}
+        >
           <Column align="center" header={headers[0]} field="id"></Column>
           <Column
             align="center"

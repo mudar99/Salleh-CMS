@@ -20,11 +20,11 @@ const WarehousesDataTable = () => {
     setCurrentPage(currentPage);
     setBasicFirst(event.first);
     setBasicRows(event.rows);
-    let info = { size: basicRows, page: currentPage , isPaginate: 1 };
+    let info = { size: basicRows, page: currentPage, isPaginate: 1 };
     dispatch(GetStorehouses(info));
   };
   useEffect(() => {
-    let info = { size: basicRows, page: currentPage , isPaginate: 1 };
+    let info = { size: basicRows, page: currentPage, isPaginate: 1 };
     dispatch(GetStorehouses(info));
   }, []);
   const headers = [
@@ -50,7 +50,13 @@ const WarehousesDataTable = () => {
     <div className="datatable">
       {loading && <LoadingFS />}
       <div className="">
-        <DataTable value={data} tableStyle={{ minWidth: "50rem" }}>
+        <DataTable
+          value={data}
+          tableStyle={{ minWidth: "50rem" }}
+          rowClassName={(rowData) => {
+            if (rowData.blocked) return "blocked";
+          }}
+        >
           <Column align="center" header={headers[0]} field="id"></Column>
           <Column
             align="center"

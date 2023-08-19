@@ -38,7 +38,7 @@ export const PrimeReactChart = ({ title }) => {
     obj.append("start_date", formattedFrom);
     obj.append("end_date", formattedTo);
 
-    console.log("Selected date range:", fromDate, " ----- ", toDate);
+    console.log("Selected date range:", formattedFrom, " ----- ", formattedTo);
 
     dispatch(GetUsersNumberChart(obj)).then((res) => {
       console.log(res);

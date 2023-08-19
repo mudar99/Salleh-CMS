@@ -46,7 +46,11 @@ const Widget = ({ type, num, ratio }) => {
         <span className="link">عرض التفاصيل</span>
       </div>
       <div className="right">
-        <div className="percentage positive">% {ratio}</div>
+        {data.title !== "المستخدمون" && (
+          <div className="percentage positive">
+            % {Math.round(ratio * 10 ** 2) / 10 ** 2}
+          </div>
+        )}
         {data.icon}
       </div>
     </div>

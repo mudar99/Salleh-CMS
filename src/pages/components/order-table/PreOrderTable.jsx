@@ -1,38 +1,38 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Column } from "primereact/column";
 import { DataTable } from "primereact/datatable";
-import { Tag } from "primereact/tag";
 import { useDispatch, useSelector } from "react-redux";
-import { GetTowingOrders, GetWorkshopOrders } from "../../redux/API/ordersSlice";
-import LoadingFS from "../components/loading/LoadingFS";
+import LoadingFS from "../loading/LoadingFS";
+import "../../../style/datatable.scss";
 import { Paginator } from "primereact/paginator";
-const TowingOrdersDataTable = () => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const dispatch = useDispatch();
-  const { loading, towingData, totalItems } = useSelector((state) => state.orders);
-  const [basicFirst, setBasicFirst] = useState(1);
-  const [basicRows, setBasicRows] = useState(5);
+import { isArabic } from "../../../utils/langType";
+import {
+  ShowWorkshopOrders,
+  ShowWorkshopPreOrders,
+} from "../../../redux/API/ordersSlice";
+import { Tag } from "primereact/tag";
 
+const PreOrderTable = (props) => {
+  const dispatch = useDispatch();
+  const { loading, userPreOrders, totalItems } = useSelector(
+    (state) => state.orders
+  );
+  const [currentPage, setCurrentPage] = useState(1);
+  const [basicFirst, setBasicFirst] = useState(1);
+  const [basicRows, setBasicRows] = useState(1);
+  useEffect(() => {
+    let info = { id: props.id, size: basicRows, page: currentPage };
+    dispatch(ShowWorkshopPreOrders(info));
+  }, []);
+  const headers = ["الورشة", "مقدم الطلب", "تاريخ التسجيل", "الحالة"];
   const onBasicPageChange = (event) => {
     let currentPage = event.page + 1;
     setCurrentPage(currentPage);
     setBasicFirst(event.first);
     setBasicRows(event.rows);
-    let info = { size: basicRows, page: currentPage };
-    dispatch(GetTowingOrders(info));
+    let info = { id: props.id, size: basicRows, page: currentPage };
+    dispatch(ShowWorkshopPreOrders(info));
   };
-  useEffect(() => {
-    let info = { size: basicRows, page: currentPage };
-    dispatch(GetTowingOrders(info));
-  }, []);
-  console.log(towingData);
-  const headers = [
-    "مقدم الطلب",
-    "تاريخ التسجيل",
-    "رقم مقدم الطلب",
-    "الحالة",
-  ];
-
   const statusBodyTemplate = (rowData) => {
     let val;
     switch (rowData.stage) {
@@ -71,34 +71,20 @@ const TowingOrdersDataTable = () => {
     <div className="datatable">
       {loading && <LoadingFS />}
       <div className="">
-        <DataTable value={towingData} tableStyle={{ minWidth: "50rem" }}>
+        <DataTable value={userPreOrders} tableStyle={{ minWidth: "50rem" }}>
           <Column
             align="center"
             header={headers[0]}
-            body={(rowData) => {
-              return rowData.user !== null ? (
-                <div>
-                  {rowData.user.firstname} {rowData.user.lastname}
-                </div>
-              ) : (
-                ".."
-              );
-            }}
-          ></Column>
-          <Column
-            align="center"
-            header={headers[2]}
-            body={(rowData) => {
-              return rowData.user !== null ? (
-                <div>{rowData.user.phone_number}</div>
-              ) : (
-                ".."
-              );
-            }}
+            field="workshop_email"
           ></Column>
           <Column
             align="center"
             header={headers[1]}
+            field="user_email"
+          ></Column>
+          <Column
+            align="center"
+            header={headers[2]}
             field="created_at"
           ></Column>
           <Column
@@ -119,5 +105,4 @@ const TowingOrdersDataTable = () => {
     </div>
   );
 };
-
-export default TowingOrdersDataTable;
+export default PreOrderTable;

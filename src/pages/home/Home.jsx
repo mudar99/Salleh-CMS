@@ -39,10 +39,10 @@ const Home = () => {
         <div className="homeContainer">
           <Navbar />
           <div className="widgets">
-            <Widget type="user" num={numbers.num_client} />
+            <Widget type="user" num={numbers.num_user} />
             <Widget
               type="customer"
-              num={numbers.num_user}
+              num={numbers.num_client}
               ratio={ratio.ratio_client}
             />
             <Widget

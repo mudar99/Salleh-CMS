@@ -3,13 +3,13 @@ import { Column } from "primereact/column";
 import { DataTable } from "primereact/datatable";
 import { Tag } from "primereact/tag";
 import { useDispatch, useSelector } from "react-redux";
-import { GetWorkshopOrders } from "../../redux/API/ordersSlice";
+import { GetWorkshopPreOrders } from "../../redux/API/ordersSlice";
 import LoadingFS from "../components/loading/LoadingFS";
 import { Paginator } from "primereact/paginator";
 const PreOrdersDataTable = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const dispatch = useDispatch();
-  const { loading, data, totalItems } = useSelector((state) => state.orders);
+  const { loading, preOrdersData, totalItems } = useSelector((state) => state.orders);
   const [basicFirst, setBasicFirst] = useState(1);
   const [basicRows, setBasicRows] = useState(5);
 
@@ -19,13 +19,13 @@ const PreOrdersDataTable = () => {
     setBasicFirst(event.first);
     setBasicRows(event.rows);
     let info = { size: basicRows, page: currentPage };
-    dispatch(GetWorkshopOrders(info));
+    dispatch(GetWorkshopPreOrders(info));
   };
   useEffect(() => {
     let info = { size: basicRows, page: currentPage };
-    dispatch(GetWorkshopOrders(info));
+    dispatch(GetWorkshopPreOrders(info));
   }, []);
-  console.log(data);
+  console.log(preOrdersData);
   const headers = [
     "الورشة المسؤولة",
     "عنوان الورشة",
@@ -73,7 +73,7 @@ const PreOrdersDataTable = () => {
     <div className="datatable">
       {loading && <LoadingFS />}
       <div className="">
-        <DataTable value={data} tableStyle={{ minWidth: "50rem" }}>
+        <DataTable value={preOrdersData} tableStyle={{ minWidth: "50rem" }}>
           <Column
             align="center"
             header={headers[0]}
